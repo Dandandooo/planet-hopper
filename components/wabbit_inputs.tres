@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="WabbitInput" load_steps=2 format=3 uid="uid://d4dbata8efl1k"]
+
+[ext_resource type="Script" uid="uid://w4ke6m2nbv83" path="res://components/wabbit_input.gd" id="1_vk7ya"]
+
+[resource]
+script = ExtResource("1_vk7ya")
+metadata/_custom_type_script = "uid://w4ke6m2nbv83"

@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://cnwn1hmwygwlf"]
+
+[ext_resource type="Texture2D" uid="uid://cw0au8ogm10i4" path="res://assets/rabbit.svg" id="1_6xmfo"]
+[ext_resource type="Script" uid="uid://bw1pmvy3aqyq0" path="res://components/wabbit.gd" id="1_bsh7b"]
+[ext_resource type="Resource" uid="uid://d4dbata8efl1k" path="res://components/wabbit_inputs.tres" id="2_oga63"]
+[ext_resource type="Texture2D" uid="uid://crteyodrlkmyy" path="res://assets/wabbit.png" id="4_18x16"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oga63"]
+size = Vector2(68, 80)
+
+[node name="Wabbit" type="CharacterBody2D"]
+slide_on_ceiling = false
+script = ExtResource("1_bsh7b")
+inputs = ExtResource("2_oga63")
+
+[node name="Rabbit" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_6xmfo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_oga63")
+
+[node name="Wabbit" type="Sprite2D" parent="."]
+scale = Vector2(0.04, 0.04)
+texture = ExtResource("4_18x16")
