@@ -1,13 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://qwry8a8465u4"]
+[gd_scene load_steps=5 format=3 uid="uid://qwry8a8465u4"]
 
 [ext_resource type="Script" uid="uid://cqkc5wuiiotoc" path="res://components/geyser.gd" id="1_2yqt2"]
 [ext_resource type="Texture2D" uid="uid://bk72qm1minn2i" path="res://assets/Geyser.png" id="1_ennvr"]
+[ext_resource type="Texture2D" uid="uid://n8lxhc8vbcd3" path="res://assets/geyser_beam.png" id="3_26mgd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ennvr"]
 size = Vector2(160, 90)
 
 [node name="Geyser" type="Node2D"]
 script = ExtResource("1_2yqt2")
+
+[node name="Timer" type="Timer" parent="."]
 
 [node name="Geyser" type="Sprite2D" parent="."]
 position = Vector2(-1.1368684e-13, -45)
@@ -19,3 +22,10 @@ texture = ExtResource("1_ennvr")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, -45)
 shape = SubResource("RectangleShape2D_ennvr")
+
+[node name="GeyserBeam" type="Sprite2D" parent="."]
+visible = false
+z_index = -1
+position = Vector2(0.49998808, -289.25)
+scale = Vector2(0.78075695, 1.0025997)
+texture = ExtResource("3_26mgd")

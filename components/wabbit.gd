@@ -30,7 +30,7 @@ func _physics_process(delta: float) -> void:
 			current_planet = _nearest_planet()
 	else:
 		_walk(delta)
-		if Input.get_action_strength(inputs.jump) > 0:
+		if Input.is_action_pressed(inputs.jump):
 			launch(global_rotation - PI/2, jumpspeed)
 
 func _apply_gravity(delta: float) -> void:
