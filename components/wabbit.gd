@@ -31,7 +31,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		_walk(delta)
 		if Input.get_action_strength(inputs.jump) > 0:
-			_jump()
+			launch(global_rotation - PI/2, jumpspeed)
 
 func _apply_gravity(delta: float) -> void:
 	var grav = Vector2(0, 0)
@@ -74,10 +74,10 @@ func _walk(delta: float) -> void:
 	velocity = (new_pos - global_position) / delta
 	global_position = new_pos
 
-	
  
- 
-func _jump() -> void:
-	print("jump")
-	velocity += Vector2(1, 0).rotated(rotation - PI / 2) * jumpspeed
+func launch(angle: float, strength: float) -> void:
+	var jump = Vector2(1, 0).rotated(angle) * strength
+	# extract perpendicular component
+	var perp: Vector2 = velocity - jump.normalized() * velocity.dot(jump.normalized())
+	velocity = jump + perp
 	gravity_enabled = true

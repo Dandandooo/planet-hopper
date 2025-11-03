@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://qwry8a8465u4"]
+
+[ext_resource type="Script" uid="uid://cqkc5wuiiotoc" path="res://components/geyser.gd" id="1_2yqt2"]
+[ext_resource type="Texture2D" uid="uid://bk72qm1minn2i" path="res://assets/Geyser.png" id="1_ennvr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ennvr"]
+size = Vector2(160, 90)
+
+[node name="Geyser" type="Node2D"]
+script = ExtResource("1_2yqt2")
+
+[node name="Geyser" type="Sprite2D" parent="."]
+position = Vector2(-1.1368684e-13, -45)
+scale = Vector2(5, 5)
+texture = ExtResource("1_ennvr")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -45)
+shape = SubResource("RectangleShape2D_ennvr")
