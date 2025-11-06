@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://c7oe8aqjds456"]
+[gd_scene load_steps=7 format=3 uid="uid://c7oe8aqjds456"]
 
 [ext_resource type="PackedScene" uid="uid://cnwn1hmwygwlf" path="res://components/wabbit.tscn" id="2_b3oru"]
 [ext_resource type="PackedScene" uid="uid://ba7mr1kx7f5wf" path="res://components/planet.tscn" id="2_pdtm5"]
+[ext_resource type="PackedScene" uid="uid://bxdkv7mas3nr3" path="res://components/star.tscn" id="3_61w3m"]
 [ext_resource type="Texture2D" uid="uid://bbwg8hnd1ptq6" path="res://assets/space.jpeg" id="3_b3oru"]
 [ext_resource type="PackedScene" uid="uid://qwry8a8465u4" path="res://components/geyser.tscn" id="4_ua5ty"]
 
@@ -11,30 +12,6 @@ absorbent = true
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Wabbit" parent="." instance=ExtResource("2_b3oru")]
-top_level = true
-position = Vector2(142, 167)
-
-[node name="Camera2D" type="Camera2D" parent="Wabbit"]
-
-[node name="Planet" parent="." instance=ExtResource("2_pdtm5")]
-position = Vector2(332, 420)
-scale = Vector2(0.5, 0.5)
-physics_material_override = SubResource("PhysicsMaterial_pdtm5")
-
-[node name="Planet2" parent="." instance=ExtResource("2_pdtm5")]
-position = Vector2(917, 151)
-scale = Vector2(0.5, 0.5)
-
-[node name="Planet3" parent="." instance=ExtResource("2_pdtm5")]
-position = Vector2(1565, 370)
-scale = Vector2(0.5, 0.5)
-
-[node name="Planet4" parent="." instance=ExtResource("2_pdtm5")]
-position = Vector2(2149, 67)
-scale = Vector2(0.5, 0.5)
-mass = 3.0
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -1
 
@@ -42,8 +19,32 @@ layer = -1
 position = Vector2(1179, 610)
 texture = ExtResource("3_b3oru")
 
-[node name="Geyser" parent="." instance=ExtResource("4_ua5ty")]
-position = Vector2(1653, 375)
-rotation = 1.5707964
+[node name="Wabbit" parent="." instance=ExtResource("2_b3oru")]
+top_level = true
+position = Vector2(142, 167)
+
+[node name="Star" parent="." instance=ExtResource("3_61w3m")]
+position = Vector2(-534, 480)
+
+[node name="Planet" parent="Star" instance=ExtResource("2_pdtm5")]
+position = Vector2(866, -60)
 scale = Vector2(0.5, 0.5)
+physics_material_override = SubResource("PhysicsMaterial_pdtm5")
+
+[node name="Planet2" parent="Star" instance=ExtResource("2_pdtm5")]
+position = Vector2(1451, -329)
+scale = Vector2(0.5, 0.5)
+
+[node name="Planet3" parent="Star" instance=ExtResource("2_pdtm5")]
+position = Vector2(2099, -110)
+scale = Vector2(0.5, 0.5)
+
+[node name="Geyser" parent="Star/Planet3" instance=ExtResource("4_ua5ty")]
+position = Vector2(176, 10)
+rotation = 1.5707964
 launch_strength = 1200
+
+[node name="Planet4" parent="Star" instance=ExtResource("2_pdtm5")]
+position = Vector2(2683, -413)
+scale = Vector2(0.5, 0.5)
+mass = 3.0
