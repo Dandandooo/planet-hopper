@@ -6,6 +6,8 @@ extends CharacterBody2D
 @export_range(0, 1000, 50) var jumpspeed: float = 1000
 @export_range(0, 10, 1) var grav_strength: float = 3
 
+var death_sound = preload("res://assets/yoda.mp3")
+
 var min_gravity: float = 50
 var grav_const: float = 1e7
 var gravity_enabled: bool = true
@@ -17,7 +19,6 @@ var planets: Array[Celestial]
 
 @export_range(0, 3, 1) var double_jumps: int = 1
 var double_jumps_remaining: int = double_jumps
-var thruster_sprite: Sprite2D
 var thruster_timer: Timer
 @export_range(0, 1, 0.1) var thruster_on_time: float = 0.3
 
@@ -27,8 +28,6 @@ var zoom_min_distance: float = 500
 @export_range(1, 5, 0.5) var zoom_out_factor: float = 4
 
 func _ready() -> void:
-	thruster_sprite = find_child("Double Jump") as Sprite2D
-	thruster_timer = thruster_sprite.find_child("Timer") as Timer
 	player_camera = find_child("Camera2D") as Camera2D
 	var nodes: Array[Node] =  get_parent().find_children("*", "Celestial")
 	for node in nodes:
@@ -99,11 +98,11 @@ func _double_jump() -> void:
 	if double_jumps_remaining == 0:
 		return
 	double_jumps_remaining -= 1
-	thruster_sprite.visible = true
-	thruster_timer.start(thruster_on_time)
+	$DoubleJump.visible = true
+	$DoubleJump/Timer.start(thruster_on_time)
 	launch(global_rotation - PI / 2, jumpspeed)
-	await thruster_timer.timeout
-	thruster_sprite.visible = false
+	await $DoubleJump/Timer.timeout
+	$DoubleJump.visible = false
 
 # optimization idea:
 # only zoom based on last landed on planet (current_planet)
@@ -129,3 +128,11 @@ func launch(angle: float, strength: float, replace: bool = false) -> void:
 	else:
 		velocity = jump + perp + max(parr_mag, 0) * jump.normalized()
 	gravity_enabled = true
+	
+func die() -> void:
+	$AudioStreamPlayer2D.stream = death_sound
+	$AudioStreamPlayer2D.play()
+	$DeathFire.visible = true
+	await get_tree().create_timer(1).timeout
+	get_tree().change_scene_to_file("res://levels/death_screen.tscn")
+	pass

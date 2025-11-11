@@ -4,6 +4,10 @@ extends Celestial
 @export var orbit_speed: float = 500
 @export var planets_orbit: bool = true
 
+func _ready() -> void:
+	var death_area = find_child("DeathArea") as Area2D
+	death_area.body_entered.connect(_kill_node)
+
 func _draw() -> void:
 	var planets: Array[Node] = find_children("*", "Planet")
 	var color = Color("dimgray")
@@ -11,3 +15,8 @@ func _draw() -> void:
 		var planet = node as Planet
 		var radius = (planet.global_position - global_position).length()
 		draw_circle(Vector2(0,0), radius, color, false)
+
+func _kill_node(node: Node):
+	var player = node as Wabbit
+	if player:
+		player.die()

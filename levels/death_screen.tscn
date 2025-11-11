@@ -1,0 +1,45 @@
+[gd_scene load_steps=3 format=3 uid="uid://bbt2lmpwfubxw"]
+
+[ext_resource type="FontFile" uid="uid://6itdgxw407xi" path="res://assets/fonts/Zapfino.ttf" id="1_lo7vt"]
+[ext_resource type="Texture2D" uid="uid://btmevycsmk6qf" path="res://assets/tiles/skulls.jpg" id="2_jvqxm"]
+
+[node name="DeathScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+z_index = 1
+texture_repeat = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.003
+anchor_bottom = 0.99500006
+offset_right = 0.5439453
+offset_bottom = 0.2399292
+theme_override_colors/default_color = Color(1, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 30
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_fonts/normal_font = ExtResource("1_lo7vt")
+theme_override_font_sizes/normal_font_size = 250
+text = "You Died "
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.6880001
+anchor_bottom = 1.9390001
+offset_right = 0.4239502
+offset_bottom = 688.52795
+texture = ExtResource("2_jvqxm")
+expand_mode = 3
+stretch_mode = 1
