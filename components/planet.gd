@@ -1,6 +1,22 @@
 class_name Planet
 extends Celestial
 
+var centroid: Vector2
+var orbit_speed: float
+
+func _ready() -> void:
+	var star = get_parent() as Star
+	if not star:
+		push_error("Planet object must be nested beneath star")
+	
+	centroid = star.global_position
+	orbit_speed = star.orbit_speed
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta: float) -> void:
-	#pass
+func _process(delta: float) -> void:
+	var pos = global_position - centroid
+	var radius = pos.length()
+	var angle = atan2(pos.y, pos.x)
+	angle += orbit_speed / radius * delta
+	global_position = centroid + radius * Vector2(cos(angle), sin(angle))
+	

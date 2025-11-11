@@ -10,6 +10,8 @@ var min_gravity: float = 50
 var grav_const: float = 1e7
 var gravity_enabled: bool = true
 var current_planet: Celestial = null
+var current_planet_radius: float
+var current_planet_angle: float
 
 var planets: Array[Celestial]
 
@@ -48,6 +50,9 @@ func _physics_process(delta: float) -> void:
 			double_jumps_remaining = double_jumps
 			velocity *= 0
 			current_planet = _nearest_planet()
+			var planet_vector = global_position - current_planet.global_position
+			current_planet_radius = planet_vector.length()
+			current_planet_angle = atan2(planet_vector.y, planet_vector.x)
 	else:
 		_walk(delta)
 		if Input.is_action_pressed(inputs.jump):
@@ -78,17 +83,13 @@ func _nearest_planet() -> Celestial:
 
 func _walk(delta: float) -> void:
 	var walk = Input.get_axis(inputs.left, inputs.right)
-	var direction = Vector2(walk, 0.0).rotated(global_rotation)
-	#velocity = movespeed * direction
 	
-	var pos: Vector2 = global_position - current_planet.global_position
-	var radius: float = pos.length()
-	var angle: float = atan2(pos.y, pos.x) + (movespeed * walk / radius)
+	current_planet_angle += movespeed * walk / current_planet_radius
 	
-	global_rotation = angle + PI / 2
+	global_rotation = current_planet_angle + PI / 2
 	var new_pos = Vector2(
-		cos(angle) * radius + current_planet.global_position.x,
-		sin(angle) * radius + current_planet.global_position.y
+		cos(current_planet_angle) * current_planet_radius + current_planet.global_position.x,
+		sin(current_planet_angle) * current_planet_radius + current_planet.global_position.y
 	)
 	
 	velocity = (new_pos - global_position) / delta

@@ -1,6 +1,9 @@
 class_name Star
 extends Celestial
 
+@export var orbit_speed: float = 500
+@export var planets_orbit: bool = true
+
 func _draw() -> void:
 	var planets: Array[Node] = find_children("*", "Planet")
 	var color = Color("dimgray")
