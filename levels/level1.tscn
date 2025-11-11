@@ -24,19 +24,19 @@ top_level = true
 position = Vector2(142, 167)
 
 [node name="Star" parent="." instance=ExtResource("3_61w3m")]
-position = Vector2(-534, 480)
+position = Vector2(-2164, 780)
 
 [node name="Planet" parent="Star" instance=ExtResource("2_pdtm5")]
-position = Vector2(866, -60)
+position = Vector2(2318, -395)
 scale = Vector2(0.5, 0.5)
 physics_material_override = SubResource("PhysicsMaterial_pdtm5")
 
 [node name="Planet2" parent="Star" instance=ExtResource("2_pdtm5")]
-position = Vector2(1451, -329)
+position = Vector2(3287, -741)
 scale = Vector2(0.5, 0.5)
 
 [node name="Planet3" parent="Star" instance=ExtResource("2_pdtm5")]
-position = Vector2(2099, -110)
+position = Vector2(3935, -522)
 scale = Vector2(0.5, 0.5)
 
 [node name="Geyser" parent="Star/Planet3" instance=ExtResource("4_ua5ty")]
@@ -45,6 +45,6 @@ rotation = 1.5707964
 launch_strength = 1200
 
 [node name="Planet4" parent="Star" instance=ExtResource("2_pdtm5")]
-position = Vector2(2683, -413)
+position = Vector2(4519, -825)
 scale = Vector2(0.5, 0.5)
 mass = 3.0

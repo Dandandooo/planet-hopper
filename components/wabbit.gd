@@ -6,7 +6,7 @@ extends CharacterBody2D
 @export_range(0, 1000, 50) var jumpspeed: float = 1000
 @export_range(0, 10, 1) var grav_strength: float = 3
 
-var min_gravity: float = 10
+var min_gravity: float = 50
 var grav_const: float = 1e7
 var gravity_enabled: bool = true
 var current_planet: Celestial = null
@@ -118,9 +118,13 @@ func _zoom_to_planets() -> void:
 		zoom_factor = (distance - zoom_min_distance) / (zoom_max_distance - zoom_min_distance) * (zoom_out_factor - 1) + 1
 	player_camera.zoom = Vector2(1, 1) / zoom_factor
  
-func launch(angle: float, strength: float) -> void:
+func launch(angle: float, strength: float, replace: bool = false) -> void:
 	var jump = Vector2(1, 0).rotated(angle) * strength
 	# extract perpendicular component
+	var parr_mag: float = velocity.dot(jump.normalized())
 	var perp: Vector2 = velocity - jump.normalized() * velocity.dot(jump.normalized())
-	velocity = jump + perp
+	if replace:
+		velocity = jump + perp
+	else:
+		velocity = jump + perp + max(parr_mag, 0) * jump.normalized()
 	gravity_enabled = true
