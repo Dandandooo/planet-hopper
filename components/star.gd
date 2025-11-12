@@ -2,7 +2,7 @@ class_name Star
 extends Celestial
 
 @export var orbit_speed: float = 500
-@export var planets_orbit: bool = true
+@export var planets_orbit: bool = false
 
 func _ready() -> void:
 	$DeathArea.body_entered.connect(_kill_node)
