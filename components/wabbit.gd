@@ -22,13 +22,13 @@ var double_jumps_remaining: int = double_jumps
 var thruster_timer: Timer
 @export_range(0, 1, 0.1) var thruster_on_time: float = 0.3
 
-var player_camera: Camera2D
+@onready var player_camera: Camera2D = $Camera2D
+
 var zoom_max_distance: float = 2500
 var zoom_min_distance: float = 500
 @export_range(1, 5, 0.5) var zoom_out_factor: float = 4
 
 func _ready() -> void:
-	player_camera = find_child("Camera2D") as Camera2D
 	var nodes: Array[Node] =  get_parent().find_children("*", "Celestial")
 	for node in nodes:
 		var planet = node as Celestial

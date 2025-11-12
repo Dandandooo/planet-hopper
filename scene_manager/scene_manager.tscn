@@ -1,0 +1,119 @@
+[gd_scene load_steps=8 format=3 uid="uid://d0ledoh884ycj"]
+
+[ext_resource type="Script" uid="uid://dfvj4l3idb3qs" path="res://scene_manager/scene_manager.gd" id="1_6w36t"]
+
+[sub_resource type="Shader" id="Shader_yux7q"]
+resource_name = "Ellipse"
+code = "shader_type canvas_item;
+
+uniform float progress: hint_range(0, 1);
+uniform bool fill = false;
+
+//void vertex() {
+	//// Called for every vertex the material is visible on.
+//}
+
+void fragment() {
+	// Called for every pixel the material is visible on.
+	float x = UV.x - 0.5;
+	float y = UV.y - 0.5;
+	if ((x * x + y * y) > (progress / 2.0)) {
+		if (fill) {
+			discard;
+		}
+	} else if (!fill) {
+		discard;
+	}
+}
+
+//void light() {
+//	// Called for every pixel for every light affecting the CanvasItem.
+//	// Uncomment to replace the default light processing function with this one.
+//}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u1b27"]
+shader = SubResource("Shader_yux7q")
+shader_parameter/progress = 0.0
+shader_parameter/fill = false
+
+[sub_resource type="Animation" id="Animation_6w36t"]
+resource_name = "in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:material:shader_parameter/progress")
+tracks/0/interp = 2
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0.099999994, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_yux7q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:material:shader_parameter/progress")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_u1b27"]
+resource_name = "out"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:material:shader_parameter/progress")
+tracks/0/interp = 2
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0.099999994, 1.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u1b27"]
+_data = {
+&"RESET": SubResource("Animation_yux7q"),
+&"in": SubResource("Animation_6w36t"),
+&"out": SubResource("Animation_u1b27")
+}
+
+[node name="SceneManager" type="CanvasLayer"]
+script = ExtResource("1_6w36t")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_u1b27")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_u1b27")
+}

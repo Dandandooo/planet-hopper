@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bbt2lmpwfubxw"]
 
 [ext_resource type="FontFile" uid="uid://6itdgxw407xi" path="res://assets/fonts/Zapfino.ttf" id="1_lo7vt"]
-[ext_resource type="Texture2D" uid="uid://btmevycsmk6qf" path="res://assets/tiles/skulls.jpg" id="2_jvqxm"]
+[ext_resource type="Texture2D" uid="uid://bf5euh6c0qxqa" path="res://assets/tiles/skulls6.jpeg" id="2_jvqxm"]
 
 [node name="DeathScreen" type="Control"]
 layout_mode = 3
