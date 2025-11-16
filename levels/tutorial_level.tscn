@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://cfwrx7hvmks1a"]
+
+[ext_resource type="Texture2D" uid="uid://bbwg8hnd1ptq6" path="res://assets/space.jpeg" id="1_xwp4u"]
+[ext_resource type="PackedScene" uid="uid://cnwn1hmwygwlf" path="res://components/wabbit.tscn" id="2_o434n"]
+[ext_resource type="PackedScene" uid="uid://bxdkv7mas3nr3" path="res://components/star.tscn" id="3_707yn"]
+[ext_resource type="PackedScene" uid="uid://ba7mr1kx7f5wf" path="res://components/planet.tscn" id="4_12eng"]
+[ext_resource type="PackedScene" uid="uid://qwry8a8465u4" path="res://components/geyser.tscn" id="5_7dfxr"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_pdtm5"]
+rough = true
+absorbent = true
+
+[node name="Node2D" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Space" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(1179, 610)
+texture = ExtResource("1_xwp4u")
+
+[node name="Wabbit" parent="." instance=ExtResource("2_o434n")]
+top_level = true
+position = Vector2(142, 167)
+
+[node name="Star" parent="." instance=ExtResource("3_707yn")]
+position = Vector2(-2164, 780)
+
+[node name="Planet" parent="Star" instance=ExtResource("4_12eng")]
+position = Vector2(2318, -395)
+scale = Vector2(0.5, 0.5)
+physics_material_override = SubResource("PhysicsMaterial_pdtm5")
+
+[node name="Planet2" parent="Star" instance=ExtResource("4_12eng")]
+position = Vector2(3287, -741)
+scale = Vector2(0.5, 0.5)
+
+[node name="Planet3" parent="Star" instance=ExtResource("4_12eng")]
+position = Vector2(3935, -522)
+scale = Vector2(0.5, 0.5)
+
+[node name="Geyser" parent="Star/Planet3" instance=ExtResource("5_7dfxr")]
+position = Vector2(176, 10)
+rotation = 1.5707964
+launch_strength = 1200
+
+[node name="Planet4" parent="Star" instance=ExtResource("4_12eng")]
+position = Vector2(4519, -825)
+scale = Vector2(0.5, 0.5)
+mass = 3.0
