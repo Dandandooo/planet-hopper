@@ -14,6 +14,7 @@ var gravity_enabled: bool = true
 var current_planet: Celestial = null
 var current_planet_radius: float
 var current_planet_angle: float
+var health: float = 100
 
 var planets: Array[Celestial]
 
@@ -136,3 +137,17 @@ func die() -> void:
 	await get_tree().create_timer(1).timeout
 	get_tree().change_scene_to_file("res://levels/death_screen.tscn")
 	pass
+	
+func hurt() -> void:
+	$AudioStreamPlayer2D.stream = death_sound
+	$AudioStreamPlayer2D.play()
+	$DeathFire.visible = true
+	health = health - 25
+	await get_tree().create_timer(1).timeout
+	launch(global_rotation - PI / 2, jumpspeed * 4)
+	if health <= 0:
+		die()
+	else:
+		$DeathFire.visible = false
+	pass
+	
