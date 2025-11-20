@@ -40,7 +40,6 @@ offset_right = 2.0
 offset_bottom = 27.0
 grow_horizontal = 2
 script = ExtResource("1_pdpul")
-character_path = NodePath("../../Wabbit")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -1
