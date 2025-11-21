@@ -26,9 +26,11 @@ var thruster_timer: Timer
 
 var zoom_max_distance: float = 2500
 var zoom_min_distance: float = 500
+@export var zoom_default_factor: float = 2.0
 @export_range(1, 5, 0.5) var zoom_out_factor: float = 4
 
 func _ready() -> void:
+	add_to_group("Player", true)
 	var nodes: Array[Node] =  get_parent().find_children("*", "Celestial")
 	for node in nodes:
 		var planet = node as Celestial
@@ -116,7 +118,7 @@ func _zoom_to_planets() -> void:
 	else:
 		# TODO: change from linear curve
 		zoom_factor = (distance - zoom_min_distance) / (zoom_max_distance - zoom_min_distance) * (zoom_out_factor - 1) + 1
-	player_camera.zoom = Vector2(1, 1) / zoom_factor
+	player_camera.zoom = Vector2(1, 1) / zoom_default_factor / zoom_factor
  
 func launch(angle: float, strength: float, replace: bool = false) -> void:
 	var jump = Vector2(1, 0).rotated(angle) * strength

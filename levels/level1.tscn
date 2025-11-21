@@ -1,14 +1,19 @@
-[gd_scene load_steps=7 format=3 uid="uid://c7oe8aqjds456"]
+[gd_scene load_steps=9 format=3 uid="uid://c7oe8aqjds456"]
 
 [ext_resource type="PackedScene" uid="uid://cnwn1hmwygwlf" path="res://components/wabbit.tscn" id="2_b3oru"]
 [ext_resource type="PackedScene" uid="uid://ba7mr1kx7f5wf" path="res://components/planet.tscn" id="2_pdtm5"]
 [ext_resource type="PackedScene" uid="uid://bxdkv7mas3nr3" path="res://components/star.tscn" id="3_61w3m"]
 [ext_resource type="Texture2D" uid="uid://bbwg8hnd1ptq6" path="res://assets/space.jpeg" id="3_b3oru"]
 [ext_resource type="PackedScene" uid="uid://qwry8a8465u4" path="res://components/geyser.tscn" id="4_ua5ty"]
+[ext_resource type="FontFile" uid="uid://b8vopmule5iep" path="res://assets/fonts/FairwaterDecoSerif-Regular.otf" id="6_pdpul"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_pdtm5"]
 rough = true
 absorbent = true
+
+[sub_resource type="Theme" id="Theme_8hd6v"]
+default_font = ExtResource("6_pdpul")
+default_font_size = 64
 
 [node name="Node2D" type="Node2D"]
 
@@ -22,6 +27,7 @@ texture = ExtResource("3_b3oru")
 [node name="Wabbit" parent="." instance=ExtResource("2_b3oru")]
 top_level = true
 position = Vector2(142, 167)
+double_jumps = 0
 
 [node name="Star" parent="." instance=ExtResource("3_61w3m")]
 position = Vector2(-2164, 780)
@@ -48,3 +54,11 @@ launch_strength = 1200
 position = Vector2(4519, -825)
 scale = Vector2(0.5, 0.5)
 mass = 3.0
+
+[node name="Label" type="Label" parent="."]
+offset_left = 7.0
+offset_top = 55.0
+offset_right = 318.0
+offset_bottom = 146.0
+theme = SubResource("Theme_8hd6v")
+text = "Level 1"
