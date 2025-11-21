@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cfwrx7hvmks1a"]
+[gd_scene load_steps=7 format=3 uid="uid://namggmil4spj"]
 
 [ext_resource type="Texture2D" uid="uid://bbwg8hnd1ptq6" path="res://assets/space.jpeg" id="1_xwp4u"]
 [ext_resource type="PackedScene" uid="uid://cnwn1hmwygwlf" path="res://components/wabbit.tscn" id="2_o434n"]
@@ -21,22 +21,22 @@ texture = ExtResource("1_xwp4u")
 
 [node name="Wabbit" parent="." instance=ExtResource("2_o434n")]
 top_level = true
-position = Vector2(142, 167)
+position = Vector2(687, 34)
 
 [node name="Star" parent="." instance=ExtResource("3_707yn")]
 position = Vector2(-2164, 780)
 
 [node name="Planet" parent="Star" instance=ExtResource("4_12eng")]
-position = Vector2(2318, -395)
+position = Vector2(2886, -571)
 scale = Vector2(0.5, 0.5)
 physics_material_override = SubResource("PhysicsMaterial_pdtm5")
 
 [node name="Planet2" parent="Star" instance=ExtResource("4_12eng")]
-position = Vector2(3287, -741)
+position = Vector2(3234, -764)
 scale = Vector2(0.5, 0.5)
 
 [node name="Planet3" parent="Star" instance=ExtResource("4_12eng")]
-position = Vector2(3935, -522)
+position = Vector2(3500, -492)
 scale = Vector2(0.5, 0.5)
 
 [node name="Geyser" parent="Star/Planet3" instance=ExtResource("5_7dfxr")]
@@ -45,6 +45,6 @@ rotation = 1.5707964
 launch_strength = 1200
 
 [node name="Planet4" parent="Star" instance=ExtResource("4_12eng")]
-position = Vector2(4519, -825)
+position = Vector2(4000, -453)
 scale = Vector2(0.5, 0.5)
 mass = 3.0

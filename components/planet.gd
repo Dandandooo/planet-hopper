@@ -1,6 +1,8 @@
 class_name Planet
 extends Celestial
 
+@export var is_destination: bool = false
+
 var centroid: Vector2
 var orbit_speed: float
 var orbit: bool

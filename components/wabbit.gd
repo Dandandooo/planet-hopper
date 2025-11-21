@@ -3,10 +3,10 @@ extends CharacterBody2D
 
 @export var inputs : WabbitInput
 @export_range(0, 1000, 50) var movespeed: float = 10
-@export_range(0, 1000, 50) var jumpspeed: float = 1000
+@export_range(0, 1000, 50) var jumpspeed: float = 600
 @export_range(0, 10, 1) var grav_strength: float = 3
 
-var death_sound = preload("res://assets/yoda.mp3")
+var death_sound = preload("res://assets/sound/yoda.mp3")
 
 var min_gravity: float = 50
 var grav_const: float = 1e7
@@ -21,6 +21,10 @@ var planets: Array[Celestial]
 var double_jumps_remaining: int = double_jumps
 var thruster_timer: Timer
 @export_range(0, 1, 0.1) var thruster_on_time: float = 0.3
+
+# Air time death tracking
+@export_range(0, 20, 0.5) var max_air_time: float = 10.0  # Maximum seconds in air before death
+var air_time: float = 0.0
 
 @onready var player_camera: Camera2D = $Camera2D
 
@@ -37,9 +41,11 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	var jump: bool = Input.get_action_strength(inputs.jump) > 0
-	
+
 	_zoom_to_planets()
-	
+	_check_air_time(delta)
+	_check_enemy_collision()
+
 	if gravity_enabled:
 		_apply_gravity(delta)
 		if Input.is_action_just_pressed(inputs.jump):
@@ -48,6 +54,7 @@ func _physics_process(delta: float) -> void:
 			gravity_enabled = false
 			double_jumps_remaining = double_jumps
 			velocity *= 0
+			air_time = 0.0  # Reset air time when landing
 			current_planet = _nearest_planet()
 			var planet_vector = global_position - current_planet.global_position
 			current_planet_radius = planet_vector.length()
@@ -128,7 +135,25 @@ func launch(angle: float, strength: float, replace: bool = false) -> void:
 	else:
 		velocity = jump + perp + max(parr_mag, 0) * jump.normalized()
 	gravity_enabled = true
-	
+
+func _check_air_time(delta: float) -> void:
+	"""Track time in air and kill wabbit if too long"""
+	if gravity_enabled:
+		air_time += delta
+		if air_time >= max_air_time:
+			die()
+	else:
+		air_time = 0.0
+
+func _check_enemy_collision() -> void:
+	"""Check if wabbit has collided with an enemy"""
+	for i in range(get_slide_collision_count()):
+		var collision = get_slide_collision(i)
+		var collider = collision.get_collider()
+		if collider and collider.is_in_group("enemy"):
+			die()
+			return
+
 func die() -> void:
 	$AudioStreamPlayer2D.stream = death_sound
 	$AudioStreamPlayer2D.play()

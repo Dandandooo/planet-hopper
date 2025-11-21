@@ -1,8 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://b30kslm8pqr8r"]
+[gd_scene load_steps=11 format=3 uid="uid://b30kslm8pqr8r"]
 
 [ext_resource type="Script" uid="uid://c6vfbj2uwys21" path="res://levels/main_menu.gd" id="1_6ymyu"]
 [ext_resource type="Texture2D" uid="uid://btmevycsmk6qf" path="res://assets/tiles/skulls.jpg" id="1_duh7t"]
 [ext_resource type="Texture2D" uid="uid://ca6nb76wgw8lq" path="res://assets/tiles/skulls3.jpg" id="2_6ymyu"]
+[ext_resource type="Texture2D" path="res://assets/space.jpg" id="3_space"]
+[ext_resource type="Script" path="res://levels/floating_wabbit.gd" id="4_floating"]
+[ext_resource type="Texture2D" uid="uid://crteyodrlkmyy" path="res://assets/character_sprite/wabbit.png" id="5_wabbit"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_duh7t"]
 bg_color = Color(1, 1, 1, 1)
@@ -41,6 +44,24 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_6ymyu")
+
+[node name="SpaceBackground" type="TextureRect" parent="."]
+z_index = -100
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_space")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="FloatingWabbit" type="Sprite2D" parent="."]
+z_index = -10
+scale = Vector2(0.04, 0.04)
+texture = ExtResource("5_wabbit")
+script = ExtResource("4_floating")
 
 [node name="MenuButton" type="MenuButton" parent="."]
 visible = false
