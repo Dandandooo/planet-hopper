@@ -1,0 +1,10 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://cy3hokfp25c5v"]
+
+[ext_resource type="FontFile" uid="uid://05b76gu0pfku" path="res://assets/fonts/CabinSketch-Bold.otf" id="1_rrypb"]
+
+[resource]
+resource_local_to_scene = true
+resource_name = "OptionButton"
+default_base_scale = 1.0
+default_font = ExtResource("1_rrypb")
+default_font_size = 48

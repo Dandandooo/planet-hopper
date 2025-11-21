@@ -3,10 +3,11 @@ extends CharacterBody2D
 
 @export var inputs : WabbitInput
 @export_range(0, 1000, 50) var movespeed: float = 10
-@export_range(0, 1000, 50) var jumpspeed: float = 600
+@export_range(0, 1000, 50) var jumpspeed: float = 1000
 @export_range(0, 10, 1) var grav_strength: float = 3
 
 var death_sound = preload("res://assets/sound/yoda.mp3")
+var is_dead: bool = false
 
 var min_gravity: float = 50
 var grav_const: float = 1e7
@@ -30,9 +31,11 @@ var air_time: float = 0.0
 
 var zoom_max_distance: float = 2500
 var zoom_min_distance: float = 500
+@export var zoom_default_factor: float = 2.0
 @export_range(1, 5, 0.5) var zoom_out_factor: float = 4
 
 func _ready() -> void:
+	add_to_group("Player", true)
 	var nodes: Array[Node] =  get_parent().find_children("*", "Celestial")
 	for node in nodes:
 		var planet = node as Celestial
@@ -44,7 +47,6 @@ func _physics_process(delta: float) -> void:
 
 	_zoom_to_planets()
 	_check_air_time(delta)
-	_check_enemy_collision()
 
 	if gravity_enabled:
 		_apply_gravity(delta)
@@ -123,7 +125,7 @@ func _zoom_to_planets() -> void:
 	else:
 		# TODO: change from linear curve
 		zoom_factor = (distance - zoom_min_distance) / (zoom_max_distance - zoom_min_distance) * (zoom_out_factor - 1) + 1
-	player_camera.zoom = Vector2(1, 1) / zoom_factor
+	player_camera.zoom = Vector2(1, 1) / zoom_default_factor / zoom_factor
  
 func launch(angle: float, strength: float, replace: bool = false) -> void:
 	var jump = Vector2(1, 0).rotated(angle) * strength
@@ -155,9 +157,11 @@ func _check_enemy_collision() -> void:
 			return
 
 func die() -> void:
+	if is_dead:
+		return
+	is_dead = true
 	$AudioStreamPlayer2D.stream = death_sound
 	$AudioStreamPlayer2D.play()
 	$DeathFire.visible = true
 	await get_tree().create_timer(1).timeout
 	get_tree().change_scene_to_file("res://levels/death_screen.tscn")
-	pass

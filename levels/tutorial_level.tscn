@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://namggmil4spj"]
+[gd_scene load_steps=8 format=3 uid="uid://cfwrx7hvmks1a"]
 
 [ext_resource type="Texture2D" uid="uid://bbwg8hnd1ptq6" path="res://assets/space.jpeg" id="1_xwp4u"]
 [ext_resource type="PackedScene" uid="uid://cnwn1hmwygwlf" path="res://components/wabbit.tscn" id="2_o434n"]
 [ext_resource type="PackedScene" uid="uid://bxdkv7mas3nr3" path="res://components/star.tscn" id="3_707yn"]
 [ext_resource type="PackedScene" uid="uid://ba7mr1kx7f5wf" path="res://components/planet.tscn" id="4_12eng"]
 [ext_resource type="PackedScene" uid="uid://qwry8a8465u4" path="res://components/geyser.tscn" id="5_7dfxr"]
+[ext_resource type="PackedScene" uid="uid://cop34v84kwdsj" path="res://components/tower.tscn" id="6_o434n"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_pdtm5"]
 rough = true
@@ -16,12 +17,14 @@ absorbent = true
 layer = -1
 
 [node name="Space" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(1179, 610)
+position = Vector2(569.00006, 310.00003)
+scale = Vector2(0.4, 0.4)
 texture = ExtResource("1_xwp4u")
 
 [node name="Wabbit" parent="." instance=ExtResource("2_o434n")]
 top_level = true
-position = Vector2(687, 34)
+position = Vector2(142, 167)
+double_jumps = 0
 
 [node name="Star" parent="." instance=ExtResource("3_707yn")]
 position = Vector2(-2164, 780)
@@ -32,11 +35,13 @@ scale = Vector2(0.5, 0.5)
 physics_material_override = SubResource("PhysicsMaterial_pdtm5")
 
 [node name="Planet2" parent="Star" instance=ExtResource("4_12eng")]
-position = Vector2(3234, -764)
+position = Vector2(3543, -501)
+rotation = 0.6963864
 scale = Vector2(0.5, 0.5)
 
 [node name="Planet3" parent="Star" instance=ExtResource("4_12eng")]
-position = Vector2(3500, -492)
+position = Vector2(4692, -76)
+rotation = 0.39095375
 scale = Vector2(0.5, 0.5)
 
 [node name="Geyser" parent="Star/Planet3" instance=ExtResource("5_7dfxr")]
@@ -45,6 +50,84 @@ rotation = 1.5707964
 launch_strength = 1200
 
 [node name="Planet4" parent="Star" instance=ExtResource("4_12eng")]
-position = Vector2(4000, -453)
+position = Vector2(5495, -341)
+rotation = 2.2619467
 scale = Vector2(0.5, 0.5)
 mass = 3.0
+
+[node name="Planet5" parent="Star" instance=ExtResource("4_12eng")]
+position = Vector2(4087, -488)
+rotation = -1.5219271
+scale = Vector2(0.5, 0.5)
+
+[node name="Planet6" parent="Star" instance=ExtResource("4_12eng")]
+position = Vector2(2280, -316)
+rotation = -0.1308997
+scale = Vector2(0.6, 0.6)
+
+[node name="Planet7" parent="Star" instance=ExtResource("4_12eng")]
+position = Vector2(6285, -342)
+mass = 6.0
+
+[node name="Planet8" parent="Star" instance=ExtResource("4_12eng")]
+position = Vector2(6913, -39)
+scale = Vector2(0.5, 0.5)
+
+[node name="Planet9" parent="Star" instance=ExtResource("4_12eng")]
+position = Vector2(7605, 15.999939)
+scale = Vector2(0.4, 0.4)
+mass = 3.0
+
+[node name="Planet10" parent="Star" instance=ExtResource("4_12eng")]
+position = Vector2(8457, -149.00003)
+scale = Vector2(0.5, 0.5)
+
+[node name="Planet11" parent="Star" instance=ExtResource("4_12eng")]
+position = Vector2(9102, -421)
+scale = Vector2(0.6, 0.6)
+mass = 5.0
+
+[node name="Tower" parent="Star/Planet11" instance=ExtResource("6_o434n")]
+position = Vector2(3.3333335, -333.33334)
+scale = Vector2(1.6666666, 1.6666666)
+next_scene = "res://levels/level1.tscn"
+
+[node name="jump" type="Label" parent="."]
+offset_left = -73.0
+offset_top = 82.0
+offset_right = 365.0
+offset_bottom = 175.0
+theme_override_font_sizes/font_size = 32
+text = "Use arrows to move around.
+Use 'space' to jump."
+horizontal_alignment = 1
+
+[node name="geyser" type="Label" parent="."]
+offset_left = 2472.0
+offset_top = 876.0
+offset_right = 2795.0
+offset_bottom = 1017.0
+theme_override_font_sizes/font_size = 32
+text = "Use the geyser to propel you forward
+"
+autowrap_mode = 3
+
+[node name="Label" type="Label" parent="."]
+offset_left = 1705.0
+offset_top = 17.0
+offset_right = 2176.0
+offset_bottom = 110.0
+theme_override_font_sizes/font_size = 32
+text = "Use your sideways momentum to get further"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="tower" type="Label" parent="."]
+offset_left = 6741.0
+offset_top = -86.0
+offset_right = 7161.0
+offset_bottom = 7.0
+theme_override_font_sizes/font_size = 32
+text = "Press 'E' next to the tower to complete the level"
+horizontal_alignment = 1
+autowrap_mode = 3
