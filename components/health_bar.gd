@@ -33,3 +33,8 @@ func _process(delta: float) -> void:
 	if character == null:
 		character = get_node(character_path) as Wabbit
 		print("No character, tried again")
+	
+	else:
+		value = character.health
+		max_value = character.max_health
+	

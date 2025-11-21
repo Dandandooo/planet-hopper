@@ -142,15 +142,17 @@ func die() -> void:
 	get_tree().change_scene_to_file("res://levels/death_screen.tscn")
 	pass
 	
-func hurt(amount: float = 25.0) -> void:
+func hurt(amount: float = 25.0, fire: bool = true) -> void:
 	$AudioStreamPlayer2D.stream = death_sound
 	$AudioStreamPlayer2D.play()
-	$DeathFire.visible = true
+	if fire:
+		$DeathFire.visible = true
 	health = health - amount
 	health = max(health, 0.0)
 	emit_signal("damaged", amount)
 	await get_tree().create_timer(1).timeout
-	launch(global_rotation - PI / 2, jumpspeed * 4)
+	if fire:
+		launch(global_rotation - PI / 2, jumpspeed * 4)
 	if health <= 0:
 		die()
 	else:

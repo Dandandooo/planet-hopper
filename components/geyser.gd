@@ -20,6 +20,7 @@ func _ready() -> void:
 func _launch_player(body: Node2D) -> void:
 	var player: Wabbit = body as Wabbit
 	if player:
+		player.hurt(10, false)
 		player.launch(global_rotation - PI/2, launch_strength, true)
 		beam.visible = true
 		timer.start()
