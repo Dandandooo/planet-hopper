@@ -61,7 +61,7 @@ rotation = -1.5219271
 scale = Vector2(0.5, 0.5)
 
 [node name="Planet6" parent="Star" instance=ExtResource("4_12eng")]
-position = Vector2(2899, -687)
+position = Vector2(2280, -316)
 rotation = -0.1308997
 scale = Vector2(0.6, 0.6)
 

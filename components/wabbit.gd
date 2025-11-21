@@ -3,10 +3,11 @@ extends CharacterBody2D
 
 @export var inputs : WabbitInput
 @export_range(0, 1000, 50) var movespeed: float = 10
-@export_range(0, 1000, 50) var jumpspeed: float = 600
+@export_range(0, 1000, 50) var jumpspeed: float = 1000
 @export_range(0, 10, 1) var grav_strength: float = 3
 
 var death_sound = preload("res://assets/sound/yoda.mp3")
+var is_dead: bool = false
 
 var min_gravity: float = 50
 var grav_const: float = 1e7
@@ -46,7 +47,6 @@ func _physics_process(delta: float) -> void:
 
 	_zoom_to_planets()
 	_check_air_time(delta)
-	_check_enemy_collision()
 
 	if gravity_enabled:
 		_apply_gravity(delta)
@@ -157,9 +157,11 @@ func _check_enemy_collision() -> void:
 			return
 
 func die() -> void:
+	if is_dead:
+		return
+	is_dead = true
 	$AudioStreamPlayer2D.stream = death_sound
 	$AudioStreamPlayer2D.play()
 	$DeathFire.visible = true
 	await get_tree().create_timer(1).timeout
 	get_tree().change_scene_to_file("res://levels/death_screen.tscn")
-	pass

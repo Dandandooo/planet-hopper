@@ -15,14 +15,14 @@ run/main_scene="uid://b30kslm8pqr8r"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://assets/icon.svg"
 
+[autoload]
+
+GameState="*res://game_state.gd"
+
 [display]
 
 window/stretch/mode="canvas_items"
 window/dpi/allow_hidpi=false
-
-[autoload]
-
-GameState="*res://game_state.gd"
 
 [editor_plugins]
 
