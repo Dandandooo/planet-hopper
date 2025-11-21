@@ -1,0 +1,151 @@
+[gd_scene load_steps=8 format=3 uid="uid://b30kslm8pqr8r"]
+
+[ext_resource type="Script" uid="uid://c6vfbj2uwys21" path="res://levels/main_menu.gd" id="1_6ymyu"]
+[ext_resource type="Texture2D" uid="uid://btmevycsmk6qf" path="res://assets/tiles/skulls.jpg" id="1_duh7t"]
+[ext_resource type="Texture2D" uid="uid://ca6nb76wgw8lq" path="res://assets/tiles/skulls3.jpg" id="2_6ymyu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_duh7t"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0.25089005, 0.25089008, 0.25089005, 0.6)
+shadow_size = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6ymyu"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0.25089005, 0.25089008, 0.25089005, 0.6)
+shadow_size = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7rktv"]
+bg_color = Color(0.17821202, 0.17821205, 0.17821205, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0.25089005, 0.25089008, 0.25089005, 0.6)
+shadow_size = 3
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_duh7t"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6ymyu")
+
+[node name="MenuButton" type="MenuButton" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -199.0
+offset_top = -136.5
+offset_right = 199.0
+offset_bottom = 136.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -59.5
+offset_top = 41.0
+offset_right = 59.5
+offset_bottom = 254.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 19
+
+[node name="TextureButton" type="TextureButton" parent="VBoxContainer"]
+visible = false
+layout_mode = 2
+texture_normal = ExtResource("1_duh7t")
+texture_pressed = ExtResource("2_6ymyu")
+
+[node name="Label" type="Label" parent="VBoxContainer/TextureButton"]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "new game"
+
+[node name="NewGameButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 12.21
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_duh7t")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_6ymyu")
+theme_override_styles/hover = SubResource("StyleBoxFlat_7rktv")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_duh7t")
+text = "new game"
+
+[node name="LoadLevelButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 12.21
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_duh7t")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_6ymyu")
+theme_override_styles/hover = SubResource("StyleBoxFlat_7rktv")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_duh7t")
+text = "load level"
+
+[node name="InfoButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 12.21
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_duh7t")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_6ymyu")
+theme_override_styles/hover = SubResource("StyleBoxFlat_7rktv")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_duh7t")
+text = "info"
+
+[node name="ExitButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 12.21
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_duh7t")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_6ymyu")
+theme_override_styles/hover = SubResource("StyleBoxFlat_7rktv")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_duh7t")
+text = "exit"
+
+[connection signal="pressed" from="VBoxContainer/NewGameButton" to="." method="_on_new_game_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/LoadLevelButton" to="." method="_on_load_level_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/InfoButton" to="." method="_on_info_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
