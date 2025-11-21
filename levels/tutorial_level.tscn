@@ -30,7 +30,7 @@ double_jumps = 0
 position = Vector2(-2164, 780)
 
 [node name="Planet" parent="Star" instance=ExtResource("4_12eng")]
-position = Vector2(2310, -382)
+position = Vector2(2886, -571)
 scale = Vector2(0.5, 0.5)
 physics_material_override = SubResource("PhysicsMaterial_pdtm5")
 

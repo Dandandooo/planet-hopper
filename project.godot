@@ -20,6 +20,10 @@ config/icon="res://assets/icon.svg"
 window/stretch/mode="canvas_items"
 window/dpi/allow_hidpi=false
 
+[autoload]
+
+GameState="*res://game_state.gd"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/godot-vim/plugin.cfg")
