@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bk72qm1minn2i"
-path="res://.godot/imported/Geyser.png-284e9729e2f134d041ff3e3d0a9b105b.ctex"
+uid="uid://b701ugat5eom0"
+path="res://.godot/imported/sun.png-e9d26c0aaea10f553fb65dbef5a3c4ab.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Geyser.png"
-dest_files=["res://.godot/imported/Geyser.png-284e9729e2f134d041ff3e3d0a9b105b.ctex"]
+source_file="res://assets/character_sprite/sun.png"
+dest_files=["res://.godot/imported/sun.png-e9d26c0aaea10f553fb65dbef5a3c4ab.ctex"]
 
 [params]
 

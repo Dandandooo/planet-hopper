@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://crteyodrlkmyy"
-path="res://.godot/imported/wabbit.png-280ecdb0e4635da435ade2788fc10f1a.ctex"
+uid="uid://bk72qm1minn2i"
+path="res://.godot/imported/Geyser.png-103fc8ce47f145d0f383971eb099f083.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/wabbit.png"
-dest_files=["res://.godot/imported/wabbit.png-280ecdb0e4635da435ade2788fc10f1a.ctex"]
+source_file="res://assets/character_sprite/Geyser.png"
+dest_files=["res://.godot/imported/Geyser.png-103fc8ce47f145d0f383971eb099f083.ctex"]
 
 [params]
 

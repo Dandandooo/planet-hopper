@@ -15,6 +15,10 @@ run/main_scene="uid://c7oe8aqjds456"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://assets/icon.svg"
 
+[autoload]
+
+GameState="*res://game_state.gd"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/godot-vim/plugin.cfg")

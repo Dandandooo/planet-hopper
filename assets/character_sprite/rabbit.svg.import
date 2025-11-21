@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://n8lxhc8vbcd3"
-path="res://.godot/imported/geyser_beam.png-1430fc70e708ef413c2233bbc32887ab.ctex"
+uid="uid://cw0au8ogm10i4"
+path="res://.godot/imported/rabbit.svg-30a193f925722c5f0e9ba0cc91bd0d2b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/geyser_beam.png"
-dest_files=["res://.godot/imported/geyser_beam.png-1430fc70e708ef413c2233bbc32887ab.ctex"]
+source_file="res://assets/character_sprite/rabbit.svg"
+dest_files=["res://.godot/imported/rabbit.svg-30a193f925722c5f0e9ba0cc91bd0d2b.ctex"]
 
 [params]
 
@@ -38,3 +38,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false

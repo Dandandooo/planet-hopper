@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b701ugat5eom0"
-path="res://.godot/imported/sun.png-96654e2514e117453f5b519ac98c70c7.ctex"
+uid="uid://b6lsaga46hecd"
+path="res://.godot/imported/Hello-World-earth.svg-77eddb85a68d71b95ed6c73f83acfbc9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sun.png"
-dest_files=["res://.godot/imported/sun.png-96654e2514e117453f5b519ac98c70c7.ctex"]
+source_file="res://assets/character_sprite/Hello-World-earth.svg"
+dest_files=["res://.godot/imported/Hello-World-earth.svg-77eddb85a68d71b95ed6c73f83acfbc9.ctex"]
 
 [params]
 
@@ -38,3 +38,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false

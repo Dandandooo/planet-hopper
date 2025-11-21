@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b6lsaga46hecd"
-path="res://.godot/imported/Hello-World-earth.svg-b2bb1eb82b84d998cb6dc07ce841ff3e.ctex"
+uid="uid://n8lxhc8vbcd3"
+path="res://.godot/imported/geyser_beam.png-ef30747a10294a9a910e6e6bc8f63baa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Hello-World-earth.svg"
-dest_files=["res://.godot/imported/Hello-World-earth.svg-b2bb1eb82b84d998cb6dc07ce841ff3e.ctex"]
+source_file="res://assets/character_sprite/geyser_beam.png"
+dest_files=["res://.godot/imported/geyser_beam.png-ef30747a10294a9a910e6e6bc8f63baa.ctex"]
 
 [params]
 
@@ -38,6 +38,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=1.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false

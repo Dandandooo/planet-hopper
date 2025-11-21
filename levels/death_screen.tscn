@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://bbt2lmpwfubxw"]
+[gd_scene load_steps=4 format=3 uid="uid://bbt2lmpwfubxw"]
 
 [ext_resource type="FontFile" uid="uid://6itdgxw407xi" path="res://assets/fonts/Zapfino.ttf" id="1_lo7vt"]
+[ext_resource type="Script" uid="uid://cgysknkb138ra" path="res://levels/death_screen.gd" id="1_sxiwv"]
 [ext_resource type="Texture2D" uid="uid://bf5euh6c0qxqa" path="res://assets/tiles/skulls6.jpeg" id="2_jvqxm"]
 
 [node name="DeathScreen" type="Control"]
@@ -11,6 +12,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
+script = ExtResource("1_sxiwv")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 z_index = 1
@@ -43,3 +45,20 @@ offset_bottom = 688.52795
 texture = ExtResource("2_jvqxm")
 expand_mode = 3
 stretch_mode = 1
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -381.0
+offset_top = 638.0
+offset_right = 381.0
+offset_bottom = 918.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Restart Level"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
