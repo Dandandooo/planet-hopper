@@ -1,0 +1,127 @@
+[gd_scene load_steps=9 format=3 uid="uid://bxb7ulf0163lq"]
+
+[ext_resource type="Texture2D" uid="uid://bbwg8hnd1ptq6" path="res://assets/space.jpeg" id="1_raxm7"]
+[ext_resource type="PackedScene" uid="uid://cnwn1hmwygwlf" path="res://components/wabbit.tscn" id="2_p1d34"]
+[ext_resource type="PackedScene" uid="uid://bxdkv7mas3nr3" path="res://components/star.tscn" id="3_g1dg4"]
+[ext_resource type="PackedScene" uid="uid://ba7mr1kx7f5wf" path="res://components/planet.tscn" id="4_s1bpp"]
+[ext_resource type="PackedScene" uid="uid://qwry8a8465u4" path="res://components/geyser.tscn" id="5_76ugp"]
+[ext_resource type="PackedScene" uid="uid://0t8ulmvx340e" path="res://components/asteroid.tscn" id="7_76ugp"]
+[ext_resource type="PackedScene" uid="uid://cdqgogytowstw" path="res://components/wormhole.tscn" id="7_e8p81"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_e8p81"]
+rough = true
+absorbent = true
+
+[node name="Node2D" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Space2" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(1185, 642)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_raxm7")
+
+[node name="Asteroid" parent="CanvasLayer" instance=ExtResource("7_76ugp")]
+position = Vector2(-294, 92)
+scale = Vector2(0.3, 0.3)
+
+[node name="Wabbit" parent="." instance=ExtResource("2_p1d34")]
+top_level = true
+position = Vector2(368, 1307)
+
+[node name="Star" parent="." instance=ExtResource("3_g1dg4")]
+position = Vector2(-2164, 780)
+
+[node name="Planet" parent="Star" instance=ExtResource("4_s1bpp")]
+position = Vector2(1516, 496)
+scale = Vector2(0.5, 0.5)
+physics_material_override = SubResource("PhysicsMaterial_e8p81")
+
+[node name="Planet2" parent="Star" instance=ExtResource("4_s1bpp")]
+position = Vector2(3448, -365)
+scale = Vector2(0.75, 0.75)
+
+[node name="Planet3" parent="Star" instance=ExtResource("4_s1bpp")]
+position = Vector2(2534, 781)
+rotation = 3.1415927
+scale = Vector2(0.5, 0.5)
+
+[node name="Geyser" parent="Star/Planet3" instance=ExtResource("5_76ugp")]
+position = Vector2(176, 10)
+rotation = 1.5707964
+launch_strength = 1200
+
+[node name="Planet4" parent="Star" instance=ExtResource("4_s1bpp")]
+position = Vector2(4640, -279)
+mass = 3.0
+
+[node name="Geyser" parent="Star/Planet4" instance=ExtResource("5_76ugp")]
+position = Vector2(0, -176)
+launch_strength = 1200
+
+[node name="Asteroid" parent="Star" instance=ExtResource("7_76ugp")]
+position = Vector2(3941, -270.00003)
+scale = Vector2(0.5, 0.5)
+
+[node name="Asteroid2" parent="Star" instance=ExtResource("7_76ugp")]
+position = Vector2(4999, -733)
+scale = Vector2(0.6, 0.6)
+
+[node name="Asteroid3" parent="Star" instance=ExtResource("7_76ugp")]
+position = Vector2(4369, -756)
+scale = Vector2(0.3, 0.3)
+
+[node name="Wormhole" parent="Star" instance=ExtResource("7_e8p81")]
+position = Vector2(5160, -1280)
+
+[node name="Asteroid4" parent="Star" instance=ExtResource("7_76ugp")]
+position = Vector2(5015, -1171)
+scale = Vector2(0.1, 0.1)
+
+[node name="Asteroid5" parent="Star" instance=ExtResource("7_76ugp")]
+position = Vector2(4913, -1432)
+scale = Vector2(0.3, 0.3)
+
+[node name="Asteroid6" parent="Star" instance=ExtResource("7_76ugp")]
+position = Vector2(5325, -1454)
+scale = Vector2(0.2, 0.2)
+
+[node name="Asteroid7" parent="Star" instance=ExtResource("7_76ugp")]
+position = Vector2(5337, -1078)
+scale = Vector2(0.2, 0.2)
+
+[node name="Planet5" parent="Star" instance=ExtResource("4_s1bpp")]
+position = Vector2(4589, -1264)
+rotation = 1.5707964
+scale = Vector2(0.5, 0.5)
+
+[node name="Geyser" parent="Star/Planet5" instance=ExtResource("5_76ugp")]
+position = Vector2(2, -174)
+
+[node name="Asteroid8" parent="Star" instance=ExtResource("7_76ugp")]
+position = Vector2(2946, -48.00003)
+scale = Vector2(0.6, 0.6)
+
+[node name="Planet6" parent="Star" instance=ExtResource("4_s1bpp")]
+position = Vector2(1447, -60.000122)
+rotation = 0.7853982
+scale = Vector2(0.5, 0.5)
+physics_material_override = SubResource("PhysicsMaterial_e8p81")
+
+[node name="Geyser" parent="Star/Planet6" instance=ExtResource("5_76ugp")]
+position = Vector2(0, -176)
+
+[node name="Planet7" parent="Star" instance=ExtResource("4_s1bpp")]
+position = Vector2(2561, -440)
+scale = Vector2(0.5, 0.5)
+physics_material_override = SubResource("PhysicsMaterial_e8p81")
+
+[node name="Planet8" parent="Star" instance=ExtResource("4_s1bpp")]
+position = Vector2(4071, -593)
+scale = Vector2(0.3, 0.3)
+physics_material_override = SubResource("PhysicsMaterial_e8p81")
+
+[node name="Asteroid" parent="." instance=ExtResource("7_76ugp")]
+position = Vector2(825, 69)
+scale = Vector2(0.5, 0.5)

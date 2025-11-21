@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://dwm8s0vku5v1v"]
+
+[ext_resource type="Texture2D" uid="uid://bbwg8hnd1ptq6" path="res://assets/space.jpeg" id="1_kvvkh"]
+[ext_resource type="PackedScene" uid="uid://cnwn1hmwygwlf" path="res://components/wabbit.tscn" id="2_aaqj5"]
+[ext_resource type="PackedScene" uid="uid://bxdkv7mas3nr3" path="res://components/star.tscn" id="3_0fm5q"]
+[ext_resource type="PackedScene" uid="uid://ba7mr1kx7f5wf" path="res://components/planet.tscn" id="4_cpie4"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Space2" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(-70, 338)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_kvvkh")
+
+[node name="Wabbit" parent="." instance=ExtResource("2_aaqj5")]
+top_level = true
+position = Vector2(142, 167)
+
+[node name="Star" parent="." instance=ExtResource("3_0fm5q")]
+position = Vector2(-2164, 780)
+
+[node name="Planet2" parent="Star" instance=ExtResource("4_cpie4")]
+position = Vector2(2310, -430)
+scale = Vector2(0.5, 0.5)

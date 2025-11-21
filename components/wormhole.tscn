@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://cdqgogytowstw"]
+
+[ext_resource type="Script" uid="uid://5r3qevyprg3g" path="res://components/wormhole.gd" id="1_w3t6g"]
+[ext_resource type="Texture2D" uid="uid://cygm1kpcq3t7f" path="res://assets/wormhole.png" id="2_258c8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kinxt"]
+
+[node name="Wormhole" type="Node2D"]
+script = ExtResource("1_w3t6g")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_258c8")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+scale = Vector2(8, 8)
+shape = SubResource("CircleShape2D_kinxt")
