@@ -17,4 +17,4 @@ func transition_to(scene: String, out_speed: float = 1.0, in_speed: float = 1.0)
 	var new_scene = load(scene)
 	
 	var root: Window = get_tree().root
-	pass
+	root.get_child

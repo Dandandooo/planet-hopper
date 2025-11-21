@@ -107,7 +107,7 @@ func _double_jump() -> void:
 	double_jumps_remaining -= 1
 	$DoubleJump.visible = true
 	$DoubleJump/Timer.start(thruster_on_time)
-	launch(global_rotation - PI / 2, jumpspeed)
+	launch(global_rotation - PI / 2, jumpspeed / 2)
 	await $DoubleJump/Timer.timeout
 	$DoubleJump.visible = false
 
