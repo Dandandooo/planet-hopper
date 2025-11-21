@@ -43,7 +43,8 @@ func _ready() -> void:
 			planets.append(planet)
 
 func _physics_process(delta: float) -> void:
-	var jump: bool = Input.get_action_strength(inputs.jump) > 0
+	if is_dead:
+		return
 
 	_zoom_to_planets()
 	_check_air_time(delta)
@@ -155,6 +156,10 @@ func _check_enemy_collision() -> void:
 		if collider and collider.is_in_group("enemy"):
 			die()
 			return
+			
+func burn() -> void:
+	# TODO
+	die()
 
 func die() -> void:
 	if is_dead:

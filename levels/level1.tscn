@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c7oe8aqjds456"]
+[gd_scene load_steps=12 format=3 uid="uid://c7oe8aqjds456"]
 
 [ext_resource type="PackedScene" uid="uid://cnwn1hmwygwlf" path="res://components/wabbit.tscn" id="2_b3oru"]
 [ext_resource type="PackedScene" uid="uid://ba7mr1kx7f5wf" path="res://components/planet.tscn" id="2_pdtm5"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bqk8n5j3m4xyi" path="res://components/enemy.tscn" id="6_pdpul"]
 [ext_resource type="PackedScene" uid="uid://c8k3n4j2m5x0i" path="res://components/radio_station.tscn" id="7_8hd6v"]
 [ext_resource type="FontFile" uid="uid://b8vopmule5iep" path="res://assets/fonts/FairwaterDecoSerif-Regular.otf" id="8_045es"]
+[ext_resource type="PackedScene" uid="uid://cop34v84kwdsj" path="res://components/tower.tscn" id="8_omn1t"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_pdtm5"]
 rough = true
@@ -55,6 +56,13 @@ position = Vector2(176, 10)
 rotation = 1.5707964
 launch_strength = 1200
 
+[node name="Geyser2" parent="Star/Planet3" instance=ExtResource("4_ua5ty")]
+position = Vector2(-174, 12)
+rotation = -1.5707964
+
+[node name="Geyser3" parent="Star/Planet3" instance=ExtResource("4_ua5ty")]
+position = Vector2(-2, -180)
+
 [node name="Planet4" parent="Star" instance=ExtResource("2_pdtm5")]
 position = Vector2(4519, -825)
 scale = Vector2(0.5, 0.5)
@@ -63,6 +71,10 @@ mass = 3.0
 [node name="RadioStation" parent="Star/Planet4" instance=ExtResource("7_8hd6v")]
 position = Vector2(0, -250)
 scale = Vector2(0.5, 0.5)
+
+[node name="Tower" parent="Star/Planet4" instance=ExtResource("8_omn1t")]
+position = Vector2(2, -344)
+scale = Vector2(2, 2)
 
 [node name="Label" type="Label" parent="."]
 offset_left = 7.0
