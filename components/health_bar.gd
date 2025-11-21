@@ -1,10 +1,12 @@
 extends ProgressBar
 
-@export var character_path: NodePath 
+@export var character_path: NodePath = "../CanvasLayer/Wabbit"
 @onready var character = get_node(character_path) as Wabbit
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	print("PATH = ", character_path)
+	print("NODE = ", character)
 	if character == null:
 		push_warning("HealthBar: character_path does not point to a valid node!")
 		return
