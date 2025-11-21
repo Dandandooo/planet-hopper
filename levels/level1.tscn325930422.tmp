@@ -31,6 +31,17 @@ offset_right = 40.0
 offset_bottom = 23.0
 text = "Health:"
 
+[node name="HealthBar" type="ProgressBar" parent="HUD"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -2.0
+offset_right = 2.0
+offset_bottom = 27.0
+grow_horizontal = 2
+script = ExtResource("1_pdpul")
+character_path = NodePath("../../Wabbit")
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -1
 
@@ -41,18 +52,6 @@ texture = ExtResource("3_b3oru")
 [node name="Wabbit" parent="." instance=ExtResource("2_b3oru")]
 top_level = true
 position = Vector2(142, 167)
-
-[node name="HealthBar" type="ProgressBar" parent="Wabbit"]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = 432.0
-offset_top = -167.0
-offset_right = 436.0
-offset_bottom = -140.0
-grow_horizontal = 2
-script = ExtResource("1_pdpul")
-character_path = NodePath("..")
 
 [node name="Star" parent="." instance=ExtResource("3_61w3m")]
 position = Vector2(-2164, 780)

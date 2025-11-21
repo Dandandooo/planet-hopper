@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cnwn1hmwygwlf"]
+[gd_scene load_steps=6 format=3 uid="uid://cnwn1hmwygwlf"]
 
 [ext_resource type="Texture2D" uid="uid://cw0au8ogm10i4" path="res://assets/rabbit.svg" id="1_6xmfo"]
+[ext_resource type="Script" uid="uid://bw1pmvy3aqyq0" path="res://components/wabbit.gd" id="1_18x16"]
 [ext_resource type="Texture2D" uid="uid://c7p364srsx382" path="res://assets/fire.png" id="3_xe7d7"]
 [ext_resource type="Texture2D" uid="uid://crteyodrlkmyy" path="res://assets/wabbit.png" id="4_18x16"]
 
@@ -9,6 +10,7 @@ size = Vector2(68, 80)
 
 [node name="Wabbit" type="CharacterBody2D"]
 slide_on_ceiling = false
+script = ExtResource("1_18x16")
 
 [node name="DoubleJump" type="Sprite2D" parent="."]
 visible = false
