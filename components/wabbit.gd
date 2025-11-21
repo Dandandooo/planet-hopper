@@ -44,6 +44,7 @@ func _physics_process(delta: float) -> void:
 
 	_zoom_to_planets()
 	_check_air_time(delta)
+	_check_enemy_collision()
 
 	if gravity_enabled:
 		_apply_gravity(delta)
@@ -143,6 +144,15 @@ func _check_air_time(delta: float) -> void:
 			die()
 	else:
 		air_time = 0.0
+
+func _check_enemy_collision() -> void:
+	"""Check if wabbit has collided with an enemy"""
+	for i in range(get_slide_collision_count()):
+		var collision = get_slide_collision(i)
+		var collider = collision.get_collider()
+		if collider and collider.is_in_group("enemy"):
+			die()
+			return
 
 func die() -> void:
 	$AudioStreamPlayer2D.stream = death_sound

@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://c7oe8aqjds456"]
+[gd_scene load_steps=8 format=3 uid="uid://c7oe8aqjds456"]
 
 [ext_resource type="PackedScene" uid="uid://cnwn1hmwygwlf" path="res://components/wabbit.tscn" id="2_b3oru"]
 [ext_resource type="PackedScene" uid="uid://ba7mr1kx7f5wf" path="res://components/planet.tscn" id="2_pdtm5"]
 [ext_resource type="PackedScene" uid="uid://bxdkv7mas3nr3" path="res://components/star.tscn" id="3_61w3m"]
 [ext_resource type="Texture2D" uid="uid://bbwg8hnd1ptq6" path="res://assets/space.jpeg" id="3_b3oru"]
 [ext_resource type="PackedScene" uid="uid://qwry8a8465u4" path="res://components/geyser.tscn" id="4_ua5ty"]
+[ext_resource type="PackedScene" path="res://components/enemy.tscn" id="6_pdpul"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_pdtm5"]
 rough = true
@@ -48,3 +49,5 @@ launch_strength = 1200
 position = Vector2(4519, -825)
 scale = Vector2(0.5, 0.5)
 mass = 3.0
+
+[node name="Enemy" parent="Star/Planet4" instance=ExtResource("6_pdpul")]
