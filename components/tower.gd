@@ -13,5 +13,12 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("radio"):
-		if player in $Area2D.get_overlapping_bodies():
-			get_tree().change_scene_to_file(next_scene)
+		print("pressed")
+		print($Area2D.get_overlapping_bodies())
+		for node in $Area2D.get_overlapping_bodies():
+			var wab = node as Wabbit
+			if wab:
+				GameState.advance_to_next_level()
+		#if player in $Area2D.get_overlapping_bodies():
+			
+			#get_tree().change_scene_to_file(next_scene)

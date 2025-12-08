@@ -4,6 +4,8 @@ extends Node
 var levels: Array = [
 	"res://levels/tutorial_level.tscn",
 	"res://levels/level1.tscn",
+	"res://levels/level2.tscn",
+	"res://levels/level3.tscn",
 ]
 
 var current_level_index: int = 0
@@ -21,14 +23,17 @@ func get_current_level() -> String:
 func advance_to_next_level() -> void:
 	"""Move to the next level and update progress"""
 	current_level_index += 1
+	print("Moving to next level")
 	if current_level_index > highest_level_unlocked:
 		highest_level_unlocked = current_level_index
+	go_to_level(current_level_index)
 
 
 func go_to_level(index: int) -> void:
 	"""Jump to a specific level by index"""
 	if index >= 0 and index < levels.size():
 		current_level_index = index
+		get_tree().change_scene_to_file(get_current_level())
 
 
 func reset_progress() -> void:

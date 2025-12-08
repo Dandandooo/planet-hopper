@@ -1,0 +1,59 @@
+[gd_scene load_steps=6 format=3 uid="uid://gvdfuekwe7c7"]
+
+[ext_resource type="Texture2D" uid="uid://bbwg8hnd1ptq6" path="res://assets/space.jpeg" id="1_qyb5k"]
+[ext_resource type="PackedScene" uid="uid://bxdkv7mas3nr3" path="res://components/star.tscn" id="2_py88r"]
+[ext_resource type="PackedScene" uid="uid://ba7mr1kx7f5wf" path="res://components/planet.tscn" id="3_g1dg4"]
+[ext_resource type="PackedScene" uid="uid://cop34v84kwdsj" path="res://components/tower.tscn" id="4_g1dg4"]
+[ext_resource type="PackedScene" uid="uid://cnwn1hmwygwlf" path="res://components/wabbit.tscn" id="4_py88r"]
+
+[node name="Level2" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Space" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(821, 469)
+texture = ExtResource("1_qyb5k")
+
+[node name="Star" parent="." instance=ExtResource("2_py88r")]
+position = Vector2(-1364, 986)
+
+[node name="Planet" parent="Star" instance=ExtResource("3_g1dg4")]
+position = Vector2(1586, -507)
+mass = 8.0
+
+[node name="Planet2" parent="Star" instance=ExtResource("3_g1dg4")]
+position = Vector2(2868, -308)
+scale = Vector2(0.5, 0.5)
+
+[node name="Planet3" parent="Star" instance=ExtResource("3_g1dg4")]
+position = Vector2(3512, 713)
+scale = Vector2(0.5, 0.5)
+
+[node name="Planet4" parent="Star" instance=ExtResource("3_g1dg4")]
+position = Vector2(2798, 1561)
+scale = Vector2(0.7, 0.7)
+mass = 5.0
+
+[node name="Planet5" parent="Star" instance=ExtResource("3_g1dg4")]
+position = Vector2(1624, 1695)
+scale = Vector2(0.4, 0.4)
+mass = 3.0
+
+[node name="Tower" parent="Star/Planet5" instance=ExtResource("4_g1dg4")]
+position = Vector2(-155, -252.49951)
+rotation = -0.56548667
+scale = Vector2(1.2499999, 1.2499999)
+next_scene = "res://levels/level3.tscn"
+
+[node name="Wabbit" parent="." instance=ExtResource("4_py88r")]
+position = Vector2(213, 256)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 72.0
+offset_top = 49.0
+offset_right = 390.0
+offset_bottom = 142.0
+theme_override_font_sizes/font_size = 32
+text = "Use double jump to make it further"
+autowrap_mode = 2

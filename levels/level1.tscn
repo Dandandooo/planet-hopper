@@ -75,6 +75,7 @@ scale = Vector2(0.5, 0.5)
 [node name="Tower" parent="Star/Planet4" instance=ExtResource("8_omn1t")]
 position = Vector2(2, -344)
 scale = Vector2(2, 2)
+next_scene = "res://levels/level2.tscn"
 
 [node name="Label" type="Label" parent="."]
 offset_left = 7.0

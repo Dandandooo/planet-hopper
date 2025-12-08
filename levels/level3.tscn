@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://dwm8s0vku5v1v"]
+
+[ext_resource type="Texture2D" uid="uid://bbwg8hnd1ptq6" path="res://assets/space.jpeg" id="1_0fm5q"]
+[ext_resource type="PackedScene" uid="uid://cnwn1hmwygwlf" path="res://components/wabbit.tscn" id="1_aaqj5"]
+[ext_resource type="PackedScene" uid="uid://bxdkv7mas3nr3" path="res://components/star.tscn" id="2_0fm5q"]
+[ext_resource type="PackedScene" uid="uid://ba7mr1kx7f5wf" path="res://components/planet.tscn" id="3_cpie4"]
+[ext_resource type="PackedScene" uid="uid://cop34v84kwdsj" path="res://components/tower.tscn" id="3_udvx3"]
+
+[node name="Level3" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Space" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(569, 336)
+texture = ExtResource("1_0fm5q")
+
+[node name="Wabbit" parent="." instance=ExtResource("1_aaqj5")]
+position = Vector2(-104, 19)
+
+[node name="Star" parent="." instance=ExtResource("2_0fm5q")]
+position = Vector2(-2591, 868)
+planets_orbit = true
+
+[node name="Planet" parent="Star" instance=ExtResource("3_cpie4")]
+position = Vector2(2469, -587)
+mass = 10.0
+
+[node name="Planet2" parent="Star" instance=ExtResource("3_cpie4")]
+position = Vector2(3858, -183)
+mass = 10.0
+
+[node name="Planet3" parent="Star" instance=ExtResource("3_cpie4")]
+position = Vector2(1971, -3841)
+mass = 10.0
+
+[node name="Planet4" parent="Star" instance=ExtResource("3_cpie4")]
+position = Vector2(-847, 170)
+scale = Vector2(0.5, 0.5)
+mass = 8.0
+
+[node name="Tower" parent="Star/Planet4" instance=ExtResource("3_udvx3")]
+position = Vector2(-200, -290)
+rotation = -0.6091199
+scale = Vector2(2, 2)
