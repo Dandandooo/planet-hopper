@@ -29,3 +29,5 @@ z_index = -1
 position = Vector2(0.49998808, -289.25)
 scale = Vector2(0.78075695, 1.0025997)
 texture = ExtResource("3_26mgd")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
