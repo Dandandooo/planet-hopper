@@ -1,5 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://cfwrx7hvmks1a"]
+[gd_scene load_steps=10 format=3 uid="uid://cfwrx7hvmks1a"]
 
+[ext_resource type="Script" uid="uid://diugk8dxpls4g" path="res://levels/main.gd" id="1_12eng"]
 [ext_resource type="Texture2D" uid="uid://bbwg8hnd1ptq6" path="res://assets/space.jpeg" id="1_xwp4u"]
 [ext_resource type="PackedScene" uid="uid://cnwn1hmwygwlf" path="res://components/wabbit.tscn" id="2_o434n"]
 [ext_resource type="PackedScene" uid="uid://bxdkv7mas3nr3" path="res://components/star.tscn" id="3_707yn"]
@@ -7,12 +8,14 @@
 [ext_resource type="PackedScene" uid="uid://qwry8a8465u4" path="res://components/geyser.tscn" id="5_7dfxr"]
 [ext_resource type="PackedScene" uid="uid://cop34v84kwdsj" path="res://components/tower.tscn" id="6_o434n"]
 [ext_resource type="PackedScene" uid="uid://bnlpe2y1obb5a" path="res://components/landmine.tscn" id="7_707yn"]
+[ext_resource type="PackedScene" uid="uid://xld3mp8mtllw" path="res://components/pause_menu.tscn" id="7_707yn"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_pdtm5"]
 rough = true
 absorbent = true
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_12eng")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -1
@@ -136,3 +139,8 @@ theme_override_font_sizes/font_size = 32
 text = "Press 'E' next to the tower to complete the level"
 horizontal_alignment = 1
 autowrap_mode = 3
+
+[node name="UI" type="CanvasLayer" parent="."]
+layer = 10000
+
+[node name="PauseMenu" parent="UI" instance=ExtResource("7_707yn")]
