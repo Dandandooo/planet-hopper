@@ -10,7 +10,11 @@ extends CharacterBody2D
 @export_range(0, 2000, 50) var jump_max: float = 1600
 @export var jump_charge_time: float = 1  # seconds to reach full power
 
+@export var ghost_count: int = 6           # how many ghosts to show
+@export var ghost_horizon: float = 0.9     # seconds to predict
+@export var ghost_sample_hz: float = 10.0  # snapshots per second
 
+var ghost_nodes: Array[Sprite2D] = []
 
 var is_charging_jump: bool = false
 var jump_charge: float = 0.0  # 0..jump_charge_time
@@ -92,6 +96,8 @@ func _physics_process(delta: float) -> void:
 		if is_charging_jump and Input.is_action_pressed(inputs.jump):
 			jump_charge = min(jump_charge + delta, jump_charge_time)
 			jump_bar.value = jump_charge
+			var strength: float = jump_min + jump_charge * (jump_max - jump_min)
+			_show_ghosts_at(_predict_positions(strength))
 			print("jump held")
 			print(jump_charge)
 
@@ -104,6 +110,7 @@ func _physics_process(delta: float) -> void:
 			is_charging_jump = false
 			jump_bar.visible = false
 			jump_bar.value = 0.0
+			_hide_ghosts()
 
 func _apply_gravity(delta: float) -> void:
 	var grav = Vector2(0, 0)
@@ -208,3 +215,83 @@ func die() -> void:
 	$DeathFire.visible = true
 	await get_tree().create_timer(1).timeout
 	get_tree().change_scene_to_file("res://levels/death_screen.tscn")
+	
+
+
+# several helper functions for the jump indicator
+
+func _compute_release_velocity(strength: float, replace: bool = false) -> Vector2:
+	# like launch but not actually overwriting velocity yk
+	var angle: float = global_rotation - PI / 2.0
+	var jump: Vector2 = Vector2(1, 0).rotated(angle) * strength
+	var u := jump.normalized()
+	var parr_mag: float = velocity.dot(u)
+	var perp: Vector2 = velocity - u * parr_mag
+	if replace:
+		return jump + perp
+	else:
+		return jump + perp + max(parr_mag, 0.0) * u
+
+func _gravity_at(pos: Vector2) -> Vector2:
+	var g := Vector2.ZERO
+	for node in planets:
+		var planet := node as Celestial
+		if planet == null:
+			continue
+		var r := planet.global_position - pos
+		g += max(min_gravity, grav_strength * grav_const * planet.mass / r.length_squared()) * r.normalized()
+	return g
+
+func _predict_positions(strength: float) -> PackedVector2Array:
+	var dt: float = 1.0 / 60.0
+	var steps: int = int(ghost_horizon / dt)
+	var sample_every: int = max(1, int(60.0 / ghost_sample_hz))
+
+	var p: Vector2 = global_position
+	var v: Vector2 = _compute_release_velocity(strength, false)
+	var out := PackedVector2Array()
+
+	for i in range(steps):
+		var g := _gravity_at(p)
+		v += g * dt
+		p += v * dt
+
+		if (i % sample_every) == 0 and out.size() < ghost_count:
+			out.append(p)
+			if out.size() >= ghost_count:
+				break
+	return out
+
+
+func _ensure_ghosts():
+	while ghost_nodes.size() < ghost_count:
+		var s := Sprite2D.new()
+		var img := Image.create(10, 10, false, Image.FORMAT_RGBA8)
+		img.fill(Color(1,1,1,1))
+		var itex := ImageTexture.create_from_image(img)
+		s.texture = itex
+
+		s.modulate = Color(1, 1, 1, 0.90) 
+		s.centered = true
+		s.z_index = 10000                
+		s.y_sort_enabled = false
+
+		get_parent().add_child(s)
+		ghost_nodes.append(s)
+
+
+func _hide_ghosts():
+	for s in ghost_nodes:
+		s.visible = false
+
+func _show_ghosts_at(positions: PackedVector2Array):
+	_ensure_ghosts()
+	for i in range(ghost_nodes.size()):
+		var s := ghost_nodes[i]
+		if i < positions.size():
+			s.global_position = positions[i]
+			s.visible = true
+			var t :float = float(i) / max(1.0, float(positions.size() - 1))
+			s.modulate.a = lerpf(0.25, 0.05, t)
+		else:
+			s.visible = false
