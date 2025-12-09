@@ -4,23 +4,39 @@ var velocity: Vector2
 var rotation_speed: float
 var screen_size: Vector2
 
+# Static variables to persist state between scenes
+static var saved_position: Vector2 = Vector2.ZERO
+static var saved_velocity: Vector2 = Vector2.ZERO
+static var saved_rotation: float = 0.0
+static var saved_rotation_speed: float = 0.0
+static var is_initialized: bool = false
+
 func _ready() -> void:
 	# Get viewport size
 	screen_size = get_viewport_rect().size
 
-	# Random initial velocity
-	var speed = randf_range(100, 200)
-	var angle = randf() * TAU
-	velocity = Vector2(cos(angle), sin(angle)) * speed
+	# Restore state if it was previously saved, otherwise initialize randomly
+	if is_initialized:
+		position = saved_position
+		velocity = saved_velocity
+		rotation = saved_rotation
+		rotation_speed = saved_rotation_speed
+	else:
+		# Random initial velocity
+		var speed = randf_range(100, 200)
+		var angle = randf() * TAU
+		velocity = Vector2(cos(angle), sin(angle)) * speed
 
-	# Slow initial rotation
-	rotation_speed = randf_range(-0.5, 0.5)
+		# Slow initial rotation
+		rotation_speed = randf_range(-0.5, 0.5)
 
-	# Random starting position
-	position = Vector2(
-		randf_range(0, screen_size.x),
-		randf_range(0, screen_size.y)
-	)
+		# Random starting position
+		position = Vector2(
+			randf_range(0, screen_size.x),
+			randf_range(0, screen_size.y)
+		)
+
+		is_initialized = true
 
 func _process(delta: float) -> void:
 	# Update position
@@ -28,6 +44,12 @@ func _process(delta: float) -> void:
 
 	# Update rotation
 	rotation += rotation_speed * delta
+
+	# Save state continuously for scene transitions
+	saved_position = position
+	saved_velocity = velocity
+	saved_rotation = rotation
+	saved_rotation_speed = rotation_speed
 
 	# Get sprite bounds
 	var sprite_width = texture.get_width() * scale.x

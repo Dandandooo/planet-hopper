@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c7oe8aqjds456"]
+[gd_scene load_steps=14 format=3 uid="uid://c7oe8aqjds456"]
 
 [ext_resource type="Script" uid="uid://diugk8dxpls4g" path="res://levels/main.gd" id="1_yydhl"]
 [ext_resource type="PackedScene" uid="uid://cnwn1hmwygwlf" path="res://components/wabbit.tscn" id="2_b3oru"]
@@ -6,12 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://bxdkv7mas3nr3" path="res://components/star.tscn" id="3_61w3m"]
 [ext_resource type="Texture2D" uid="uid://bbwg8hnd1ptq6" path="res://assets/space.jpeg" id="3_b3oru"]
 [ext_resource type="PackedScene" uid="uid://qwry8a8465u4" path="res://components/geyser.tscn" id="4_ua5ty"]
-[ext_resource type="PackedScene" uid="uid://bnlpe2y1obb5a" path="res://components/landmine.tscn" id="6_bekh1"]
-[ext_resource type="PackedScene" uid="uid://bqk8n5j3m4xyi" path="res://components/enemy.tscn" id="6_pdpul"]
-[ext_resource type="PackedScene" uid="uid://c8k3n4j2m5x0i" path="res://components/radio_station.tscn" id="7_8hd6v"]
+[ext_resource type="PackedScene" path="res://components/landmine.tscn" id="6_bekh1"]
+[ext_resource type="PackedScene" path="res://components/enemy.tscn" id="6_pdpul"]
 [ext_resource type="FontFile" uid="uid://b8vopmule5iep" path="res://assets/fonts/FairwaterDecoSerif-Regular.otf" id="8_045es"]
-[ext_resource type="PackedScene" uid="uid://cop34v84kwdsj" path="res://components/tower.tscn" id="8_omn1t"]
-[ext_resource type="PackedScene" uid="uid://xld3mp8mtllw" path="res://components/pause_menu.tscn" id="11_bekh1"]
+[ext_resource type="PackedScene" path="res://components/tower.tscn" id="8_omn1t"]
+[ext_resource type="PackedScene" path="res://components/pause_menu.tscn" id="11_bekh1"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_pdtm5"]
 rough = true
@@ -75,10 +74,6 @@ position = Vector2(-2, -180)
 position = Vector2(4519, -825)
 scale = Vector2(0.5, 0.5)
 mass = 3.0
-
-[node name="RadioStation" parent="Star/Planet4" instance=ExtResource("7_8hd6v")]
-position = Vector2(0, -250)
-scale = Vector2(0.5, 0.5)
 
 [node name="Tower" parent="Star/Planet4" instance=ExtResource("8_omn1t")]
 position = Vector2(2, -344)

@@ -18,6 +18,7 @@ config/icon="res://assets/icon.svg"
 [autoload]
 
 GameState="*res://game_state.gd"
+BackgroundMusic="*res://background_music.gd"
 
 [display]
 

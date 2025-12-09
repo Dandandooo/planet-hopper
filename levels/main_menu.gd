@@ -23,7 +23,7 @@ func _on_load_level_button_pressed():
 
 func _on_info_button_pressed():
 	print("info button pressed")
-	get_tree().change_scene_to_file("res://levels/navigation_map.tscn")
+	get_tree().change_scene_to_file("res://levels/info_page.tscn")
 
 
 func _on_exit_button_pressed():
