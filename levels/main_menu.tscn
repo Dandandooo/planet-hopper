@@ -1,14 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://b30kslm8pqr8r"]
+[gd_scene load_steps=13 format=3 uid="uid://b30kslm8pqr8r"]
 
 [ext_resource type="Script" uid="uid://c6vfbj2uwys21" path="res://levels/main_menu.gd" id="1_6ymyu"]
 [ext_resource type="Texture2D" uid="uid://btmevycsmk6qf" path="res://assets/tiles/skulls.jpg" id="1_duh7t"]
 [ext_resource type="Texture2D" uid="uid://ca6nb76wgw8lq" path="res://assets/tiles/skulls3.jpg" id="2_6ymyu"]
 [ext_resource type="Texture2D" uid="uid://cl8qhjqnym5ua" path="res://assets/space_hd.jpg" id="4_7rktv"]
+[ext_resource type="Script" uid="uid://hxwy5n43t8l6" path="res://levels/floating_wabbit.gd" id="4_floating"]
 [ext_resource type="FontFile" uid="uid://05b76gu0pfku" path="res://assets/fonts/CabinSketch-Bold.otf" id="5_3ye4h"]
-[ext_resource type="Theme" uid="uid://cy3hokfp25c5v" path="res://components/menu_button.tres" id="6_nwbki"]
-[ext_resource type="Texture2D" path="res://assets/space.jpg" id="3_space"]
-[ext_resource type="Script" path="res://levels/floating_wabbit.gd" id="4_floating"]
 [ext_resource type="Texture2D" uid="uid://crteyodrlkmyy" path="res://assets/character_sprite/wabbit.png" id="5_wabbit"]
+[ext_resource type="Theme" uid="uid://cy3hokfp25c5v" path="res://components/menu_button.tres" id="6_nwbki"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_duh7t"]
 bg_color = Color(1, 1, 1, 1)
@@ -143,7 +142,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_duh7t")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_6ymyu")
 theme_override_styles/hover = SubResource("StyleBoxFlat_7rktv")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_duh7t")
-text = "Load level"
+text = "Load Level"
 flat = true
 
 [node name="InfoButton" type="Button" parent="VBoxContainer"]
