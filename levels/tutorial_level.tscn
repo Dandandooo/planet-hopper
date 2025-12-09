@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://ba7mr1kx7f5wf" path="res://components/planet.tscn" id="4_12eng"]
 [ext_resource type="PackedScene" uid="uid://qwry8a8465u4" path="res://components/geyser.tscn" id="5_7dfxr"]
 [ext_resource type="PackedScene" uid="uid://cop34v84kwdsj" path="res://components/tower.tscn" id="6_o434n"]
+[ext_resource type="PackedScene" uid="uid://bnlpe2y1obb5a" path="res://components/landmine.tscn" id="7_707yn"]
 [ext_resource type="PackedScene" uid="uid://xld3mp8mtllw" path="res://components/pause_menu.tscn" id="7_707yn"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_pdtm5"]
@@ -94,6 +95,10 @@ mass = 5.0
 position = Vector2(3.3333335, -333.33334)
 scale = Vector2(1.6666666, 1.6666666)
 next_scene = "res://levels/level1.tscn"
+
+[node name="Landmine" parent="Star" instance=ExtResource("7_707yn")]
+position = Vector2(6444, -459.00024)
+rotation = 0.95644045
 
 [node name="jump" type="Label" parent="."]
 offset_left = -73.0

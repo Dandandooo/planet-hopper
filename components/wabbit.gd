@@ -6,7 +6,12 @@ extends CharacterBody2D
 @export_range(0, 1000, 50) var jumpspeed: float = 1000
 @export_range(0, 10, 1) var grav_strength: float = 3
 
-var death_sound = preload("res://assets/sound/yoda.mp3")
+var jump_sound = preload("res://assets/sound/jump.mp3")
+var walk_sound = preload("res://assets/sound/slide.mp3")
+
+var pop_sound = preload("res://assets/sound/pop.mp3")
+var burn_sound = preload("res://assets/sound/yoda.mp3")
+var boom_sound = preload("res://assets/sound/explosion.mp3")
 var is_dead: bool = false
 
 var min_gravity: float = 50
@@ -45,6 +50,9 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if is_dead:
 		return
+		
+	if Input.is_action_pressed("debug"):
+		suffocate()
 
 	_zoom_to_planets()
 	_check_air_time(delta)
@@ -65,7 +73,10 @@ func _physics_process(delta: float) -> void:
 	else:
 		_walk(delta)
 		if Input.is_action_pressed(inputs.jump):
+			$AudioStreamPlayer2D.stream = jump_sound
+			$AudioStreamPlayer2D.play()
 			launch(global_rotation - PI/2, jumpspeed)
+
 
 func _apply_gravity(delta: float) -> void:
 	var grav = Vector2(0, 0)
@@ -92,6 +103,13 @@ func _nearest_planet() -> Celestial:
 
 func _walk(delta: float) -> void:
 	var walk = Input.get_axis(inputs.left, inputs.right)
+	if walk != 0:
+		if not $AudioStreamPlayer2D.playing:
+			$AudioStreamPlayer2D.stream = walk_sound
+			$AudioStreamPlayer2D.play()
+	else:
+		if not is_dead:
+			$AudioStreamPlayer2D.stop()
 	
 	current_planet_angle += movespeed * walk / current_planet_radius
 	
@@ -144,9 +162,11 @@ func _check_air_time(delta: float) -> void:
 	if gravity_enabled:
 		air_time += delta
 		if air_time >= max_air_time:
-			die()
+			suffocate()
+		$Wabbit.modulate = Color(1 - air_time / max_air_time, 1 - air_time / max_air_time, 1, 1)
 	else:
 		air_time = 0.0
+		$Wabbit.modulate = Color(1, 1, 1, 1)
 
 func _check_enemy_collision() -> void:
 	"""Check if wabbit has collided with an enemy"""
@@ -154,19 +174,44 @@ func _check_enemy_collision() -> void:
 		var collision = get_slide_collision(i)
 		var collider = collision.get_collider()
 		if collider and collider.is_in_group("enemy"):
-			die()
+			burn()
 			return
 			
 func burn() -> void:
-	# TODO
-	die()
-
-func die() -> void:
 	if is_dead:
 		return
 	is_dead = true
-	$AudioStreamPlayer2D.stream = death_sound
+	$AudioStreamPlayer2D.stream = burn_sound
 	$AudioStreamPlayer2D.play()
 	$DeathFire.visible = true
 	await get_tree().create_timer(1).timeout
+	die()
+	
+func suffocate() -> void:
+	if is_dead:
+		return
+	is_dead = true
+	$AudioStreamPlayer2D.stream = pop_sound
+	$AudioStreamPlayer2D.play()
+	$Wabbit.visible = false
+	$PopSprite.visible = true
+	$PopSprite.play()
+	await get_tree().create_timer(1).timeout
+	die()
+	
+func explode() -> void:
+	if is_dead:
+		return
+	is_dead = true
+	$AudioStreamPlayer2D.stream = boom_sound
+	$AudioStreamPlayer2D.play()
+	$Wabbit.visible = false
+	$ExplodeSprite.visible = true
+	$ExplodeSprite.play()
+	await get_tree().create_timer(1).timeout
+	die()
+
+func die() -> void:
+	assert(is_dead, "how did you die?")
+	$AudioStreamPlayer2D.stop()
 	get_tree().change_scene_to_file("res://levels/death_screen.tscn")

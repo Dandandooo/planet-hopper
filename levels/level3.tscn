@@ -18,9 +18,6 @@ layer = -1
 position = Vector2(569, 336)
 texture = ExtResource("1_0fm5q")
 
-[node name="Wabbit" parent="." instance=ExtResource("1_aaqj5")]
-position = Vector2(-104, 19)
-
 [node name="Star" parent="." instance=ExtResource("2_0fm5q")]
 position = Vector2(-2591, 868)
 planets_orbit = true
@@ -47,6 +44,8 @@ position = Vector2(-200, -290)
 rotation = -0.6091199
 scale = Vector2(2, 2)
 
+[node name="Wabbit" parent="." instance=ExtResource("1_aaqj5")]
+position = Vector2(-104, 19)
 [node name="UI" type="CanvasLayer" parent="."]
 layer = 10000
 

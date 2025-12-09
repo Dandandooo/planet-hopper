@@ -31,4 +31,4 @@ func _process(delta: float) -> void:
 func _on_collision(node: Node):
 	var player = node as Wabbit
 	if player:
-		player.die()
+		player.burn()

@@ -18,4 +18,4 @@ func _draw() -> void:
 func _kill_node(node: Node):
 	var player = node as Wabbit
 	if player:
-		player.die()
+		player.burn()
