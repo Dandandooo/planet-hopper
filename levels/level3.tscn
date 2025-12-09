@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dwm8s0vku5v1v"]
+[gd_scene load_steps=10 format=3 uid="uid://dwm8s0vku5v1v"]
 
 [ext_resource type="Texture2D" uid="uid://bbwg8hnd1ptq6" path="res://assets/space.jpeg" id="1_0fm5q"]
 [ext_resource type="Script" uid="uid://diugk8dxpls4g" path="res://levels/main.gd" id="1_1xfnq"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://bxdkv7mas3nr3" path="res://components/star.tscn" id="2_0fm5q"]
 [ext_resource type="PackedScene" uid="uid://ba7mr1kx7f5wf" path="res://components/planet.tscn" id="3_cpie4"]
 [ext_resource type="PackedScene" uid="uid://cop34v84kwdsj" path="res://components/tower.tscn" id="3_udvx3"]
+[ext_resource type="PackedScene" uid="uid://bnlpe2y1obb5a" path="res://components/landmine.tscn" id="5_6uckl"]
+[ext_resource type="PackedScene" uid="uid://bqk8n5j3m4xyi" path="res://components/enemy.tscn" id="6_d6jip"]
 [ext_resource type="PackedScene" uid="uid://xld3mp8mtllw" path="res://components/pause_menu.tscn" id="6_udvx3"]
 
 [node name="Level3" type="Node2D"]
@@ -26,9 +28,27 @@ planets_orbit = true
 position = Vector2(2469, -587)
 mass = 10.0
 
+[node name="Landmine" parent="Star/Planet" instance=ExtResource("5_6uckl")]
+position = Vector2(192, -1)
+rotation = 1.5707964
+
+[node name="Landmine2" parent="Star/Planet" instance=ExtResource("5_6uckl")]
+position = Vector2(-190, -5)
+rotation = 4.712389
+
+[node name="Enemy" parent="Star/Planet" instance=ExtResource("6_d6jip")]
+position = Vector2(-4, -251)
+
 [node name="Planet2" parent="Star" instance=ExtResource("3_cpie4")]
 position = Vector2(3858, -183)
 mass = 10.0
+
+[node name="Landmine" parent="Star/Planet2" instance=ExtResource("5_6uckl")]
+position = Vector2(-7, -192)
+
+[node name="Landmine2" parent="Star/Planet2" instance=ExtResource("5_6uckl")]
+position = Vector2(3, 201)
+rotation = 3.1415927
 
 [node name="Planet3" parent="Star" instance=ExtResource("3_cpie4")]
 position = Vector2(1971, -3841)
@@ -45,7 +65,8 @@ rotation = -0.6091199
 scale = Vector2(2, 2)
 
 [node name="Wabbit" parent="." instance=ExtResource("1_aaqj5")]
-position = Vector2(-104, 19)
+position = Vector2(-628, -3276)
+
 [node name="UI" type="CanvasLayer" parent="."]
 layer = 10000
 

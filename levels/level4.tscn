@@ -1,0 +1,239 @@
+[gd_scene load_steps=9 format=3 uid="uid://dwk4seyw7gm2d"]
+
+[ext_resource type="Texture2D" uid="uid://bbwg8hnd1ptq6" path="res://assets/space.jpeg" id="1_lpgdq"]
+[ext_resource type="PackedScene" uid="uid://bxdkv7mas3nr3" path="res://components/star.tscn" id="2_1jw75"]
+[ext_resource type="PackedScene" uid="uid://cnwn1hmwygwlf" path="res://components/wabbit.tscn" id="3_8s3b3"]
+[ext_resource type="PackedScene" uid="uid://ba7mr1kx7f5wf" path="res://components/planet.tscn" id="4_cc5tm"]
+[ext_resource type="PackedScene" uid="uid://bnlpe2y1obb5a" path="res://components/landmine.tscn" id="4_mj76i"]
+[ext_resource type="PackedScene" uid="uid://cop34v84kwdsj" path="res://components/tower.tscn" id="5_1jw75"]
+[ext_resource type="PackedScene" uid="uid://bqk8n5j3m4xyi" path="res://components/enemy.tscn" id="6_8s3b3"]
+[ext_resource type="PackedScene" uid="uid://qwry8a8465u4" path="res://components/geyser.tscn" id="6_mj76i"]
+
+[node name="Level4" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Space" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(569, 336)
+texture = ExtResource("1_lpgdq")
+
+[node name="Star" parent="." instance=ExtResource("2_1jw75")]
+position = Vector2(-2591, 868)
+planets_orbit = true
+
+[node name="Planet" parent="Star" instance=ExtResource("4_cc5tm")]
+position = Vector2(815.0001, -173.00006)
+scale = Vector2(0.7, 0.7)
+
+[node name="Planet2" parent="Star" instance=ExtResource("4_cc5tm")]
+position = Vector2(1532, -1125)
+scale = Vector2(0.9, 0.9)
+
+[node name="Landmine" parent="Star/Planet2" instance=ExtResource("4_mj76i")]
+position = Vector2(0, -200)
+
+[node name="Landmine2" parent="Star/Planet2" instance=ExtResource("4_mj76i")]
+position = Vector2(0, 200)
+rotation = 3.1415927
+
+[node name="Enemy" parent="Star/Planet2" instance=ExtResource("6_8s3b3")]
+position = Vector2(400, 0)
+
+[node name="Enemy2" parent="Star/Planet2" instance=ExtResource("6_8s3b3")]
+position = Vector2(-400, 0)
+
+[node name="Planet3" parent="Star" instance=ExtResource("4_cc5tm")]
+position = Vector2(2401, -1547)
+scale = Vector2(0.6, 0.6)
+
+[node name="Enemy" parent="Star/Planet3" instance=ExtResource("6_8s3b3")]
+position = Vector2(0, 250)
+
+[node name="Enemy2" parent="Star/Planet3" instance=ExtResource("6_8s3b3")]
+position = Vector2(-216.67, -125)
+
+[node name="Enemy3" parent="Star/Planet3" instance=ExtResource("6_8s3b3")]
+position = Vector2(216.67, -125)
+
+[node name="Planet4" parent="Star" instance=ExtResource("4_cc5tm")]
+position = Vector2(2913, -2331)
+scale = Vector2(0.7, 0.7)
+
+[node name="Geyser" parent="Star/Planet4" instance=ExtResource("6_mj76i")]
+position = Vector2(0, -180)
+
+[node name="Geyser2" parent="Star/Planet4" instance=ExtResource("6_mj76i")]
+position = Vector2(0, -780)
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="Geyser3" parent="Star/Planet4" instance=ExtResource("6_mj76i")]
+position = Vector2(0, -1380)
+
+[node name="Landmine" parent="Star/Planet4" instance=ExtResource("4_mj76i")]
+position = Vector2(0, -1980)
+scale = Vector2(2, 2)
+
+[node name="Geyser4" parent="Star/Planet4" instance=ExtResource("6_mj76i")]
+position = Vector2(180, 0)
+rotation = 1.5707964
+
+[node name="Geyser5" parent="Star/Planet4" instance=ExtResource("6_mj76i")]
+position = Vector2(780, 0)
+rotation = 1.5707964
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="Geyser6" parent="Star/Planet4" instance=ExtResource("6_mj76i")]
+position = Vector2(1380, 0)
+rotation = 1.5707964
+
+[node name="Geyser7" parent="Star/Planet4" instance=ExtResource("6_mj76i")]
+position = Vector2(1980, 0)
+rotation = 1.5707964
+
+[node name="Star2" parent="." instance=ExtResource("2_1jw75")]
+position = Vector2(6568, -1228)
+planets_orbit = true
+
+[node name="Planet" parent="Star2" instance=ExtResource("4_cc5tm")]
+position = Vector2(2678, 358.99988)
+scale = Vector2(0.7, 0.7)
+
+[node name="Tower" parent="Star2/Planet" instance=ExtResource("5_1jw75")]
+position = Vector2(0, -360)
+scale = Vector2(2, 2)
+
+[node name="Planet2" parent="Star2" instance=ExtResource("4_cc5tm")]
+position = Vector2(-3559, -46)
+
+[node name="Planet3" parent="Star2" instance=ExtResource("4_cc5tm")]
+position = Vector2(-2544.0002, -73.99997)
+scale = Vector2(0.8, 0.8)
+
+[node name="Planet4" parent="Star2" instance=ExtResource("4_cc5tm")]
+position = Vector2(-1698, 511.99994)
+scale = Vector2(0.7, 0.7)
+
+[node name="Planet5" parent="Star2" instance=ExtResource("4_cc5tm")]
+position = Vector2(-692, 1155)
+scale = Vector2(0.7, 0.7)
+
+[node name="Planet6" parent="Star2" instance=ExtResource("4_cc5tm")]
+position = Vector2(672, 1272)
+
+[node name="Planet7" parent="Star2" instance=ExtResource("4_cc5tm")]
+position = Vector2(1563, 669)
+scale = Vector2(0.6, 0.6)
+
+[node name="Planet8" parent="Star2" instance=ExtResource("4_cc5tm")]
+position = Vector2(-6.198883e-05, 1.5258789e-05)
+scale = Vector2(0.1, 0.1)
+
+[node name="Enemy" parent="Star2/Planet8" instance=ExtResource("6_8s3b3")]
+position = Vector2(10090, 4940)
+scale = Vector2(9.999999, 9.999999)
+
+[node name="Enemy2" parent="Star2/Planet8" instance=ExtResource("6_8s3b3")]
+position = Vector2(-23979.996, 2680)
+scale = Vector2(9.999999, 9.999999)
+
+[node name="Enemy3" parent="Star2/Planet8" instance=ExtResource("6_8s3b3")]
+position = Vector2(-20489.996, -8939.999)
+scale = Vector2(9.999999, 9.999999)
+
+[node name="Enemy4" parent="Star2/Planet8" instance=ExtResource("6_8s3b3")]
+position = Vector2(5510.0005, -19459.996)
+scale = Vector2(9.999999, 9.999999)
+
+[node name="Enemy5" parent="Star2/Planet8" instance=ExtResource("6_8s3b3")]
+position = Vector2(3980.0005, 23469.998)
+scale = Vector2(9.999999, 9.999999)
+
+[node name="Enemy6" parent="Star2/Planet8" instance=ExtResource("6_8s3b3")]
+position = Vector2(-6539.998, 19189.998)
+scale = Vector2(9.999999, 9.999999)
+
+[node name="Enemy7" parent="Star2/Planet8" instance=ExtResource("6_8s3b3")]
+position = Vector2(-19389.998, 10810)
+scale = Vector2(9.999999, 9.999999)
+
+[node name="Enemy8" parent="Star2/Planet8" instance=ExtResource("6_8s3b3")]
+position = Vector2(16390, 660.0005)
+scale = Vector2(9.999999, 9.999999)
+
+[node name="Enemy9" parent="Star2/Planet8" instance=ExtResource("6_8s3b3")]
+position = Vector2(-179.99902, 5980)
+scale = Vector2(9.999999, 9.999999)
+
+[node name="Enemy10" parent="Star2/Planet8" instance=ExtResource("6_8s3b3")]
+position = Vector2(-5689.998, -4359.999)
+scale = Vector2(9.999999, 9.999999)
+
+[node name="Enemy11" parent="Star2/Planet8" instance=ExtResource("6_8s3b3")]
+position = Vector2(13030, -15669.996)
+scale = Vector2(9.999999, 9.999999)
+
+[node name="Enemy12" parent="Star2/Planet8" instance=ExtResource("6_8s3b3")]
+position = Vector2(-1469.999, -18059.996)
+scale = Vector2(9.999999, 9.999999)
+
+[node name="Enemy13" parent="Star2/Planet8" instance=ExtResource("6_8s3b3")]
+position = Vector2(-18839.998, -14569.996)
+scale = Vector2(9.999999, 9.999999)
+
+[node name="Enemy14" parent="Star2/Planet8" instance=ExtResource("6_8s3b3")]
+position = Vector2(-18709.998, -3189.999)
+scale = Vector2(9.999999, 9.999999)
+
+[node name="Enemy15" parent="Star2/Planet8" instance=ExtResource("6_8s3b3")]
+position = Vector2(-10269.998, 13009.999)
+scale = Vector2(9.999999, 9.999999)
+
+[node name="Enemy16" parent="Star2/Planet8" instance=ExtResource("6_8s3b3")]
+position = Vector2(15230, 14539.999)
+scale = Vector2(9.999999, 9.999999)
+
+[node name="Enemy17" parent="Star2/Planet8" instance=ExtResource("6_8s3b3")]
+position = Vector2(15660, -7659.999)
+scale = Vector2(9.999999, 9.999999)
+
+[node name="Enemy18" parent="Star2/Planet8" instance=ExtResource("6_8s3b3")]
+position = Vector2(-9969.998, -17019.996)
+scale = Vector2(9.999999, 9.999999)
+
+[node name="Enemy19" parent="Star2/Planet8" instance=ExtResource("6_8s3b3")]
+position = Vector2(7340, -15179.996)
+scale = Vector2(9.999999, 9.999999)
+
+[node name="Enemy20" parent="Star2/Planet8" instance=ExtResource("6_8s3b3")]
+position = Vector2(-14249.998, -10229.999)
+scale = Vector2(9.999999, 9.999999)
+
+[node name="Enemy21" parent="Star2/Planet8" instance=ExtResource("6_8s3b3")]
+position = Vector2(-119.99902, -9549.999)
+scale = Vector2(9.999999, 9.999999)
+
+[node name="Enemy22" parent="Star2/Planet8" instance=ExtResource("6_8s3b3")]
+position = Vector2(8990, -4169.999)
+scale = Vector2(9.999999, 9.999999)
+
+[node name="Enemy23" parent="Star2/Planet8" instance=ExtResource("6_8s3b3")]
+position = Vector2(-13029.998, 110.00049)
+scale = Vector2(9.999999, 9.999999)
+
+[node name="Enemy24" parent="Star2/Planet8" instance=ExtResource("6_8s3b3")]
+position = Vector2(-12719.998, 6649.9995)
+scale = Vector2(9.999999, 9.999999)
+
+[node name="Enemy25" parent="Star2/Planet8" instance=ExtResource("6_8s3b3")]
+position = Vector2(7520, 16440)
+scale = Vector2(9.999999, 9.999999)
+
+[node name="Enemy26" parent="Star2/Planet8" instance=ExtResource("6_8s3b3")]
+position = Vector2(-729.999, 13989.999)
+scale = Vector2(9.999999, 9.999999)
+
+[node name="Wabbit" parent="." instance=ExtResource("3_8s3b3")]
+top_level = true
+position = Vector2(-1773, 456)
+double_jumps = 0
