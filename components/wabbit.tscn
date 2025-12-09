@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cnwn1hmwygwlf"]
+[gd_scene load_steps=8 format=3 uid="uid://cnwn1hmwygwlf"]
 
 [ext_resource type="Texture2D" uid="uid://cw0au8ogm10i4" path="res://assets/character_sprite/rabbit.svg" id="1_6xmfo"]
 [ext_resource type="Script" uid="uid://bw1pmvy3aqyq0" path="res://components/wabbit.gd" id="1_bsh7b"]
@@ -8,6 +8,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oga63"]
 size = Vector2(68, 80)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xe7d7"]
+bg_color = Color(0.84313726, 0.73333335, 0, 0.8)
 
 [node name="Wabbit" type="CharacterBody2D"]
 slide_on_ceiling = false
@@ -47,3 +50,11 @@ visible = false
 position = Vector2(-1, -22)
 scale = Vector2(0.65833336, 0.55833334)
 texture = ExtResource("3_xe7d7")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -35.0
+offset_top = 61.0
+offset_right = 35.0
+offset_bottom = 88.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_xe7d7")
+show_percentage = false

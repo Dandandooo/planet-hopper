@@ -6,6 +6,15 @@ extends CharacterBody2D
 @export_range(0, 1000, 50) var jumpspeed: float = 1000
 @export_range(0, 10, 1) var grav_strength: float = 3
 
+@export_range(0, 2000, 50) var jump_min: float = 300
+@export_range(0, 2000, 50) var jump_max: float = 1600
+@export var jump_charge_time: float = 1  # seconds to reach full power
+
+
+
+var is_charging_jump: bool = false
+var jump_charge: float = 0.0  # 0..jump_charge_time
+
 var death_sound = preload("res://assets/sound/yoda.mp3")
 var is_dead: bool = false
 
@@ -33,9 +42,14 @@ var zoom_max_distance: float = 2500
 var zoom_min_distance: float = 500
 @export var zoom_default_factor: float = 2.0
 @export_range(1, 5, 0.5) var zoom_out_factor: float = 4
+@onready var jump_bar: ProgressBar = $ProgressBar
 
 func _ready() -> void:
 	add_to_group("Player", true)
+	jump_bar.min_value = 0.0
+	jump_bar.max_value = 1.0      # we’ll feed a 0..1 fraction
+	jump_bar.value = 0.0
+	jump_bar.visible = false
 	var nodes: Array[Node] =  get_parent().find_children("*", "Celestial")
 	for node in nodes:
 		var planet = node as Celestial
@@ -64,8 +78,32 @@ func _physics_process(delta: float) -> void:
 			current_planet_angle = atan2(planet_vector.y, planet_vector.x)
 	else:
 		_walk(delta)
-		if Input.is_action_pressed(inputs.jump):
-			launch(global_rotation - PI/2, jumpspeed)
+		#if Input.is_action_pressed(inputs.jump):
+		#	launch(global_rotation - PI/2, jumpspeed)
+		 # start charging on initial press (grounded)
+		if Input.is_action_just_pressed(inputs.jump) and not is_charging_jump:
+			is_charging_jump = true
+			jump_charge = 0.0
+			jump_charge = 0.0
+			jump_bar.visible = true
+			jump_bar.value = 0.0
+
+		# keep charging while held
+		if is_charging_jump and Input.is_action_pressed(inputs.jump):
+			jump_charge = min(jump_charge + delta, jump_charge_time)
+			jump_bar.value = jump_charge
+			print("jump held")
+			print(jump_charge)
+
+		# launch on release
+		if is_charging_jump and Input.is_action_just_released(inputs.jump):
+			var strength :float = jump_min + jump_charge * (jump_max-jump_min)
+			print("Jumping at")
+			print(strength)
+			launch(global_rotation - PI/2, strength, false)
+			is_charging_jump = false
+			jump_bar.visible = false
+			jump_bar.value = 0.0
 
 func _apply_gravity(delta: float) -> void:
 	var grav = Vector2(0, 0)
