@@ -1,12 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://gvdfuekwe7c7"]
+[gd_scene load_steps=8 format=3 uid="uid://gvdfuekwe7c7"]
 
+[ext_resource type="Script" uid="uid://diugk8dxpls4g" path="res://levels/main.gd" id="1_76ugp"]
 [ext_resource type="Texture2D" uid="uid://bbwg8hnd1ptq6" path="res://assets/space.jpeg" id="1_qyb5k"]
 [ext_resource type="PackedScene" uid="uid://bxdkv7mas3nr3" path="res://components/star.tscn" id="2_py88r"]
 [ext_resource type="PackedScene" uid="uid://ba7mr1kx7f5wf" path="res://components/planet.tscn" id="3_g1dg4"]
 [ext_resource type="PackedScene" uid="uid://cop34v84kwdsj" path="res://components/tower.tscn" id="4_g1dg4"]
 [ext_resource type="PackedScene" uid="uid://cnwn1hmwygwlf" path="res://components/wabbit.tscn" id="4_py88r"]
+[ext_resource type="PackedScene" uid="uid://xld3mp8mtllw" path="res://components/pause_menu.tscn" id="7_e8p81"]
 
 [node name="Level2" type="Node2D"]
+script = ExtResource("1_76ugp")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -1
@@ -57,3 +60,8 @@ offset_bottom = 142.0
 theme_override_font_sizes/font_size = 32
 text = "Use double jump to make it further"
 autowrap_mode = 2
+
+[node name="UI" type="CanvasLayer" parent="."]
+layer = 10000
+
+[node name="PauseMenu" parent="UI" instance=ExtResource("7_e8p81")]
