@@ -1,3 +1,4 @@
+@tool
 extends TextureButton
 
 enum StarState { LOCKED, UNLOCKED, COMPLETED, CURRENT }
@@ -58,6 +59,8 @@ func update_visual() -> void:
 
 
 func _on_pressed() -> void:
+	if Engine.is_editor_hint():
+		return
 	if state != StarState.LOCKED:
 		star_selected.emit(level_index)
 

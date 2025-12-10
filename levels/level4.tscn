@@ -1,12 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://dwk4seyw7gm2d"]
+[gd_scene load_steps=9 format=3 uid="uid://8hik2npymmi"]
 
 [ext_resource type="Texture2D" uid="uid://bbwg8hnd1ptq6" path="res://assets/space.jpeg" id="1_lpgdq"]
 [ext_resource type="PackedScene" uid="uid://bxdkv7mas3nr3" path="res://components/star.tscn" id="2_1jw75"]
 [ext_resource type="PackedScene" uid="uid://cnwn1hmwygwlf" path="res://components/wabbit.tscn" id="3_8s3b3"]
 [ext_resource type="PackedScene" uid="uid://ba7mr1kx7f5wf" path="res://components/planet.tscn" id="4_cc5tm"]
-[ext_resource type="PackedScene" uid="uid://bnlpe2y1obb5a" path="res://components/landmine.tscn" id="4_mj76i"]
-[ext_resource type="PackedScene" uid="uid://cop34v84kwdsj" path="res://components/tower.tscn" id="5_1jw75"]
-[ext_resource type="PackedScene" uid="uid://bqk8n5j3m4xyi" path="res://components/enemy.tscn" id="6_8s3b3"]
+[ext_resource type="PackedScene" path="res://components/landmine.tscn" id="4_mj76i"]
+[ext_resource type="PackedScene" path="res://components/tower.tscn" id="5_1jw75"]
+[ext_resource type="PackedScene" path="res://components/enemy.tscn" id="6_8s3b3"]
 [ext_resource type="PackedScene" uid="uid://qwry8a8465u4" path="res://components/geyser.tscn" id="6_mj76i"]
 
 [node name="Level4" type="Node2D"]

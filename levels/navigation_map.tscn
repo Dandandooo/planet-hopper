@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://je5miem5h0ew"]
+[gd_scene load_steps=3 format=3 uid="uid://je5miem5h0ew"]
 
 [ext_resource type="Script" uid="uid://btlsmbtfqojev" path="res://levels/navigation_map.gd" id="1_418ey"]
+[ext_resource type="Texture2D" uid="uid://cl8qhjqnym5ua" path="res://assets/space_hd.jpg" id="2_space"]
 
 [node name="NavigationMap" type="Control"]
 layout_mode = 3
@@ -10,3 +11,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_418ey")
+
+[node name="SpaceHd" type="Sprite2D" parent="."]
+z_index = -100
+position = Vector2(574.00006, 325.00006)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_space")
