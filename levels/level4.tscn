@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dwk4seyw7gm2d"]
+[gd_scene load_steps=10 format=3 uid="uid://dwk4seyw7gm2d"]
 
 [ext_resource type="Texture2D" uid="uid://bbwg8hnd1ptq6" path="res://assets/space.jpeg" id="1_lpgdq"]
 [ext_resource type="PackedScene" uid="uid://bxdkv7mas3nr3" path="res://components/star.tscn" id="2_1jw75"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cop34v84kwdsj" path="res://components/tower.tscn" id="5_1jw75"]
 [ext_resource type="PackedScene" uid="uid://bqk8n5j3m4xyi" path="res://components/enemy.tscn" id="6_8s3b3"]
 [ext_resource type="PackedScene" uid="uid://qwry8a8465u4" path="res://components/geyser.tscn" id="6_mj76i"]
+[ext_resource type="PackedScene" uid="uid://xld3mp8mtllw" path="res://components/pause_menu.tscn" id="9_mdw0g"]
 
 [node name="Level4" type="Node2D"]
 
@@ -137,12 +138,8 @@ scale = Vector2(9.999999, 9.999999)
 position = Vector2(-23979.996, 2680)
 scale = Vector2(9.999999, 9.999999)
 
-[node name="Enemy3" parent="Star2/Planet8" instance=ExtResource("6_8s3b3")]
-position = Vector2(-20489.996, -8939.999)
-scale = Vector2(9.999999, 9.999999)
-
 [node name="Enemy4" parent="Star2/Planet8" instance=ExtResource("6_8s3b3")]
-position = Vector2(5510.0005, -19459.996)
+position = Vector2(3060.0007, -19680)
 scale = Vector2(9.999999, 9.999999)
 
 [node name="Enemy5" parent="Star2/Planet8" instance=ExtResource("6_8s3b3")]
@@ -153,28 +150,12 @@ scale = Vector2(9.999999, 9.999999)
 position = Vector2(-6539.998, 19189.998)
 scale = Vector2(9.999999, 9.999999)
 
-[node name="Enemy7" parent="Star2/Planet8" instance=ExtResource("6_8s3b3")]
-position = Vector2(-19389.998, 10810)
-scale = Vector2(9.999999, 9.999999)
-
-[node name="Enemy8" parent="Star2/Planet8" instance=ExtResource("6_8s3b3")]
-position = Vector2(16390, 660.0005)
-scale = Vector2(9.999999, 9.999999)
-
 [node name="Enemy9" parent="Star2/Planet8" instance=ExtResource("6_8s3b3")]
 position = Vector2(-179.99902, 5980)
 scale = Vector2(9.999999, 9.999999)
 
 [node name="Enemy10" parent="Star2/Planet8" instance=ExtResource("6_8s3b3")]
 position = Vector2(-5689.998, -4359.999)
-scale = Vector2(9.999999, 9.999999)
-
-[node name="Enemy11" parent="Star2/Planet8" instance=ExtResource("6_8s3b3")]
-position = Vector2(13030, -15669.996)
-scale = Vector2(9.999999, 9.999999)
-
-[node name="Enemy12" parent="Star2/Planet8" instance=ExtResource("6_8s3b3")]
-position = Vector2(-1469.999, -18059.996)
 scale = Vector2(9.999999, 9.999999)
 
 [node name="Enemy13" parent="Star2/Planet8" instance=ExtResource("6_8s3b3")]
@@ -187,10 +168,6 @@ scale = Vector2(9.999999, 9.999999)
 
 [node name="Enemy15" parent="Star2/Planet8" instance=ExtResource("6_8s3b3")]
 position = Vector2(-10269.998, 13009.999)
-scale = Vector2(9.999999, 9.999999)
-
-[node name="Enemy16" parent="Star2/Planet8" instance=ExtResource("6_8s3b3")]
-position = Vector2(15230, 14539.999)
 scale = Vector2(9.999999, 9.999999)
 
 [node name="Enemy17" parent="Star2/Planet8" instance=ExtResource("6_8s3b3")]
@@ -217,10 +194,6 @@ scale = Vector2(9.999999, 9.999999)
 position = Vector2(8990, -4169.999)
 scale = Vector2(9.999999, 9.999999)
 
-[node name="Enemy23" parent="Star2/Planet8" instance=ExtResource("6_8s3b3")]
-position = Vector2(-13029.998, 110.00049)
-scale = Vector2(9.999999, 9.999999)
-
 [node name="Enemy24" parent="Star2/Planet8" instance=ExtResource("6_8s3b3")]
 position = Vector2(-12719.998, 6649.9995)
 scale = Vector2(9.999999, 9.999999)
@@ -229,11 +202,12 @@ scale = Vector2(9.999999, 9.999999)
 position = Vector2(7520, 16440)
 scale = Vector2(9.999999, 9.999999)
 
-[node name="Enemy26" parent="Star2/Planet8" instance=ExtResource("6_8s3b3")]
-position = Vector2(-729.999, 13989.999)
-scale = Vector2(9.999999, 9.999999)
-
 [node name="Wabbit" parent="." instance=ExtResource("3_8s3b3")]
 top_level = true
 position = Vector2(-1773, 456)
 double_jumps = 0
+
+[node name="UI" type="CanvasLayer" parent="."]
+layer = 10000
+
+[node name="PauseMenu" parent="UI" instance=ExtResource("9_mdw0g")]
