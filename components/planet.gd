@@ -6,6 +6,7 @@ extends Celestial
 var centroid: Vector2
 var orbit_speed: float
 var orbit: bool
+@export var moving: bool = true
 
 func _ready() -> void:
 	var star = get_parent() as Star
@@ -18,7 +19,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if orbit:
+	if orbit and moving:
 		var pos = global_position - centroid
 		var radius = pos.length()
 		var angle = atan2(pos.y, pos.x)
