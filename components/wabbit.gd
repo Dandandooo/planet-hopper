@@ -51,9 +51,6 @@ func _physics_process(delta: float) -> void:
 	if is_dead:
 		return
 		
-	if Input.is_action_pressed("debug"):
-		suffocate()
-
 	_zoom_to_planets()
 	_check_air_time(delta)
 

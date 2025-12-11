@@ -1,18 +1,82 @@
-[gd_scene load_steps=4 format=3 uid="uid://bqk8n5j3m4xyi"]
+[gd_scene load_steps=13 format=3 uid="uid://bqk8n5j3m4xyi"]
 
 [ext_resource type="Script" uid="uid://btxluxxrcuj6i" path="res://components/enemy.gd" id="1_enemy"]
 [ext_resource type="Texture2D" uid="uid://c7p364srsx382" path="res://assets/character_sprite/fire.png" id="2_fire"]
+[ext_resource type="Texture2D" uid="uid://c0ph5ypbddejv" path="res://assets/character_sprite/robot_run.png" id="3_hog6v"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_de3sc"]
+atlas = ExtResource("3_hog6v")
+region = Rect2(0, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rnm7t"]
+atlas = ExtResource("3_hog6v")
+region = Rect2(320, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jbwcw"]
+atlas = ExtResource("3_hog6v")
+region = Rect2(640, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qfxgl"]
+atlas = ExtResource("3_hog6v")
+region = Rect2(960, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ty208"]
+atlas = ExtResource("3_hog6v")
+region = Rect2(1280, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vj2yt"]
+atlas = ExtResource("3_hog6v")
+region = Rect2(1600, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x3apc"]
+atlas = ExtResource("3_hog6v")
+region = Rect2(1920, 0, 320, 320)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ohwgr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_de3sc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rnm7t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jbwcw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qfxgl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ty208")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vj2yt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x3apc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_spgjl"]
-radius = 32.0
-height = 94.0
+radius = 49.0
+height = 164.0
 
 [node name="Enemy" type="Node2D" groups=["enemy"]]
 script = ExtResource("1_enemy")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 scale = Vector2(0.35, 0.35)
 texture = ExtResource("2_fire")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_ohwgr")
+frame_progress = 0.9587214
 
 [node name="Area2D" type="Area2D" parent="."]
 

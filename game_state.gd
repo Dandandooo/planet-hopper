@@ -1,12 +1,19 @@
 extends Node
 
+
+var tutorial_level: String = "res://levels/tutorial_level.tscn"
 # List of levels in order
 var levels: Array = [
-	"res://levels/tutorial_level.tscn",
 	"res://levels/level1.tscn",
 	"res://levels/level2.tscn",
 	"res://levels/level3.tscn",
 	"res://levels/level4.tscn",
+	"res://levels/level5.tscn",
+	"res://levels/level6.tscn",
+	"res://levels/level7.tscn",
+	"res://levels/level8.tscn",
+	"res://levels/level9.tscn",
+	"res://levels/level10.tscn",
 ]
 
 var current_level_index: int = 0
@@ -32,6 +39,9 @@ func advance_to_next_level() -> void:
 
 func go_to_level(index: int) -> void:
 	"""Jump to a specific level by index"""
+	if index < 0:
+		current_level_index = -1
+		get_tree().change_scene_to_file(tutorial_level)
 	if index >= 0 and index < levels.size():
 		current_level_index = index
 		get_tree().change_scene_to_file(get_current_level())
