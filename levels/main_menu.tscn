@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cl8qhjqnym5ua" path="res://assets/space_hd.jpg" id="4_7rktv"]
 [ext_resource type="Script" uid="uid://hxwy5n43t8l6" path="res://levels/floating_wabbit.gd" id="4_floating"]
 [ext_resource type="FontFile" uid="uid://05b76gu0pfku" path="res://assets/fonts/CabinSketch-Bold.otf" id="5_3ye4h"]
-[ext_resource type="Texture2D" uid="uid://crteyodrlkmyy" path="res://assets/character_sprite/wabbit.png" id="5_wabbit"]
+[ext_resource type="Texture2D" uid="uid://duob20uqjpqes" path="res://assets/character_sprite/RAbbit.png" id="5_wabbit"]
 [ext_resource type="Theme" uid="uid://cy3hokfp25c5v" path="res://components/menu_button.tres" id="6_nwbki"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_duh7t"]
@@ -55,7 +55,7 @@ texture = ExtResource("4_7rktv")
 
 [node name="FloatingWabbit" type="Sprite2D" parent="."]
 z_index = -10
-scale = Vector2(0.04, 0.04)
+scale = Vector2(0.3, 0.3)
 texture = ExtResource("5_wabbit")
 script = ExtResource("4_floating")
 

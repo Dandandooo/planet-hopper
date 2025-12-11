@@ -1,0 +1,80 @@
+[gd_scene load_steps=8 format=3 uid="uid://d1rr0mpmio1ra"]
+
+[ext_resource type="Texture2D" uid="uid://cl8qhjqnym5ua" path="res://assets/space_hd.jpg" id="1_space"]
+[ext_resource type="Script" uid="uid://wnnxw62x8hg5" path="res://levels/ending_scene.gd" id="2_script"]
+[ext_resource type="FontFile" uid="uid://05b76gu0pfku" path="res://assets/fonts/CabinSketch-Bold.otf" id="4_font"]
+[ext_resource type="Texture2D" uid="uid://duob20uqjpqes" path="res://assets/character_sprite/RAbbit.png" id="5_rabbit"]
+[ext_resource type="Texture2D" uid="uid://d24yg2awyb8ut" path="res://assets/character_sprite/RobotRabbit.png" id="6_robot_rabbit"]
+[ext_resource type="AudioStream" uid="uid://dy5l6b8yg33gn" path="res://assets/sound/lonely_music_station.mp3" id="7_music"]
+[ext_resource type="AudioStream" uid="uid://drr53828k1ocj" path="res://assets/sound/dun-dun-duuun-v01-105105.mp3" id="8_dun_dun"]
+
+[node name="EndingScene" type="Node2D"]
+script = ExtResource("2_script")
+
+[node name="SpaceHd" type="Sprite2D" parent="."]
+z_index = -100
+position = Vector2(574.00006, 325.00006)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_space")
+
+[node name="FloatingWabbit" type="Sprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("5_rabbit")
+
+[node name="CongratsLabel" type="Label" parent="."]
+offset_top = 100.0
+offset_right = 1152.0
+offset_bottom = 200.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 64
+text = "Congratulations, evacuation successful!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BlackOverlay" type="ColorRect" parent="."]
+z_index = 10
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 1)
+
+[node name="OrDidYouLabel" type="Label" parent="."]
+z_index = 20
+offset_top = 150.0
+offset_right = 1152.0
+offset_bottom = 250.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 64
+text = "...or did you?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RabbitImage" type="Sprite2D" parent="."]
+z_index = 20
+position = Vector2(576, 400)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("5_rabbit")
+
+[node name="RobotRabbitImage" type="Sprite2D" parent="."]
+z_index = 20
+position = Vector2(576, 400)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("6_robot_rabbit")
+
+[node name="CreditsLabel" type="Label" parent="."]
+z_index = 20
+offset_top = 648.0
+offset_right = 1152.0
+offset_bottom = 1200.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 48
+text = "Stats"
+horizontal_alignment = 1
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_music")
+
+[node name="DunDunPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_dun_dun")

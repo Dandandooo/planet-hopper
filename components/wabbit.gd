@@ -22,6 +22,7 @@ var current_planet_radius: float
 var current_planet_angle: float
 
 var planets: Array[Celestial]
+var visited_planets: Array[Celestial] = []
 
 @export_range(0, 3, 1) var double_jumps: int = 1
 var double_jumps_remaining: int = double_jumps
@@ -50,7 +51,15 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if is_dead:
 		return
-		
+
+	# Track time spent in levels 1-10 (not tutorial which is index 0)
+	# Only count time when game is not paused (time_scale == 1)
+	if GameState.current_level_index >= 1 and Engine.time_scale == 1:
+		GameState.time_spent += delta
+
+	if Input.is_action_pressed("debug"):
+		suffocate()
+
 	_zoom_to_planets()
 	_check_air_time(delta)
 
@@ -64,6 +73,10 @@ func _physics_process(delta: float) -> void:
 			velocity *= 0
 			air_time = 0.0  # Reset air time when landing
 			current_planet = _nearest_planet()
+			# Track newly visited planets
+			if current_planet and current_planet not in visited_planets:
+				visited_planets.append(current_planet)
+				GameState.planets_reached_count += 1
 			var planet_vector = global_position - current_planet.global_position
 			current_planet_radius = planet_vector.length()
 			current_planet_angle = atan2(planet_vector.y, planet_vector.x)
@@ -71,6 +84,7 @@ func _physics_process(delta: float) -> void:
 		_walk(delta)
 		if Input.is_action_pressed(inputs.jump):
 			$AudioStreamPlayer2D.stream = jump_sound
+			GameState.jumps_count += 1
 			$AudioStreamPlayer2D.play()
 			launch(global_rotation - PI/2, jumpspeed)
 
@@ -120,6 +134,7 @@ func _walk(delta: float) -> void:
 	global_position = new_pos
 	
 func _double_jump() -> void:
+	GameState.doublejumps_count += 1
 	if double_jumps_remaining == 0:
 		return
 	double_jumps_remaining -= 1
@@ -210,5 +225,6 @@ func explode() -> void:
 
 func die() -> void:
 	assert(is_dead, "how did you die?")
+	GameState.death_count += 1
 	$AudioStreamPlayer2D.stop()
 	get_tree().change_scene_to_file("res://levels/death_screen.tscn")

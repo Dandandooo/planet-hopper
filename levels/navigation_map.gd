@@ -1,151 +1,98 @@
-@tool
-extends Control
+extends Node2D
 
-# Preload the level star scene (you'll create this in Godot)
-const LevelStar = preload("res://components/level_star.gd")
-const EarthTexture = preload("res://assets/character_sprite/Hello-World-earth.svg")
-
-# Star positions in a constellation pattern (x, y coordinates)
-# Adjust these to create your desired star map layout
-var star_positions = [
-	Vector2(200, 400),   # Tutorial
-	Vector2(350, 300),   # Level 1
-	Vector2(500, 350),   # Level 2
-	Vector2(650, 250),   # Level 3
-	Vector2(800, 300),   # Level 4
-	# Add more positions as needed
-]
-
-var level_stars: Array = []
-
+var hovered_button: TextureButton = null
+var shine_time: float = 0.0
+var selected_index: int = 1  # Currently selected level (1-10)
+var unlocked_levels: Array[int] = []  # List of unlocked level indices
 
 func _ready() -> void:
-	create_star_map()
-	if not Engine.is_editor_hint():
-		update_star_states()
-	create_back_button()
+	# Connect all level buttons
+	# Buttons are named: LevelButton_1, LevelButton_2, etc.
+
+	for i in range(1, 11):
+		var btn = get_node_or_null("LevelButton_%d" % i)
+		if btn:
+			# Check if level is unlocked (level i is at index i in GameState.levels)
+			if i <= GameState.highest_level_unlocked:
+				unlocked_levels.append(i)
+				btn.pressed.connect(_on_level_button_pressed.bind(i))
+				# Create click mask from texture alpha so only non-transparent pixels are clickable
+				if btn.texture_normal:
+					var image = btn.texture_normal.get_image()
+					var bitmap = BitMap.new()
+					bitmap.create_from_image_alpha(image)
+					btn.texture_click_mask = bitmap
+				# Add hover brightness effect
+				btn.mouse_entered.connect(_on_button_hover.bind(btn, i))
+				btn.mouse_exited.connect(_on_button_unhover.bind(btn))
+			else:
+				# Level not unlocked - hide the button
+				btn.visible = false
+
+	var back_btn = get_node_or_null("BackButton")
+	if back_btn:
+		back_btn.pressed.connect(_on_back_pressed)
+
+	# Select first unlocked level by default
+	if unlocked_levels.size() > 0:
+		selected_index = unlocked_levels[0]
+		_select_button(selected_index)
 
 
-func create_star_map() -> void:
-	# Clear existing stars first (useful for editor updates)
-	for star in level_stars:
-		if is_instance_valid(star) and star.get_parent():
-			star.get_parent().queue_free()
-	level_stars.clear()
-
-	# Get level count (use a default in editor if GameState not available)
-	var level_count = 5 if Engine.is_editor_hint() else GameState.get_level_count()
-
-	# Create a star for each level
-	for i in range(level_count):
-		# Create container for the planet button
-		var star_container = Control.new()
-		star_container.name = "LevelButton_" + str(i)
-		star_container.custom_minimum_size = Vector2(80, 80)
-
-		# Create the visual planet sprite
-		var star_visual = Sprite2D.new()
-		star_visual.texture = EarthTexture
-		star_visual.position = Vector2(40, 40)  # Center in container
-		star_visual.scale = Vector2(0.15, 0.15)  # Scale down the earth sprite
-
-		# Create a button for interaction
-		var star = TextureButton.new()
-		star.custom_minimum_size = Vector2(80, 80)
-		star.script = LevelStar
-
-		# Set position
-		if i < star_positions.size():
-			star_container.position = star_positions[i]
-		else:
-			# Fallback: arrange in a grid if we run out of predefined positions
-			star_container.position = Vector2(200 + (i % 4) * 150, 200 + int(i / 4) * 150)
-
-		# Set level info
-		star.level_index = i
-		star.level_name = "Level " + str(i + 1) if i > 0 else "Tutorial"
-
-		# Connect signal
-		star.star_selected.connect(_on_star_selected)
-
-		# Build hierarchy
-		star_container.add_child(star_visual)
-		star_container.add_child(star)
-
-		# Create a label for the star
-		var label = Label.new()
-		label.name = "Label"
-		label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-		label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-		label.position = Vector2(0, 65)
-		label.custom_minimum_size = Vector2(80, 20)
-		label.add_theme_font_size_override("font_size", 14)
-		star_container.add_child(label)
-
-		# Add to scene
-		add_child(star_container)
-
-		# Set owner for editor visibility
-		if Engine.is_editor_hint() and get_tree():
-			var root = get_tree().edited_scene_root
-			if root:
-				star_container.owner = root
-				star_visual.owner = root
-				star.owner = root
-				label.owner = root
-
-		level_stars.append(star)
-
-
-func update_star_states() -> void:
-	# Skip in editor since GameState might not be initialized
-	if Engine.is_editor_hint():
+func _input(event: InputEvent) -> void:
+	if unlocked_levels.size() == 0:
 		return
 
-	for i in range(level_stars.size()):
-		var star = level_stars[i]
+	var current_pos = unlocked_levels.find(selected_index)
 
-		if i == GameState.current_level_index:
-			star.set_state(LevelStar.StarState.CURRENT)
-		elif i > GameState.highest_level_unlocked:
-			star.set_state(LevelStar.StarState.LOCKED)
-		elif i < GameState.current_level_index:
-			star.set_state(LevelStar.StarState.COMPLETED)
-		else:
-			star.set_state(LevelStar.StarState.UNLOCKED)
-
-
-func _on_star_selected(level_index: int) -> void:
-	# Skip in editor
-	if Engine.is_editor_hint():
-		return
-
-	# Player clicked on a star
-	GameState.go_to_level(level_index)
-	# Use scene manager for smooth transition, or direct change
-	get_tree().change_scene_to_file(GameState.get_current_level())
-	# Or with scene manager: SceneManager.transition_to(GameState.get_current_level())
+	# Navigate with arrow keys or WASD
+	if event.is_action_pressed("ui_right") or event.is_action_pressed("ui_down"):
+		# Move to next level
+		if current_pos < unlocked_levels.size() - 1:
+			_select_button(unlocked_levels[current_pos + 1])
+	elif event.is_action_pressed("ui_left") or event.is_action_pressed("ui_up"):
+		# Move to previous level
+		if current_pos > 0:
+			_select_button(unlocked_levels[current_pos - 1])
+	elif event.is_action_pressed("ui_accept"):
+		# Enter/Space to select current level
+		_on_level_button_pressed(selected_index)
 
 
-func create_back_button() -> void:
-	var back_button = Button.new()
-	back_button.name = "BackButton"
-	back_button.text = "Back to Menu"
-	back_button.position = Vector2(20, 20)
-	back_button.custom_minimum_size = Vector2(150, 40)
-	back_button.pressed.connect(_on_back_pressed)
-	add_child(back_button)
+func _select_button(level_index: int) -> void:
+	# Unhover previous button
+	if hovered_button:
+		hovered_button.modulate = Color(1.0, 1.0, 1.0)
+		hovered_button = null
 
-	# Set owner for editor visibility
-	if Engine.is_editor_hint() and get_tree():
-		var root = get_tree().edited_scene_root
-		if root:
-			back_button.owner = root
+	selected_index = level_index
+	var btn = get_node_or_null("LevelButton_%d" % level_index)
+	if btn:
+		hovered_button = btn
+		shine_time = 0.0
+
+
+func _on_level_button_pressed(level_number: int) -> void:
+	# LevelButton_1 goes to index 1 (level1.tscn), etc.
+	GameState.go_to_level(level_number)
 
 
 func _on_back_pressed() -> void:
-	# Skip in editor
-	if Engine.is_editor_hint():
-		return
-
 	get_tree().change_scene_to_file("res://levels/main_menu.tscn")
+
+
+func _on_button_hover(btn: TextureButton, level_index: int) -> void:
+	_select_button(level_index)
+
+
+func _on_button_unhover(btn: TextureButton) -> void:
+	# Don't unhover if it's the selected button (keep keyboard selection)
+	pass
+
+
+func _process(delta: float) -> void:
+	if hovered_button:
+		shine_time += delta * 3.0  # Speed of pulsing
+		# Oscillate between 0.7 (dim) and 1.3 (bright)
+		var brightness = 1.0 + 0.3 * sin(shine_time)
+		hovered_button.modulate = Color(brightness, brightness, brightness)

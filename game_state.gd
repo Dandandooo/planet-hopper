@@ -20,6 +20,14 @@ var current_level_index: int = 0
 
 var highest_level_unlocked: int = 0
 
+#End Screen Data
+var death_count: int = 0
+var planets_reached_count: int = 0
+var carrots_eaten_count: int = 1
+var time_spent: float = 0.0 # in seconds
+var jumps_count: int = 0
+var doublejumps_count: int = 0
+
 
 func get_current_level() -> String:
 	"""Returns the path to the current level"""
