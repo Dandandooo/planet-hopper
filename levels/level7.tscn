@@ -77,10 +77,6 @@ position = Vector2(3467, 2875)
 scale = Vector2(1.1, 1.1)
 mass = 5.0
 
-[node name="Enemy3" parent="Star/Planet6" instance=ExtResource("5_dscan")]
-position = Vector2(250, 0)
-scale = Vector2(1.5, 1.5)
-
 [node name="Enemy4" parent="Star/Planet6" instance=ExtResource("5_dscan")]
 position = Vector2(-250, 0)
 scale = Vector2(1.5, 1.5)
@@ -97,16 +93,8 @@ scale = Vector2(1.2, 1.2)
 position = Vector2(0, 250)
 scale = Vector2(1.2, 1.2)
 
-[node name="Enemy5" parent="Star/Planet7" instance=ExtResource("5_dscan")]
-position = Vector2(177, 177)
-scale = Vector2(1.2, 1.2)
-
 [node name="Enemy6" parent="Star/Planet7" instance=ExtResource("5_dscan")]
 position = Vector2(250, 0)
-scale = Vector2(1.2, 1.2)
-
-[node name="Enemy7" parent="Star/Planet7" instance=ExtResource("5_dscan")]
-position = Vector2(177, -177)
 scale = Vector2(1.2, 1.2)
 
 [node name="Wabbit" parent="." instance=ExtResource("8_l7rxp")]

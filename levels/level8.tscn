@@ -1,0 +1,153 @@
+[gd_scene load_steps=12 format=3 uid="uid://dqwjr1dk01xmx"]
+
+[ext_resource type="Script" uid="uid://diugk8dxpls4g" path="res://levels/main.gd" id="1_p3cgv"]
+[ext_resource type="PackedScene" uid="uid://xld3mp8mtllw" path="res://components/pause_menu.tscn" id="2_xo8nd"]
+[ext_resource type="Texture2D" uid="uid://bbwg8hnd1ptq6" path="res://assets/space.jpeg" id="3_8rxpa"]
+[ext_resource type="PackedScene" uid="uid://bxdkv7mas3nr3" path="res://components/star.tscn" id="4_62314"]
+[ext_resource type="PackedScene" uid="uid://ba7mr1kx7f5wf" path="res://components/planet.tscn" id="5_blg1i"]
+[ext_resource type="PackedScene" uid="uid://bqk8n5j3m4xyi" path="res://components/enemy.tscn" id="6_2mr80"]
+[ext_resource type="PackedScene" uid="uid://qwry8a8465u4" path="res://components/geyser.tscn" id="7_7ndg4"]
+[ext_resource type="PackedScene" uid="uid://cop34v84kwdsj" path="res://components/tower.tscn" id="8_1rsbk"]
+[ext_resource type="PackedScene" uid="uid://cnwn1hmwygwlf" path="res://components/wabbit.tscn" id="9_kykqu"]
+[ext_resource type="FontFile" uid="uid://b8vopmule5iep" path="res://assets/fonts/FairwaterDecoSerif-Regular.otf" id="10_h8sls"]
+
+[sub_resource type="Theme" id="Theme_ln8rm"]
+default_font = ExtResource("10_h8sls")
+default_font_size = 64
+
+[node name="Level7" type="Node2D"]
+script = ExtResource("1_p3cgv")
+
+[node name="UI" type="CanvasLayer" parent="."]
+layer = 10000
+
+[node name="PauseMenu" parent="UI" instance=ExtResource("2_xo8nd")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Space" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(821, 463)
+texture = ExtResource("3_8rxpa")
+
+[node name="Star" parent="." instance=ExtResource("4_62314")]
+position = Vector2(-1364, 986)
+
+[node name="Planet" parent="Star" instance=ExtResource("5_blg1i")]
+position = Vector2(1586, -507)
+mass = 8.0
+
+[node name="Planet2" parent="Star" instance=ExtResource("5_blg1i")]
+position = Vector2(2868, -308)
+scale = Vector2(0.5, 0.5)
+
+[node name="Planet3" parent="Star" instance=ExtResource("5_blg1i")]
+position = Vector2(3512, 713)
+scale = Vector2(0.5, 0.5)
+
+[node name="Enemy2" parent="Star/Planet3" instance=ExtResource("6_2mr80")]
+position = Vector2(-12, -260)
+
+[node name="Planet4" parent="Star" instance=ExtResource("5_blg1i")]
+position = Vector2(2909, 1594)
+scale = Vector2(0.7, 0.7)
+mass = 5.0
+
+[node name="Enemy2" parent="Star/Planet4" instance=ExtResource("6_2mr80")]
+position = Vector2(-4.2856445, -264.2857)
+scale = Vector2(1.2, 1.2)
+
+[node name="Geyser" parent="Star/Planet4" instance=ExtResource("7_7ndg4")]
+position = Vector2(-37.14287, 172.85715)
+rotation = 3.357433
+
+[node name="Planet5" parent="Star" instance=ExtResource("5_blg1i")]
+position = Vector2(56.99997, -305)
+rotation = 1.0437069
+scale = Vector2(0.4, 0.4)
+mass = 3.0
+
+[node name="Tower" parent="Star/Planet5" instance=ExtResource("8_1rsbk")]
+position = Vector2(-155, -252.49951)
+rotation = -0.47822022
+scale = Vector2(1.2499999, 1.2499999)
+next_scene = "res://levels/level3.tscn"
+
+[node name="Planet6" parent="Star" instance=ExtResource("5_blg1i")]
+position = Vector2(3467, 2875)
+scale = Vector2(1.1, 1.1)
+mass = 5.0
+
+[node name="Enemy3" parent="Star/Planet6" instance=ExtResource("6_2mr80")]
+position = Vector2(250, 0)
+scale = Vector2(1.5, 1.5)
+
+[node name="Enemy4" parent="Star/Planet6" instance=ExtResource("6_2mr80")]
+position = Vector2(-250, 0)
+scale = Vector2(1.5, 1.5)
+
+[node name="Planet7" parent="Star" instance=ExtResource("5_blg1i")]
+position = Vector2(4475, 3293)
+scale = Vector2(0.8, 0.8)
+
+[node name="Enemy2" parent="Star/Planet7" instance=ExtResource("6_2mr80")]
+position = Vector2(-8.75, -287.5)
+scale = Vector2(1.2, 1.2)
+
+[node name="Enemy3" parent="Star/Planet7" instance=ExtResource("6_2mr80")]
+position = Vector2(6.25, 292.5)
+scale = Vector2(1.2, 1.2)
+
+[node name="Enemy5" parent="Star/Planet7" instance=ExtResource("6_2mr80")]
+position = Vector2(208.74988, 216.24988)
+scale = Vector2(1.2, 1.2)
+
+[node name="Enemy6" parent="Star/Planet7" instance=ExtResource("6_2mr80")]
+position = Vector2(250, 0)
+scale = Vector2(1.2, 1.2)
+
+[node name="Enemy7" parent="Star/Planet7" instance=ExtResource("6_2mr80")]
+position = Vector2(196.24988, -217.49988)
+scale = Vector2(1.2, 1.2)
+
+[node name="Enemy" parent="Star/Planet7" instance=ExtResource("6_2mr80")]
+position = Vector2(-196.24976, -230)
+
+[node name="Enemy4" parent="Star/Planet7" instance=ExtResource("6_2mr80")]
+position = Vector2(-197.49976, 218.75)
+scale = Vector2(1.2499999, 1.2499999)
+
+[node name="Enemy8" parent="Star/Planet7" instance=ExtResource("6_2mr80")]
+position = Vector2(-282.49976, -12.5)
+scale = Vector2(1.2499999, 1.2499999)
+
+[node name="Wabbit" parent="." instance=ExtResource("9_kykqu")]
+position = Vector2(213, 256)
+
+[node name="Label3" type="Label" parent="."]
+offset_left = 2944.0
+offset_top = 3893.0
+offset_right = 3262.0
+offset_bottom = 3986.0
+theme_override_font_sizes/font_size = 32
+text = "Made you look :)"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Label" type="Label" parent="."]
+offset_left = 63.0
+offset_top = 69.0
+offset_right = 381.0
+offset_bottom = 162.0
+theme_override_font_sizes/font_size = 32
+text = "Again?"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 69.0
+offset_top = -6.0
+offset_right = 380.0
+offset_bottom = 85.0
+theme = SubResource("Theme_ln8rm")
+text = "Level 8"

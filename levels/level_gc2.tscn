@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dldj3u7c0d7dn"]
+[gd_scene load_steps=11 format=3 uid="uid://cdqw6xlg8jqij"]
 
 [ext_resource type="Texture2D" uid="uid://bbwg8hnd1ptq6" path="res://assets/space.jpeg" id="1_8mh55"]
 [ext_resource type="PackedScene" uid="uid://xld3mp8mtllw" path="res://components/pause_menu.tscn" id="2_hydfx"]
@@ -35,6 +35,15 @@ double_jumps = 0
 
 [node name="Star" parent="." instance=ExtResource("4_66nwl")]
 position = Vector2(-2164, 780)
+
+[node name="Planet5" parent="Star" instance=ExtResource("5_t5gjd")]
+position = Vector2(1122, 146)
+scale = Vector2(0.4, 0.4)
+mass = 2.0
+
+[node name="Planet6" parent="Star" instance=ExtResource("5_t5gjd")]
+position = Vector2(2539, -815)
+scale = Vector2(0.4, 0.4)
 
 [node name="Planet" parent="Star" instance=ExtResource("5_t5gjd")]
 position = Vector2(2372, 329)
@@ -105,11 +114,3 @@ scale = Vector2(20.929882, 1)
 
 [node name="Geyser" parent="Star/Planet3" instance=ExtResource("9_y18d6")]
 position = Vector2(0, -180)
-
-[node name="Planet" parent="Star/Planet3" instance=ExtResource("5_t5gjd")]
-position = Vector2(-1138, 914)
-scale = Vector2(0.8, 0.8)
-
-[node name="Planet2" parent="Star/Planet3" instance=ExtResource("5_t5gjd")]
-position = Vector2(1696, -1008)
-scale = Vector2(0.8, 0.8)

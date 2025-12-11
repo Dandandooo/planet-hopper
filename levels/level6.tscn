@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://ws4lo45fahkh"]
+[gd_scene load_steps=16 format=3 uid="uid://ws4lo45fahkh"]
 
 [ext_resource type="Script" uid="uid://diugk8dxpls4g" path="res://levels/main.gd" id="1_i4qay"]
 [ext_resource type="PackedScene" uid="uid://xld3mp8mtllw" path="res://components/pause_menu.tscn" id="2_wf6kw"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bnlpe2y1obb5a" path="res://components/landmine.tscn" id="7_ewo4o"]
 [ext_resource type="PackedScene" uid="uid://bqk8n5j3m4xyi" path="res://components/enemy.tscn" id="8_celb7"]
 [ext_resource type="PackedScene" uid="uid://qwry8a8465u4" path="res://components/geyser.tscn" id="9_ybc4o"]
+[ext_resource type="AudioStream" uid="uid://cdrdgm2xqpviv" path="res://assets/sound/carrot_radio.mp3" id="10_nasht"]
 [ext_resource type="PackedScene" uid="uid://cop34v84kwdsj" path="res://components/tower.tscn" id="10_sohrh"]
 [ext_resource type="FontFile" uid="uid://b8vopmule5iep" path="res://assets/fonts/FairwaterDecoSerif-Regular.otf" id="11_rsqgv"]
 
@@ -93,11 +94,7 @@ position = Vector2(294, -174)
 rotation = -5.262168
 scale = Vector2(2, 2)
 next_scene = "res://levels/level2.tscn"
-
-[node name="Landmine" parent="Star/Finish" instance=ExtResource("7_ewo4o")]
-position = Vector2(-183.99951, 81.99951)
-rotation = -1.9792036
-scale = Vector2(2, 2)
+audio_stream = ExtResource("10_nasht")
 
 [node name="Planet2" parent="Star" instance=ExtResource("6_4fpod")]
 position = Vector2(-905, -1239)
@@ -173,6 +170,7 @@ scale = Vector2(1.2499999, 1.2499999)
 
 [node name="Landmine6" parent="Star/Planet9" instance=ExtResource("7_ewo4o")]
 position = Vector2(-102.5, 158.75006)
+rotation = -2.6529005
 scale = Vector2(1.2499999, 1.2499999)
 
 [node name="Planet10" parent="Star" instance=ExtResource("6_4fpod")]
@@ -224,4 +222,4 @@ text = "'Round the block"
 horizontal_alignment = 1
 
 [node name="Carrot" parent="." instance=ExtResource("4_4egkl")]
-position = Vector2(-2002, -703)
+position = Vector2(-1853, -627)
