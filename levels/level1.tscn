@@ -1,12 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://bvsps857nqe2q"]
+[gd_scene load_steps=11 format=3 uid="uid://bvsps857nqe2q"]
 
 [ext_resource type="Script" uid="uid://diugk8dxpls4g" path="res://levels/main.gd" id="1_yydhl"]
 [ext_resource type="PackedScene" uid="uid://cnwn1hmwygwlf" path="res://components/wabbit.tscn" id="2_b3oru"]
 [ext_resource type="PackedScene" uid="uid://ba7mr1kx7f5wf" path="res://components/planet.tscn" id="2_pdtm5"]
 [ext_resource type="PackedScene" uid="uid://bxdkv7mas3nr3" path="res://components/star.tscn" id="3_61w3m"]
 [ext_resource type="Texture2D" uid="uid://bbwg8hnd1ptq6" path="res://assets/space.jpeg" id="3_b3oru"]
-[ext_resource type="PackedScene" uid="uid://bnlpe2y1obb5a" path="res://components/landmine.tscn" id="6_bekh1"]
-[ext_resource type="PackedScene" uid="uid://bqk8n5j3m4xyi" path="res://components/enemy.tscn" id="6_pdpul"]
 [ext_resource type="FontFile" uid="uid://b8vopmule5iep" path="res://assets/fonts/FairwaterDecoSerif-Regular.otf" id="8_045es"]
 [ext_resource type="PackedScene" uid="uid://cop34v84kwdsj" path="res://components/tower.tscn" id="8_omn1t"]
 [ext_resource type="PackedScene" uid="uid://xld3mp8mtllw" path="res://components/pause_menu.tscn" id="11_bekh1"]
@@ -21,6 +19,11 @@ default_font_size = 64
 
 [node name="Node2D2" type="Node2D"]
 script = ExtResource("1_yydhl")
+
+[node name="UI" type="CanvasLayer" parent="."]
+layer = 10000
+
+[node name="PauseMenu" parent="UI" instance=ExtResource("11_bekh1")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -1
@@ -37,28 +40,43 @@ double_jumps = 0
 [node name="Star" parent="." instance=ExtResource("3_61w3m")]
 position = Vector2(-2164, 780)
 
+[node name="Planet7" parent="Star" instance=ExtResource("2_pdtm5")]
+position = Vector2(4876, -243)
+scale = Vector2(0.5, 0.5)
+physics_material_override = SubResource("PhysicsMaterial_pdtm5")
+
+[node name="Planet8" parent="Star" instance=ExtResource("2_pdtm5")]
+position = Vector2(5280, -9)
+scale = Vector2(0.5, 0.5)
+
+[node name="Planet9" parent="Star" instance=ExtResource("2_pdtm5")]
+position = Vector2(5684, -249)
+scale = Vector2(0.8, 0.8)
+mass = 7.0
+
+[node name="Planet10" parent="Star" instance=ExtResource("2_pdtm5")]
+position = Vector2(6066, -597)
+scale = Vector2(0.5, 0.5)
+
+[node name="Planet11" parent="Star" instance=ExtResource("2_pdtm5")]
+position = Vector2(6530, -442)
+scale = Vector2(0.5, 0.5)
+
 [node name="Planet" parent="Star" instance=ExtResource("2_pdtm5")]
 position = Vector2(2318, -395)
 scale = Vector2(0.5, 0.5)
 physics_material_override = SubResource("PhysicsMaterial_pdtm5")
 
-[node name="Landmine" parent="Star/Planet" instance=ExtResource("6_bekh1")]
-position = Vector2(2, 196)
-rotation = 3.1415927
-
 [node name="Planet2" parent="Star" instance=ExtResource("2_pdtm5")]
-position = Vector2(3287, -741)
+position = Vector2(2971, -368)
 scale = Vector2(0.5, 0.5)
 
-[node name="Enemy" parent="Star/Planet2" instance=ExtResource("6_pdpul")]
-position = Vector2(0, -266)
-
 [node name="Planet3" parent="Star" instance=ExtResource("2_pdtm5")]
-position = Vector2(3935, -522)
+position = Vector2(3433, -114)
 scale = Vector2(0.5, 0.5)
 
 [node name="Planet4" parent="Star" instance=ExtResource("2_pdtm5")]
-position = Vector2(4519, -825)
+position = Vector2(7047, -564)
 scale = Vector2(0.5, 0.5)
 mass = 3.0
 
@@ -67,6 +85,24 @@ position = Vector2(2, -344)
 scale = Vector2(2, 2)
 next_scene = "res://levels/level2.tscn"
 
+[node name="Planet5" parent="Star" instance=ExtResource("2_pdtm5")]
+position = Vector2(3858, -253)
+scale = Vector2(0.5, 0.5)
+
+[node name="Planet6" parent="Star" instance=ExtResource("2_pdtm5")]
+position = Vector2(4335, -511)
+scale = Vector2(0.8, 0.8)
+mass = 5.0
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 49.0
+offset_top = 142.0
+offset_right = 265.0
+offset_bottom = 187.0
+theme_override_font_sizes/font_size = 32
+text = "Jump and Jump"
+horizontal_alignment = 1
+
 [node name="Label" type="Label" parent="."]
 offset_left = 7.0
 offset_top = 55.0
@@ -74,8 +110,3 @@ offset_right = 318.0
 offset_bottom = 146.0
 theme = SubResource("Theme_8hd6v")
 text = "Level 1"
-
-[node name="UI" type="CanvasLayer" parent="."]
-layer = 10000
-
-[node name="PauseMenu" parent="UI" instance=ExtResource("11_bekh1")]
