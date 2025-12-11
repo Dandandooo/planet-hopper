@@ -1,5 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://bh821saf48ppt"]
+[gd_scene load_steps=12 format=3 uid="uid://bh821saf48ppt"]
 
+[ext_resource type="Script" uid="uid://diugk8dxpls4g" path="res://levels/main.gd" id="1_8bhgk"]
 [ext_resource type="PackedScene" uid="uid://xld3mp8mtllw" path="res://components/pause_menu.tscn" id="1_i18um"]
 [ext_resource type="Texture2D" uid="uid://bbwg8hnd1ptq6" path="res://assets/space.jpeg" id="2_8bhgk"]
 [ext_resource type="PackedScene" uid="uid://bxdkv7mas3nr3" path="res://components/star.tscn" id="3_mv8ey"]
@@ -15,6 +16,7 @@ default_font = ExtResource("9_6rd6v")
 default_font_size = 64
 
 [node name="Level10" type="Node2D"]
+script = ExtResource("1_8bhgk")
 
 [node name="UI" type="CanvasLayer" parent="."]
 layer = 10000
@@ -67,16 +69,16 @@ rotation = 3.1415927
 scale = Vector2(1.2, 1.2)
 
 [node name="Enemy" parent="Star/Planet2" instance=ExtResource("6_p0w58")]
-position = Vector2(-320, 0)
-rotation = 4.712389
-scale = Vector2(2, 2)
+position = Vector2(380, 0)
+rotation = 1.5707964
+scale = Vector2(3, 3)
 
 [node name="Planet3" parent="Star" instance=ExtResource("4_80amw")]
 position = Vector2(763, -3239)
 mass = 10.0
 
 [node name="Planet4" parent="Star" instance=ExtResource("4_80amw")]
-position = Vector2(428, 577)
+position = Vector2(-236, 702)
 scale = Vector2(0.5, 0.5)
 mass = 8.0
 
@@ -111,11 +113,11 @@ horizontal_alignment = 1
 
 [node name="Label3" type="Label" parent="."]
 offset_left = -777.0
-offset_top = -1911.0
+offset_top = -1614.0
 offset_right = 1236.0
 offset_bottom = -1171.0
 theme = SubResource("Theme_k6mdx")
 text = "^
 |
 |
-|"
+"
