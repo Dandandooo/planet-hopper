@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bxdkv7mas3nr3"]
+[gd_scene load_steps=6 format=3 uid="uid://bxdkv7mas3nr3"]
 
 [ext_resource type="Script" uid="uid://ddr7glj134qkt" path="res://components/star.gd" id="1_mqaba"]
 [ext_resource type="Texture2D" uid="uid://b701ugat5eom0" path="res://assets/character_sprite/sun.png" id="1_qca5o"]
+[ext_resource type="Texture2D" uid="uid://cu5k4wdpjiacb" path="res://assets/Sun 2.png" id="3_onboq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qca5o"]
 radius = 153.08168
@@ -14,8 +15,13 @@ script = ExtResource("1_mqaba")
 mass = 50.0
 
 [node name="Sun" type="Sprite2D" parent="."]
+visible = false
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("1_qca5o")
+
+[node name="Sun2" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = ExtResource("3_onboq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_qca5o")

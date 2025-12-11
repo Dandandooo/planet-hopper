@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://depjtphnjwttl"]
+
+[ext_resource type="Script" uid="uid://dksd1xk7wrvak" path="res://components/carrot.gd" id="1_g278f"]
+[ext_resource type="Texture2D" uid="uid://dtps24uwedxa5" path="res://assets/pixal art carrot.png" id="2_vgl0b"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vgl0b"]
+radius = 11.0
+height = 62.0
+
+[node name="Carrot" type="Node2D"]
+script = ExtResource("1_g278f")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CapsuleShape2D_vgl0b")
+
+[node name="PixalArtCarrot" type="Sprite2D" parent="Area2D"]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_vgl0b")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
