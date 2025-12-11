@@ -7,11 +7,25 @@ var levels: Array = [
 	"res://levels/level2.tscn",
 	"res://levels/level3.tscn",
 	"res://levels/level4.tscn",
+	"res://levels/level5.tscn",
+	"res://levels/level6.tscn",
+	"res://levels/level7.tscn",
+	"res://levels/level8.tscn",
+	"res://levels/level9.tscn",
+	"res://levels/level10.tscn",
 ]
 
 var current_level_index: int = 0
 
 var highest_level_unlocked: int = 0
+
+#End Screen Data
+var death_count: int = 0
+var planets_reached_count: int = 0
+var carrots_eaten_count: int = 1
+var time_spent: float = 0.0 # in seconds
+var jumps_count: int = 0
+var doublejumps_count: int = 0
 
 
 func get_current_level() -> String:

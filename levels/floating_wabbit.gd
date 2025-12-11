@@ -3,6 +3,7 @@ extends Sprite2D
 var velocity: Vector2
 var rotation_speed: float
 var screen_size: Vector2
+var is_on_main_menu: bool = false
 
 # Static variables to persist state between scenes
 static var saved_position: Vector2 = Vector2.ZERO
@@ -14,6 +15,11 @@ static var is_initialized: bool = false
 func _ready() -> void:
 	# Get viewport size
 	screen_size = get_viewport_rect().size
+
+	# Check if we're on the main menu
+	var parent = get_parent()
+	if parent and parent.name == "MainMenu":
+		is_on_main_menu = true
 
 	# Restore state if it was previously saved, otherwise initialize randomly
 	if is_initialized:
@@ -79,3 +85,15 @@ func _process(delta: float) -> void:
 func _apply_bounce_rotation() -> void:
 	# Change rotation direction and speed slightly on bounce
 	rotation_speed = -rotation_speed * randf_range(0.8, 1.2)
+
+
+func _input(event: InputEvent) -> void:
+	if not is_on_main_menu:
+		return
+
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		# Check if click is within sprite bounds
+		var sprite_size = texture.get_size() * scale
+		var rect = Rect2(position - sprite_size / 2, sprite_size)
+		if rect.has_point(event.position):
+			get_tree().change_scene_to_file("res://levels/level_gc2.tscn")

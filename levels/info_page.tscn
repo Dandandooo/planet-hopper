@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://b2vmhwwmdmonw" path="res://levels/info_page.gd" id="1_script"]
 [ext_resource type="Texture2D" uid="uid://cl8qhjqnym5ua" path="res://assets/space_hd.jpg" id="1_space"]
 [ext_resource type="Script" uid="uid://hxwy5n43t8l6" path="res://levels/floating_wabbit.gd" id="2_floating"]
-[ext_resource type="Texture2D" uid="uid://crteyodrlkmyy" path="res://assets/character_sprite/wabbit.png" id="3_wabbit"]
+[ext_resource type="Texture2D" uid="uid://duob20uqjpqes" path="res://assets/character_sprite/RAbbit.png" id="3_wabbit"]
 [ext_resource type="FontFile" uid="uid://boceqylwt2ko5" path="res://assets/fonts/LoRes9PlusOT-WideBoldAlt.otf" id="4_font"]
 [ext_resource type="FontFile" uid="uid://05b76gu0pfku" path="res://assets/fonts/CabinSketch-Bold.otf" id="6_scv15"]
 
@@ -24,7 +24,7 @@ texture = ExtResource("1_space")
 
 [node name="FloatingWabbit" type="Sprite2D" parent="."]
 z_index = -10
-scale = Vector2(0.04, 0.04)
+scale = Vector2(0.3, 0.3)
 texture = ExtResource("3_wabbit")
 script = ExtResource("2_floating")
 
@@ -55,8 +55,8 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/normal_font = ExtResource("6_scv15")
 theme_override_font_sizes/normal_font_size = 35
-text = "\"Plannet Hooper\" is a class project made for CS 415 
-at UIUC in fall 2025 by team #31.
+text = "\"Planet Hopper\" is a class project made for CS 415 
+at UIUC in fall 2025 by team #30.
 
 Our awesome crew:
 Daniel Philipov
