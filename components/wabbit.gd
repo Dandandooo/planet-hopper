@@ -57,9 +57,6 @@ func _physics_process(delta: float) -> void:
 	if GameState.current_level_index >= 1 and Engine.time_scale == 1:
 		GameState.time_spent += delta
 
-	if Input.is_action_pressed("debug"):
-		suffocate()
-
 	_zoom_to_planets()
 	_check_air_time(delta)
 
@@ -79,6 +76,9 @@ func _physics_process(delta: float) -> void:
 				GameState.planets_reached_count += 1
 			var planet_vector = global_position - current_planet.global_position
 			current_planet_radius = planet_vector.length()
+			# TODO: get radius from planet
+			# current_planet_radius = current_planet.radius * 1.01 * current_planet.transform.get_scale().length()
+			
 			current_planet_angle = atan2(planet_vector.y, planet_vector.x)
 	else:
 		_walk(delta)

@@ -7,6 +7,7 @@ var centroid: Vector2
 var orbit_speed: float
 var orbit: bool
 @export var moving: bool = true
+@onready var radius: float = ($Surface.shape as CircleShape2D).radius
 
 func _ready() -> void:
 	var star = get_parent() as Star

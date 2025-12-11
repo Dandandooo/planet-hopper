@@ -74,7 +74,7 @@ func _select_button(level_index: int) -> void:
 
 func _on_level_button_pressed(level_number: int) -> void:
 	# LevelButton_1 goes to index 1 (level1.tscn), etc.
-	GameState.go_to_level(level_number)
+	GameState.go_to_level(level_number - 1)
 
 
 func _on_back_pressed() -> void:
