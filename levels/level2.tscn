@@ -1,0 +1,142 @@
+[gd_scene load_steps=12 format=3 uid="uid://gvdfuekwe7c7"]
+
+[ext_resource type="Script" uid="uid://diugk8dxpls4g" path="res://levels/main.gd" id="1_e8p81"]
+[ext_resource type="PackedScene" uid="uid://xld3mp8mtllw" path="res://components/pause_menu.tscn" id="2_55gdq"]
+[ext_resource type="Texture2D" uid="uid://bbwg8hnd1ptq6" path="res://assets/space.jpeg" id="3_crte6"]
+[ext_resource type="PackedScene" uid="uid://cnwn1hmwygwlf" path="res://components/wabbit.tscn" id="4_hq01p"]
+[ext_resource type="PackedScene" uid="uid://bxdkv7mas3nr3" path="res://components/star.tscn" id="5_fjysh"]
+[ext_resource type="PackedScene" uid="uid://ba7mr1kx7f5wf" path="res://components/planet.tscn" id="6_bcewn"]
+[ext_resource type="PackedScene" uid="uid://cop34v84kwdsj" path="res://components/tower.tscn" id="7_6mfmt"]
+[ext_resource type="PackedScene" uid="uid://qwry8a8465u4" path="res://components/geyser.tscn" id="7_55gdq"]
+[ext_resource type="FontFile" uid="uid://b8vopmule5iep" path="res://assets/fonts/FairwaterDecoSerif-Regular.otf" id="8_qegch"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_pdtm5"]
+rough = true
+absorbent = true
+
+[sub_resource type="Theme" id="Theme_8hd6v"]
+default_font = ExtResource("8_qegch")
+default_font_size = 64
+
+[node name="Node2D2" type="Node2D"]
+script = ExtResource("1_e8p81")
+
+[node name="UI" type="CanvasLayer" parent="."]
+layer = 10000
+
+[node name="PauseMenu" parent="UI" instance=ExtResource("2_55gdq")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Space" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(1179, 610)
+texture = ExtResource("3_crte6")
+
+[node name="Wabbit" parent="." instance=ExtResource("4_hq01p")]
+top_level = true
+position = Vector2(142, 167)
+double_jumps = 0
+
+[node name="Star" parent="." instance=ExtResource("5_fjysh")]
+position = Vector2(-2164, 780)
+
+[node name="Planet9" parent="Star" instance=ExtResource("6_bcewn")]
+position = Vector2(5004, -1313)
+scale = Vector2(0.8, 0.8)
+mass = 5.0
+
+[node name="Geyser1" parent="Star/Planet9" instance=ExtResource("7_55gdq")]
+position = Vector2(-126.24991, -121.250015)
+rotation = -0.85695666
+scale = Vector2(1.2, 1.2)
+
+[node name="Planet10" parent="Star" instance=ExtResource("6_bcewn")]
+position = Vector2(6675, -642)
+scale = Vector2(0.5, 0.5)
+
+[node name="Planet11" parent="Star" instance=ExtResource("6_bcewn")]
+position = Vector2(6209, -1048)
+scale = Vector2(0.5, 0.5)
+
+[node name="Geyser2" parent="Star/Planet11" instance=ExtResource("7_55gdq")]
+position = Vector2(5262, 268)
+rotation = 0.7696902
+scale = Vector2(2, 2)
+
+[node name="Planet12" parent="Star" instance=ExtResource("6_bcewn")]
+position = Vector2(7053, -1064)
+scale = Vector2(0.5, 0.5)
+
+[node name="Planet13" parent="Star" instance=ExtResource("6_bcewn")]
+position = Vector2(7672, -1355)
+scale = Vector2(0.5, 0.5)
+
+[node name="Geyser2" parent="Star/Planet13" instance=ExtResource("7_55gdq")]
+position = Vector2(-68, -160)
+rotation = -0.4171337
+skew = 0.05235988
+
+[node name="Planet14" parent="Star" instance=ExtResource("6_bcewn")]
+position = Vector2(8222, -1128)
+scale = Vector2(0.5, 0.5)
+
+[node name="Planet" parent="Star" instance=ExtResource("6_bcewn")]
+position = Vector2(2318, -395)
+scale = Vector2(0.5, 0.5)
+physics_material_override = SubResource("PhysicsMaterial_pdtm5")
+
+[node name="Planet2" parent="Star" instance=ExtResource("6_bcewn")]
+position = Vector2(3005, -97)
+scale = Vector2(0.5, 0.5)
+
+[node name="Geyser1" parent="Star/Planet2" instance=ExtResource("7_55gdq")]
+position = Vector2(-165.99997, 42.000015)
+rotation = -1.7645279
+
+[node name="Planet3" parent="Star" instance=ExtResource("6_bcewn")]
+position = Vector2(3670, -467)
+scale = Vector2(0.5, 0.5)
+
+[node name="Planet4" parent="Star" instance=ExtResource("6_bcewn")]
+position = Vector2(9291, -509)
+scale = Vector2(0.5, 0.5)
+mass = 3.0
+
+[node name="Tower" parent="Star/Planet4" instance=ExtResource("7_6mfmt")]
+position = Vector2(2, -344)
+scale = Vector2(2, 2)
+next_scene = "res://levels/level2.tscn"
+
+[node name="Planet5" parent="Star" instance=ExtResource("6_bcewn")]
+position = Vector2(4218, -922)
+scale = Vector2(0.5, 0.5)
+
+[node name="Geyser2" parent="Star/Planet5" instance=ExtResource("7_55gdq")]
+position = Vector2(2822, -58.000183)
+rotation = 0.97912973
+skew = -0.08726646
+
+[node name="Planet6" parent="Star" instance=ExtResource("6_bcewn")]
+position = Vector2(5555, -904)
+scale = Vector2(0.5, 0.5)
+
+[node name="Planet8" parent="Star" instance=ExtResource("6_bcewn")]
+position = Vector2(8707, -782)
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 49.0
+offset_top = 142.0
+offset_right = 265.0
+offset_bottom = 187.0
+theme_override_font_sizes/font_size = 32
+text = "Running starts"
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="."]
+offset_left = 7.0
+offset_top = 55.0
+offset_right = 320.0
+offset_bottom = 146.0
+theme = SubResource("Theme_8hd6v")
+text = "Level 2"

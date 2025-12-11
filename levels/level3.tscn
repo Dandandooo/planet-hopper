@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cmns6qwfeygxx"]
+[gd_scene load_steps=13 format=3 uid="uid://cmns6qwfeygxx"]
 
 [ext_resource type="Script" uid="uid://diugk8dxpls4g" path="res://levels/main.gd" id="1_yherf"]
 [ext_resource type="PackedScene" uid="uid://xld3mp8mtllw" path="res://components/pause_menu.tscn" id="2_v6u2l"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://cnwn1hmwygwlf" path="res://components/wabbit.tscn" id="4_w67av"]
 [ext_resource type="PackedScene" uid="uid://bxdkv7mas3nr3" path="res://components/star.tscn" id="5_dkuxd"]
 [ext_resource type="PackedScene" uid="uid://ba7mr1kx7f5wf" path="res://components/planet.tscn" id="6_ogw55"]
-[ext_resource type="PackedScene" uid="uid://bnlpe2y1obb5a" path="res://components/landmine.tscn" id="7_h8u6t"]
 [ext_resource type="PackedScene" uid="uid://bqk8n5j3m4xyi" path="res://components/enemy.tscn" id="8_up2ry"]
 [ext_resource type="PackedScene" uid="uid://qwry8a8465u4" path="res://components/geyser.tscn" id="9_vx46q"]
 [ext_resource type="PackedScene" uid="uid://cop34v84kwdsj" path="res://components/tower.tscn" id="10_73f1s"]
@@ -48,10 +47,6 @@ position = Vector2(2318, -395)
 scale = Vector2(0.5, 0.5)
 physics_material_override = SubResource("PhysicsMaterial_pdtm5")
 
-[node name="Landmine" parent="Star/Planet" instance=ExtResource("7_h8u6t")]
-position = Vector2(2, 196)
-rotation = 3.1415927
-
 [node name="Planet2" parent="Star" instance=ExtResource("6_ogw55")]
 position = Vector2(3287, -741)
 scale = Vector2(0.5, 0.5)
@@ -60,30 +55,59 @@ scale = Vector2(0.5, 0.5)
 position = Vector2(0, -284)
 
 [node name="Planet3" parent="Star" instance=ExtResource("6_ogw55")]
-position = Vector2(3935, -522)
-scale = Vector2(0.5, 0.5)
+position = Vector2(3935, -339)
+skew = 0.017453292
+mass = 6.0
 
-[node name="Geyser" parent="Star/Planet3" instance=ExtResource("9_vx46q")]
-position = Vector2(176, 10)
-rotation = 1.5707964
-launch_strength = 1200
+[node name="Planet5" parent="Star" instance=ExtResource("6_ogw55")]
+position = Vector2(4602, -781)
+scale = Vector2(0.8, 0.8)
+mass = 5.0
 
-[node name="Geyser2" parent="Star/Planet3" instance=ExtResource("9_vx46q")]
-position = Vector2(-174, 12)
-rotation = -1.5707964
+[node name="Planet6" parent="Star" instance=ExtResource("6_ogw55")]
+position = Vector2(5270, -293)
+scale = Vector2(1.2, 1.2)
 
-[node name="Geyser3" parent="Star/Planet3" instance=ExtResource("9_vx46q")]
-position = Vector2(-2, -180)
+[node name="Enemy" parent="Star/Planet6" instance=ExtResource("8_up2ry")]
+position = Vector2(132.00002, 222.00006)
+rotation = 2.6249752
+scale = Vector2(1.5, 1.5)
 
 [node name="Planet4" parent="Star" instance=ExtResource("6_ogw55")]
-position = Vector2(4519, -825)
-scale = Vector2(0.5, 0.5)
-mass = 3.0
+position = Vector2(9287, -18)
+scale = Vector2(2.5, 2.5)
+mass = 15.0
 
 [node name="Tower" parent="Star/Planet4" instance=ExtResource("10_73f1s")]
-position = Vector2(2, -344)
-scale = Vector2(2, 2)
+position = Vector2(1.200036, -305.59998)
+scale = Vector2(1.5, 1.5)
 next_scene = "res://levels/level2.tscn"
+
+[node name="Planet7" parent="Star" instance=ExtResource("6_ogw55")]
+position = Vector2(5974, 56)
+scale = Vector2(0.6, 0.6)
+
+[node name="Enemy" parent="Star/Planet7" instance=ExtResource("8_up2ry")]
+position = Vector2(0, -284)
+scale = Vector2(1.5, 1.5)
+
+[node name="Planet8" parent="Star" instance=ExtResource("6_ogw55")]
+position = Vector2(6518, -414)
+scale = Vector2(0.5, 0.5)
+
+[node name="Planet9" parent="Star" instance=ExtResource("6_ogw55")]
+position = Vector2(7024, 58)
+scale = Vector2(0.9, 0.9)
+mass = 7.0
+
+[node name="Planet10" parent="Star" instance=ExtResource("6_ogw55")]
+position = Vector2(7709, 7)
+scale = Vector2(0.5, 0.5)
+
+[node name="Enemy" parent="Star/Planet10" instance=ExtResource("8_up2ry")]
+position = Vector2(132.00002, 222.00006)
+rotation = 2.6249752
+scale = Vector2(1.2, 1.2)
 
 [node name="Label" type="Label" parent="."]
 offset_left = 7.0
@@ -91,7 +115,7 @@ offset_top = 55.0
 offset_right = 318.0
 offset_bottom = 146.0
 theme = SubResource("Theme_8hd6v")
-text = "Level 4"
+text = "Level 3"
 
 [node name="Label2" type="Label" parent="."]
 offset_left = 48.0
@@ -99,4 +123,11 @@ offset_top = 129.0
 offset_right = 264.0
 offset_bottom = 174.0
 theme_override_font_sizes/font_size = 32
-text = "Bad guys pt. 2"
+text = "Bad guys "
+horizontal_alignment = 1
+
+[node name="Geyser" parent="." instance=ExtResource("9_vx46q")]
+position = Vector2(5633.0005, 786.00006)
+rotation = 1.553343
+scale = Vector2(0.5, 0.5)
+launch_strength = 2000
