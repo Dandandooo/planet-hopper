@@ -1,0 +1,95 @@
+[gd_scene load_steps=12 format=3 uid="uid://dwm8s0vku5v1v"]
+
+[ext_resource type="Script" uid="uid://diugk8dxpls4g" path="res://levels/main.gd" id="1_csfeo"]
+[ext_resource type="Texture2D" uid="uid://bbwg8hnd1ptq6" path="res://assets/space.jpeg" id="2_24dmg"]
+[ext_resource type="PackedScene" uid="uid://bxdkv7mas3nr3" path="res://components/star.tscn" id="3_y3hxw"]
+[ext_resource type="PackedScene" uid="uid://ba7mr1kx7f5wf" path="res://components/planet.tscn" id="4_oqqna"]
+[ext_resource type="PackedScene" uid="uid://bnlpe2y1obb5a" path="res://components/landmine.tscn" id="5_7q4xn"]
+[ext_resource type="PackedScene" uid="uid://bqk8n5j3m4xyi" path="res://components/enemy.tscn" id="6_0olrf"]
+[ext_resource type="PackedScene" uid="uid://cop34v84kwdsj" path="res://components/tower.tscn" id="7_4ocak"]
+[ext_resource type="PackedScene" uid="uid://cnwn1hmwygwlf" path="res://components/wabbit.tscn" id="8_8vqif"]
+[ext_resource type="PackedScene" uid="uid://xld3mp8mtllw" path="res://components/pause_menu.tscn" id="9_v1bsy"]
+[ext_resource type="FontFile" uid="uid://b8vopmule5iep" path="res://assets/fonts/FairwaterDecoSerif-Regular.otf" id="10_24dmg"]
+
+[sub_resource type="Theme" id="Theme_y3hxw"]
+default_font = ExtResource("10_24dmg")
+default_font_size = 64
+
+[node name="Level9" type="Node2D"]
+script = ExtResource("1_csfeo")
+
+[node name="UI" type="CanvasLayer" parent="."]
+layer = 10000
+
+[node name="PauseMenu" parent="UI" instance=ExtResource("9_v1bsy")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Space" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(569, 336)
+texture = ExtResource("2_24dmg")
+
+[node name="Star" parent="." instance=ExtResource("3_y3hxw")]
+position = Vector2(-2591, 868)
+planets_orbit = true
+
+[node name="Planet" parent="Star" instance=ExtResource("4_oqqna")]
+position = Vector2(2469, -587)
+mass = 10.0
+
+[node name="Landmine" parent="Star/Planet" instance=ExtResource("5_7q4xn")]
+position = Vector2(192, -1)
+rotation = 1.5707964
+
+[node name="Landmine2" parent="Star/Planet" instance=ExtResource("5_7q4xn")]
+position = Vector2(-190, -5)
+rotation = 4.712389
+
+[node name="Enemy" parent="Star/Planet" instance=ExtResource("6_0olrf")]
+position = Vector2(-4, -251)
+
+[node name="Planet2" parent="Star" instance=ExtResource("4_oqqna")]
+position = Vector2(3858, -183)
+mass = 10.0
+
+[node name="Landmine" parent="Star/Planet2" instance=ExtResource("5_7q4xn")]
+position = Vector2(-7, -192)
+
+[node name="Landmine2" parent="Star/Planet2" instance=ExtResource("5_7q4xn")]
+position = Vector2(3, 201)
+rotation = 3.1415927
+
+[node name="Planet3" parent="Star" instance=ExtResource("4_oqqna")]
+position = Vector2(1971, -3841)
+mass = 10.0
+
+[node name="Label2" type="Label" parent="Star/Planet3"]
+offset_left = -151.0
+offset_top = -531.0
+offset_right = 167.0
+offset_bottom = -440.0
+theme = SubResource("Theme_y3hxw")
+text = "Level 9"
+
+[node name="Label" type="Label" parent="Star/Planet3"]
+offset_left = -162.0
+offset_top = -451.0
+offset_right = 176.0
+offset_bottom = -404.0
+theme_override_font_sizes/font_size = 32
+text = "Orbits"
+horizontal_alignment = 1
+
+[node name="Planet4" parent="Star" instance=ExtResource("4_oqqna")]
+position = Vector2(-847, 170)
+scale = Vector2(0.5, 0.5)
+mass = 8.0
+
+[node name="Tower" parent="Star/Planet4" instance=ExtResource("7_4ocak")]
+position = Vector2(-200, -290)
+rotation = -0.6091199
+scale = Vector2(2, 2)
+
+[node name="Wabbit" parent="." instance=ExtResource("8_8vqif")]
+position = Vector2(-623, -3218)

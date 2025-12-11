@@ -1,0 +1,123 @@
+[gd_scene load_steps=12 format=3 uid="uid://jaxe4p4ho5hh"]
+
+[ext_resource type="Script" uid="uid://diugk8dxpls4g" path="res://levels/main.gd" id="1_8bhgk"]
+[ext_resource type="PackedScene" uid="uid://xld3mp8mtllw" path="res://components/pause_menu.tscn" id="1_i18um"]
+[ext_resource type="Texture2D" uid="uid://bbwg8hnd1ptq6" path="res://assets/space.jpeg" id="2_8bhgk"]
+[ext_resource type="PackedScene" uid="uid://bxdkv7mas3nr3" path="res://components/star.tscn" id="3_mv8ey"]
+[ext_resource type="PackedScene" uid="uid://ba7mr1kx7f5wf" path="res://components/planet.tscn" id="4_80amw"]
+[ext_resource type="PackedScene" uid="uid://bnlpe2y1obb5a" path="res://components/landmine.tscn" id="5_3r2vy"]
+[ext_resource type="PackedScene" uid="uid://bqk8n5j3m4xyi" path="res://components/enemy.tscn" id="6_p0w58"]
+[ext_resource type="PackedScene" uid="uid://qwry8a8465u4" path="res://components/geyser.tscn" id="8_8bhgk"]
+[ext_resource type="PackedScene" uid="uid://cnwn1hmwygwlf" path="res://components/wabbit.tscn" id="8_nf8gw"]
+[ext_resource type="FontFile" uid="uid://b8vopmule5iep" path="res://assets/fonts/FairwaterDecoSerif-Regular.otf" id="9_6rd6v"]
+
+[sub_resource type="Theme" id="Theme_k6mdx"]
+default_font = ExtResource("9_6rd6v")
+default_font_size = 64
+
+[node name="Level10" type="Node2D"]
+script = ExtResource("1_8bhgk")
+
+[node name="UI" type="CanvasLayer" parent="."]
+layer = 10000
+
+[node name="PauseMenu" parent="UI" instance=ExtResource("1_i18um")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Space" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(1179, 610)
+texture = ExtResource("2_8bhgk")
+
+[node name="Star" parent="." instance=ExtResource("3_mv8ey")]
+position = Vector2(-771, -595)
+planets_orbit = true
+
+[node name="Planet" parent="Star" instance=ExtResource("4_80amw")]
+position = Vector2(-750, -2451)
+scale = Vector2(1.2, 1.2)
+mass = 10.0
+
+[node name="Landmine" parent="Star/Planet" instance=ExtResource("5_3r2vy")]
+position = Vector2(192, -1)
+rotation = 1.5707964
+scale = Vector2(1.2, 1.2)
+
+[node name="Landmine2" parent="Star/Planet" instance=ExtResource("5_3r2vy")]
+position = Vector2(-190, -5)
+rotation = 4.712389
+scale = Vector2(1.2, 1.2)
+
+[node name="Enemy" parent="Star/Planet" instance=ExtResource("6_p0w58")]
+position = Vector2(-4, -251)
+scale = Vector2(0.7, 0.7)
+
+[node name="Enemy2" parent="Star/Planet" instance=ExtResource("6_p0w58")]
+position = Vector2(0, 250)
+rotation = 3.1415927
+scale = Vector2(0.7, 0.7)
+
+[node name="Planet2" parent="Star" instance=ExtResource("4_80amw")]
+position = Vector2(-1353, 943)
+scale = Vector2(1.2, 1.2)
+mass = 10.0
+
+[node name="Landmine2" parent="Star/Planet2" instance=ExtResource("5_3r2vy")]
+position = Vector2(3, 201)
+rotation = 3.1415927
+scale = Vector2(1.2, 1.2)
+
+[node name="Enemy" parent="Star/Planet2" instance=ExtResource("6_p0w58")]
+position = Vector2(380, 0)
+rotation = 1.5707964
+scale = Vector2(3, 3)
+
+[node name="Planet3" parent="Star" instance=ExtResource("4_80amw")]
+position = Vector2(763, -3239)
+mass = 10.0
+
+[node name="Planet4" parent="Star" instance=ExtResource("4_80amw")]
+position = Vector2(-236, 702)
+scale = Vector2(0.5, 0.5)
+mass = 8.0
+
+[node name="Geyser" parent="Star/Planet4" instance=ExtResource("8_8bhgk")]
+position = Vector2(0, -150)
+launch_strength = 8000
+
+[node name="Planet5" parent="Star" instance=ExtResource("4_80amw")]
+position = Vector2(-65, -12000)
+scale = Vector2(1.5, 1.5)
+moving = false
+
+[node name="Wabbit" parent="." instance=ExtResource("8_nf8gw")]
+position = Vector2(-13, -4179)
+
+[node name="Label2" type="Label" parent="."]
+offset_left = -161.0
+offset_top = -4465.0
+offset_right = 194.0
+offset_bottom = -4374.0
+theme = SubResource("Theme_k6mdx")
+text = "Level 10"
+
+[node name="Label" type="Label" parent="."]
+offset_left = -172.0
+offset_top = -4385.0
+offset_right = 166.0
+offset_bottom = -4338.0
+theme_override_font_sizes/font_size = 32
+text = "Black Hole"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="."]
+offset_left = -777.0
+offset_top = -1614.0
+offset_right = 1236.0
+offset_bottom = -1171.0
+theme = SubResource("Theme_k6mdx")
+text = "^
+|
+|
+"

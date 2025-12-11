@@ -145,6 +145,16 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_duh7t")
 text = "Load Level"
 flat = true
 
+[node name="TutorialButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("6_nwbki")
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.9764706, 0.8, 0.42352942, 1)
+text = "Tutorial
+"
+flat = true
+
 [node name="InfoButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -177,5 +187,6 @@ flat = true
 
 [connection signal="pressed" from="VBoxContainer/NewGameButton" to="." method="_on_new_game_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/LoadLevelButton" to="." method="_on_load_level_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/TutorialButton" to="." method="_on_tutorial_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/InfoButton" to="." method="_on_info_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]

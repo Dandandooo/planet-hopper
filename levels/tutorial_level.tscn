@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dppewc0f7hkhi"]
+[gd_scene load_steps=11 format=3 uid="uid://dppewc0f7hkhi"]
 
 [ext_resource type="Script" uid="uid://diugk8dxpls4g" path="res://levels/main.gd" id="1_12eng"]
 [ext_resource type="Texture2D" uid="uid://bbwg8hnd1ptq6" path="res://assets/space.jpeg" id="1_xwp4u"]
@@ -6,8 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://bxdkv7mas3nr3" path="res://components/star.tscn" id="3_707yn"]
 [ext_resource type="PackedScene" uid="uid://ba7mr1kx7f5wf" path="res://components/planet.tscn" id="4_12eng"]
 [ext_resource type="PackedScene" uid="uid://qwry8a8465u4" path="res://components/geyser.tscn" id="5_7dfxr"]
-[ext_resource type="PackedScene" path="res://components/tower.tscn" id="6_o434n"]
-[ext_resource type="PackedScene" path="res://components/pause_menu.tscn" id="7_707yn"]
+[ext_resource type="PackedScene" uid="uid://cop34v84kwdsj" path="res://components/tower.tscn" id="6_o434n"]
+[ext_resource type="PackedScene" uid="uid://bnlpe2y1obb5a" path="res://components/landmine.tscn" id="7_7dfxr"]
+[ext_resource type="PackedScene" uid="uid://xld3mp8mtllw" path="res://components/pause_menu.tscn" id="7_707yn"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_pdtm5"]
 rough = true
@@ -72,6 +73,10 @@ scale = Vector2(0.6, 0.6)
 position = Vector2(6285, -342)
 mass = 6.0
 
+[node name="Landmine" parent="Star" instance=ExtResource("7_7dfxr")]
+position = Vector2(6414.0005, -493)
+rotation = 0.7400196
+
 [node name="Planet8" parent="Star" instance=ExtResource("4_12eng")]
 position = Vector2(6913, -39)
 scale = Vector2(0.5, 0.5)
@@ -94,13 +99,6 @@ mass = 5.0
 position = Vector2(3.3333335, -333.33334)
 scale = Vector2(1.6666666, 1.6666666)
 next_scene = "res://levels/level1.tscn"
-
-[node name="Landmine" parent="Star" instance=ExtResource("7_707yn")]
-offset_left = 6444.0
-offset_top = -459.00024
-offset_right = 6444.0
-offset_bottom = -459.00024
-rotation = 0.95644045
 
 [node name="jump" type="Label" parent="."]
 visible = false
@@ -148,7 +146,7 @@ layer = 10000
 
 [node name="PauseMenu" parent="UI" instance=ExtResource("7_707yn")]
 
-[node name="geyser2" type="Label" parent="."]
+[node name="radiotower" type="Label" parent="."]
 offset_left = 6798.0
 offset_top = 511.0
 offset_right = 7121.0
@@ -158,3 +156,11 @@ text = "Sometimes the radio tower might provide useful information
 "
 horizontal_alignment = 1
 autowrap_mode = 3
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 3790.0
+offset_top = 69.0
+offset_right = 4492.0
+offset_bottom = 114.0
+theme_override_font_sizes/font_size = 32
+text = "Watch out for little obstacle sprinkled around"

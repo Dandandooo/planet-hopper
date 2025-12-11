@@ -13,13 +13,16 @@ func _process(_delta: float) -> void:
 
 func _on_new_game_button_pressed():
 	print("new_game_button_pressed")
-	get_tree().change_scene_to_file("res://levels/tutorial_level.tscn")
+	GameState.go_to_level(0)
 
 
 func _on_load_level_button_pressed():
 	print("load level button pressed")
 	get_tree().change_scene_to_file("res://levels/navigation_map.tscn")
 
+func _on_tutorial_button_pressed():
+	print("tutorial button pressed")
+	GameState.go_to_level(-1)
 
 func _on_info_button_pressed():
 	print("info button pressed")

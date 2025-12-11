@@ -26,6 +26,8 @@ func _ready() -> void:
 	var offset = global_position - centroid
 	if offset.length() > 0:
 		orbit_radius = offset.length()
+		
+	$AnimatedSprite2D.play()
 
 func _process(delta: float) -> void:
 	var planet = get_parent()
@@ -35,6 +37,7 @@ func _process(delta: float) -> void:
 		var pos = global_position - centroid
 		var angle = atan2(pos.y, pos.x)
 		angle += orbit_speed / orbit_radius * delta
+		global_rotation = angle + PI/2
 		global_position = centroid + orbit_radius * Vector2(cos(angle), sin(angle))
 
 	# Random sound timer
@@ -45,7 +48,7 @@ func _process(delta: float) -> void:
 func _on_collision(node: Node):
 	var player = node as Wabbit
 	if player:
-		player.burn()
+		player.explode()
 
 
 func _schedule_next_sound() -> void:
