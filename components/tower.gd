@@ -64,10 +64,19 @@ func _process(_delta: float) -> void:
 		for node in $Area2D.get_overlapping_bodies():
 			var wab = node as Wabbit
 			if wab:
-				GameState.advance_to_next_level()
-		#if player in $Area2D.get_overlapping_bodies():
-
-			#get_tree().change_scene_to_file(next_scene)
+				# Check if we're in a special/secret level
+				if GameState.current_level_path != "" and next_scene:
+					# Special level with custom next scene
+					if next_scene.contains("level_gc"):
+						# Going to another secret level
+						GameState.go_to_special_level(next_scene)
+					else:
+						# Going back to normal flow (e.g., main menu)
+						GameState.current_level_path = ""
+						get_tree().change_scene_to_file(next_scene)
+				else:
+					# Normal level progression
+					GameState.advance_to_next_level()
 
 
 func _update_audio() -> void:

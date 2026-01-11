@@ -17,6 +17,7 @@ var levels: Array = [
 ]
 
 var current_level_index: int = 0
+var current_level_path: String = ""  # Tracks actual scene path for special/secret levels
 
 var highest_level_unlocked: int = 0
 
@@ -31,6 +32,10 @@ var doublejumps_count: int = 0
 
 func get_current_level() -> String:
 	"""Returns the path to the current level"""
+	# If a special/secret level path is set, use that
+	if current_level_path != "":
+		return current_level_path
+	# Otherwise use the indexed level
 	if current_level_index < levels.size():
 		return levels[current_level_index]
 	return ""
@@ -47,12 +52,19 @@ func advance_to_next_level() -> void:
 
 func go_to_level(index: int) -> void:
 	"""Jump to a specific level by index"""
+	current_level_path = ""  # Clear special level path
 	if index < 0:
 		current_level_index = -1
 		get_tree().change_scene_to_file(tutorial_level)
 	if index >= 0 and index < levels.size():
 		current_level_index = index
 		get_tree().change_scene_to_file(get_current_level())
+
+
+func go_to_special_level(level_path: String) -> void:
+	"""Jump to a special/secret level by path"""
+	current_level_path = level_path
+	get_tree().change_scene_to_file(level_path)
 
 
 func reset_progress() -> void:

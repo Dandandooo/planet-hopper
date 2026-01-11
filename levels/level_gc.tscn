@@ -1,15 +1,28 @@
-[gd_scene load_steps=9 format=3 uid="uid://8hik2npymmi"]
+[gd_scene load_steps=13 format=3 uid="uid://8hik2npymmi"]
 
 [ext_resource type="Texture2D" uid="uid://bbwg8hnd1ptq6" path="res://assets/space.jpeg" id="1_lpgdq"]
+[ext_resource type="Script" uid="uid://diugk8dxpls4g" path="res://levels/main.gd" id="1_main"]
+[ext_resource type="PackedScene" uid="uid://xld3mp8mtllw" path="res://components/pause_menu.tscn" id="1_pause"]
 [ext_resource type="PackedScene" uid="uid://bxdkv7mas3nr3" path="res://components/star.tscn" id="2_1jw75"]
 [ext_resource type="PackedScene" uid="uid://cnwn1hmwygwlf" path="res://components/wabbit.tscn" id="3_8s3b3"]
 [ext_resource type="PackedScene" uid="uid://ba7mr1kx7f5wf" path="res://components/planet.tscn" id="4_cc5tm"]
 [ext_resource type="PackedScene" uid="uid://bnlpe2y1obb5a" path="res://components/landmine.tscn" id="4_mj76i"]
 [ext_resource type="PackedScene" uid="uid://cop34v84kwdsj" path="res://components/tower.tscn" id="5_1jw75"]
 [ext_resource type="PackedScene" uid="uid://bqk8n5j3m4xyi" path="res://components/enemy.tscn" id="6_8s3b3"]
+[ext_resource type="FontFile" uid="uid://b8vopmule5iep" path="res://assets/fonts/FairwaterDecoSerif-Regular.otf" id="6_f8y44"]
 [ext_resource type="PackedScene" uid="uid://qwry8a8465u4" path="res://components/geyser.tscn" id="6_mj76i"]
 
+[sub_resource type="Theme" id="Theme_x53gv"]
+default_font = ExtResource("6_f8y44")
+default_font_size = 64
+
 [node name="Level4" type="Node2D"]
+script = ExtResource("1_main")
+
+[node name="UI" type="CanvasLayer" parent="."]
+layer = 10000
+
+[node name="PauseMenu" parent="UI" instance=ExtResource("1_pause")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -1
@@ -25,6 +38,23 @@ planets_orbit = true
 [node name="Planet" parent="Star" instance=ExtResource("4_cc5tm")]
 position = Vector2(815.0001, -173.00006)
 scale = Vector2(0.7, 0.7)
+
+[node name="Label2" type="Label" parent="Star/Planet"]
+offset_left = -310.00018
+offset_top = -634.28564
+offset_right = 318.99982
+offset_bottom = -543.28564
+theme = SubResource("Theme_x53gv")
+text = "Secret Level 2"
+
+[node name="Label" type="Label" parent="Star/Planet"]
+offset_left = -164.0
+offset_top = -551.0
+offset_right = 174.0
+offset_bottom = -504.0
+theme_override_font_sizes/font_size = 32
+text = "Another one!"
+horizontal_alignment = 1
 
 [node name="Planet2" parent="Star" instance=ExtResource("4_cc5tm")]
 position = Vector2(1532, -1125)
@@ -102,6 +132,7 @@ scale = Vector2(0.7, 0.7)
 [node name="Tower" parent="Star2/Planet" instance=ExtResource("5_1jw75")]
 position = Vector2(0, -360)
 scale = Vector2(2, 2)
+next_scene = "res://levels/main_menu.tscn"
 
 [node name="Planet2" parent="Star2" instance=ExtResource("4_cc5tm")]
 position = Vector2(-3559, -46)

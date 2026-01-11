@@ -53,12 +53,6 @@ position = Vector2(574.00006, 325.00006)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("4_7rktv")
 
-[node name="FloatingWabbit" type="Sprite2D" parent="."]
-z_index = -10
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("5_wabbit")
-script = ExtResource("4_floating")
-
 [node name="MenuButton" type="MenuButton" parent="."]
 visible = false
 layout_mode = 1
@@ -73,6 +67,12 @@ offset_right = 199.0
 offset_bottom = 136.5
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="FloatingWabbit" type="Sprite2D" parent="."]
+z_index = -10
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("5_wabbit")
+script = ExtResource("4_floating")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 layout_mode = 0

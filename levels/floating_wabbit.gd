@@ -92,8 +92,35 @@ func _input(event: InputEvent) -> void:
 		return
 
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		# Check if any button is currently being hovered (yellow/activated)
+		if _is_any_button_hovered():
+			return  # Wabbit disabled when any button is hovered
+
 		# Check if click is within sprite bounds
 		var sprite_size = texture.get_size() * scale
 		var rect = Rect2(position - sprite_size / 2, sprite_size)
 		if rect.has_point(event.position):
-			get_tree().change_scene_to_file("res://levels/level_gc2.tscn")
+			# Mark event as handled to prevent other processing
+			get_viewport().set_input_as_handled()
+			GameState.go_to_special_level("res://levels/level_gc2.tscn")
+
+
+func _is_any_button_hovered() -> bool:
+	"""Check if any UI button is currently being hovered (yellow)"""
+	var parent = get_parent()
+	if not parent:
+		return false
+
+	# Find the VBoxContainer with buttons
+	var vbox = parent.get_node_or_null("VBoxContainer")
+	if not vbox:
+		return false
+
+	# Check if any button is being hovered
+	for child in vbox.get_children():
+		if child is Button and child.visible:
+			# Check if button has mouse hover (is_hovered() method)
+			if child.is_hovered():
+				return true
+
+	return false
