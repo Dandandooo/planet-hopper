@@ -12,8 +12,8 @@ func _ready() -> void:
 	for i in range(1, 11):
 		var btn = get_node_or_null("LevelButton_%d" % i)
 		if btn:
-			# Check if level is unlocked (level i is at index i in GameState.levels)
-			if i <= GameState.highest_level_unlocked:
+			# Check if level is unlocked (level i is at index i-1 in GameState.levels)
+			if i <= GameState.highest_level_unlocked + 1:
 				unlocked_levels.append(i)
 				btn.pressed.connect(_on_level_button_pressed.bind(i))
 				# Create click mask from texture alpha so only non-transparent pixels are clickable
